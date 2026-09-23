@@ -23,6 +23,7 @@
 @import url('components/cursor.css');
 @import url('components/page-fade.css');
 @import url('components/to-top.css');
+@import url('components/lang.css');
 
 /* --- Секции ------------------------------------------------------------- */
 @import url('sections/hero.css');

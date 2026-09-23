@@ -79,6 +79,9 @@ export function initPacking() {
   // начертанию и раскладка получается неверной
   document.fonts?.ready?.then(run);
 
+  // сменили язык — слова другой длины, строки надо уложить заново
+  document.addEventListener('lang:changed', () => setTimeout(run, 0));
+
   let timer;
   window.addEventListener('resize', () => {
     clearTimeout(timer);

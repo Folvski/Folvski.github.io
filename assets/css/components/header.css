@@ -24,6 +24,20 @@
   padding-block-start: 16px;
 }
 
+/* --- Правый угол: язык и бургер -------------------------------------------
+   Абсолютный, чтобы пилюля-меню центрировалась по экрану, а не по остатку
+   строки. На <=1024 равняется по краю контейнера, как и весь контент. */
+
+.header__side {
+  position: absolute;
+  inset-block-start: 16px;
+  inset-inline-end: var(--gutter);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  pointer-events: auto;
+}
+
 /* --- Пилюля-меню -------------------------------------------------------- */
 
 .header__pill {
@@ -79,6 +93,9 @@
     margin-inline: auto;
     padding-block-start: 24px;
   }
+
+  /* контейнер уже сужен полями — правый угол равняется по его краю */
+  .header__side { inset-block-start: 24px; inset-inline-end: 0; gap: 10px; }
 
   .header__pill { display: none; }
 }

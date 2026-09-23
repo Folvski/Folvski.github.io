@@ -14,6 +14,7 @@ import { initCursor }   from './controllers/cursor.js';
 import { initSmoothScroll } from './controllers/smooth-scroll.js';
 import { initPageFade }     from './controllers/page-fade.js';
 import { initShine }        from './controllers/shine.js';
+import { initI18n }         from './controllers/i18n.js';
 import { initToTop }        from './controllers/to-top.js';
 
 async function boot() {
@@ -32,6 +33,10 @@ async function boot() {
   // и шторка на них не срабатывает
   initPageFade();
   initToTop();      // после initSmoothScroll: прокрутку отдаёт её движку
+  // последним: текст меняется, а от него зависят укладка пилюль,
+  // очередь блика и ширина стопки разделов
+  initI18n();
+
   initCursor();
 
   document.documentElement.classList.add('is-ready');

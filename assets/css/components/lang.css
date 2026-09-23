@@ -1,0 +1,162 @@
+/* ==========================================================================
+   lang.css — переключатель языка.
+
+   В покое это кружок с одним значком. При наведении он раскрывается вправо
+   и показывает, на какой язык переключит: «English», когда сайт русский,
+   и «Russian», когда английский.
+
+   Кнопок в разметке две, видна всегда одна. На десктопе — та, что в шапке.
+   На <=1024 шапка сжимается до бургера, и переключатель переезжает внутрь
+   меню (.lang--menu): рядом с бургером ему тесно, а в меню он встаёт
+   последней пилюлей в ряд к ссылкам.
+
+   Как сделано раскрытие. Ширину нельзя анимировать до auto — браузер не
+   знает, к какому числу ехать. Поэтому подпись лежит в grid-ячейке, а
+   анимируется доля этой ячейки: 0fr -> 1fr. Значение считается от
+   содержимого, поэтому переход получается плавным при любой длине слова,
+   и его не надо подгонять руками под «English» и «Russian».
+   ========================================================================== */
+
+.lang {
+  /* --lang-size   диаметр в свёрнутом виде
+     --lang-dur    длительность раскрытия
+     --lang-ease   характер движения: с лёгким «доездом» в конце,
+                   поэтому кнопка тянется, а не щёлкает
+     --lang-gap    отступ от значка до подписи в раскрытом виде          */
+  --lang-size: 56px;
+  --lang-dur:  .55s;
+  --lang-ease: cubic-bezier(.16, 1, .3, 1);
+  --lang-gap:  10px;
+
+  position: relative;
+  display: grid;
+  grid-auto-flow: column;
+  align-items: center;
+  height: var(--lang-size);
+  padding: 0;
+  padding-inline: calc((var(--lang-size) - 25px) / 2);
+
+  border: var(--glass-border-header) solid var(--glass-stroke-soft);
+  border-radius: var(--r-pill);
+  background: var(--glass-surface);
+  backdrop-filter: var(--glass-blur-mobile);
+  -webkit-backdrop-filter: var(--glass-blur-mobile);
+  box-shadow: var(--glass-shadow);
+  color: var(--text-secondary);
+
+  pointer-events: auto;
+  cursor: pointer;
+  transition: background-color var(--dur) var(--ease),
+              border-color var(--dur) var(--ease),
+              color var(--dur) var(--ease);
+}
+
+.lang:hover {
+  background: rgba(58, 58, 58, .82);
+  border-color: rgba(255, 255, 255, .28);
+  color: var(--c-white);
+}
+
+.lang:active .lang__icon { scale: .88; }
+
+.lang__icon {
+  display: grid;
+  place-items: center;
+  width: 25px;
+  height: 25px;
+  flex: none;
+  transition: scale var(--dur-fast) var(--ease);
+}
+
+.lang__icon img { width: 100%; height: 100%; }
+
+/* Ячейка, которая раскрывается. Сама подпись внутри обрезается по ней. */
+.lang__slot {
+  display: grid;
+  grid-template-columns: 0fr;
+  transition: grid-template-columns var(--lang-dur) var(--lang-ease);
+}
+
+.lang__label {
+  overflow: hidden;
+  min-width: 0;                    /* иначе grid не даст ячейке сжаться в ноль */
+  white-space: nowrap;
+  font-size: var(--fs-body);
+  line-height: 24px;
+  letter-spacing: var(--ls-btn);
+
+  /* отступ от значка появляется вместе с самой подписью, иначе в свёрнутом
+     виде кружок был бы не круглым, а чуть вытянутым */
+  padding-inline-start: 0;
+  opacity: 0;
+  translate: -6px 0;
+  transition: opacity calc(var(--lang-dur) * .7) var(--lang-ease),
+              translate var(--lang-dur) var(--lang-ease),
+              padding-inline-start var(--lang-dur) var(--lang-ease);
+}
+
+/* --- Раскрытое состояние --------------------------------------------------
+   На десктопе — по наведению и по фокусу с клавиатуры.
+   .is-open вешает скрипт: так кнопка не схлопывается сразу после клика,
+   пока курсор ещё на ней. */
+
+.lang:hover  .lang__slot,
+.lang:focus-visible .lang__slot,
+.lang.is-open .lang__slot { grid-template-columns: 1fr; }
+
+.lang:hover  .lang__label,
+.lang:focus-visible .lang__label,
+.lang.is-open .lang__label {
+  opacity: 1;
+  translate: 0 0;
+  padding-inline-start: var(--lang-gap);
+}
+
+/* --- Вариант для меню -----------------------------------------------------
+   На планшете и телефоне кнопка живёт не в шапке, а внутри меню: рядом с
+   бургером ей тесно, а в меню есть готовый ряд пилюль, и она встаёт
+   последней строкой в нём. Наведения на узком экране нет, поэтому подпись
+   здесь видна всегда, а сама кнопка повторяет размеры .mobile-menu__link. */
+
+.lang--menu {
+  justify-content: center;
+  width: 100%;
+  height: 56px;
+  margin-block-start: var(--sp-xs);
+  padding-inline: 30px;
+  /* рамка и фон ровно как у .mobile-menu__link — иначе последняя пилюля
+     в ряду заметно отличалась бы от остальных */
+  border: var(--glass-border) solid var(--glass-stroke);
+  background: rgba(24, 24, 24, .82);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  font-size: 20px;
+  letter-spacing: var(--ls-btn);
+}
+
+.lang--menu .lang__slot  { grid-template-columns: 1fr; }
+.lang--menu .lang__label {
+  opacity: 1;
+  translate: 0 0;
+  padding-inline-start: var(--lang-gap);
+  font-size: inherit;
+}
+
+.lang--menu:hover {
+  background: rgba(44, 44, 44, .86);
+  color: var(--text-primary);
+}
+
+/* --- Кто из двух виден ---------------------------------------------------- */
+
+@media (max-width: 1024px) {
+  .header__side .lang { display: none; }
+}
+
+@media (min-width: 1025px) {
+  .lang--menu { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lang__slot, .lang__label, .lang__icon { transition: none; }
+}

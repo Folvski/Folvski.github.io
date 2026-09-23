@@ -212,4 +212,5 @@ export function initWorksNav() {
 
   // ширины пилюль зависят от шрифта, а он грузится асинхронно
   document.fonts?.ready?.then(remeasure);
+  on(document, 'lang:changed', () => setTimeout(remeasure, 0));
 }

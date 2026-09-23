@@ -12,14 +12,30 @@
       </ul>
     </nav>
 
-    <button class="burger" type="button" data-burger
-            aria-expanded="false" aria-controls="mobile-menu" aria-label="Открыть меню">
-      <span class="burger__box" aria-hidden="true">
-        <span class="burger__line"></span>
-        <span class="burger__line"></span>
-        <span class="burger__line"></span>
-      </span>
-    </button>
+    <!-- Правый угол шапки. Вынесен отдельной группой и спозиционирован
+         абсолютно, чтобы пилюля-меню осталась ровно по центру экрана. -->
+    <div class="header__side">
+
+      <!-- Переключатель языка. Подпись проставляет controllers/i18n.js:
+           «English», когда сайт русский, и «Russian», когда английский.
+           На <=1024 эта кнопка скрыта — там она живёт внутри меню. -->
+      <button class="lang" type="button" data-lang-toggle>
+        <span class="lang__icon" aria-hidden="true">
+          <img src="/assets/img/icons/language.svg" alt="" width="25" height="25">
+        </span>
+        <span class="lang__slot"><span class="lang__label" data-lang-label>English</span></span>
+      </button>
+
+      <button class="burger" type="button" data-burger
+              aria-expanded="false" aria-controls="mobile-menu" aria-label="Открыть меню">
+        <span class="burger__box" aria-hidden="true">
+          <span class="burger__line"></span>
+          <span class="burger__line"></span>
+          <span class="burger__line"></span>
+        </span>
+      </button>
+
+    </div>
 
   </div>
 
@@ -30,6 +46,16 @@
       <a class="mobile-menu__link" data-nav-link href="/pages/projects.html">Работы</a>
       <a class="mobile-menu__link" data-nav-link href="/index.html#contacts">Контакты</a>
       <a class="mobile-menu__link" data-nav-link href="/index.html#skills">Стек</a>
+
+      <!-- Тот же переключатель, но для телефона и планшета: на узком экране
+           он живёт здесь, а не в шапке — там и так тесно. Работают обе
+           кнопки, скрипт держит их подписи одинаковыми. -->
+      <button class="lang lang--menu" type="button" data-lang-toggle>
+        <span class="lang__icon" aria-hidden="true">
+          <img src="/assets/img/icons/language.svg" alt="" width="25" height="25">
+        </span>
+        <span class="lang__slot"><span class="lang__label" data-lang-label>English</span></span>
+      </button>
     </nav>
   </div>
 </header>
