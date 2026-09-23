@@ -34,7 +34,7 @@
 .section-projects__lead {
   max-width: 742px;
   font-size: var(--fs-lead);
-  line-height: 30px;
+  line-height: var(--lh-lead);
   color: var(--text-muted);
 }
 
@@ -140,7 +140,7 @@
 .section-lab__lead {
   max-width: 574px;
   font-size: var(--fs-lead);
-  line-height: 30px;
+  line-height: var(--lh-lead);
   color: var(--text-muted);
 }
 
@@ -275,7 +275,7 @@
 
 .section-projects-hero__lead {
   font-size: var(--fs-lead);
-  line-height: 30px;
+  line-height: var(--lh-lead);
   color: var(--text-muted);
 }
 

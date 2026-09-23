@@ -157,7 +157,7 @@
 .hero__lead {
   margin: 17px 0 0;
   font-size: var(--fs-lead);
-  line-height: 30px;
+  line-height: var(--lh-lead);
   color: var(--text-muted);
 }
 

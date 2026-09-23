@@ -62,7 +62,7 @@
 
 .case-block__lead {
   font-size: var(--fs-lead);
-  line-height: 30px;
+  line-height: var(--lh-lead);
   color: var(--text-muted);
 }
 
@@ -117,7 +117,7 @@
   gap: 30px;                      /* абзацы через пустую строку, как в макете */
   max-width: 998px;
   font-size: var(--fs-lead);
-  line-height: 30px;
+  line-height: var(--lh-lead);
   color: var(--text-muted);
   text-align: left;
 }
@@ -164,7 +164,7 @@
   .case-gallery { gap: 16px; }
 
   .case-card { padding: 28px 20px; }
-  .case-card__text { font-size: var(--fs-body); line-height: 26px; gap: 20px; }
+  .case-card__text { font-size: var(--fs-body); line-height: var(--lh-text); gap: 20px; }
 
   .case-block__title,
   .case-card__title { font-size: var(--fs-h1); }

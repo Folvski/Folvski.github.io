@@ -37,7 +37,7 @@
 .cv__role {
   margin: 0;
   font-size: var(--fs-lead);
-  line-height: 30px;
+  line-height: var(--lh-lead);
   color: var(--c-orange);
 }
 
@@ -51,7 +51,7 @@
   padding: 0;
   list-style: none;
   font-size: var(--fs-body);
-  line-height: 26px;
+  line-height: var(--lh-text);
   color: var(--text-muted);
 }
 
@@ -104,7 +104,7 @@
 
 .cv__when {
   font-size: var(--fs-body);
-  line-height: 26px;
+  line-height: var(--lh-text);
   color: var(--text-dim);
 }
 
@@ -114,14 +114,14 @@
   margin: 0 0 6px;
   font-size: var(--fs-body);
   font-weight: 500;
-  line-height: 26px;
+  line-height: var(--lh-text);
   color: var(--c-white);
 }
 
 .cv__what p {
   margin: 0;
   font-size: var(--fs-body);
-  line-height: 26px;
+  line-height: var(--lh-text);
   color: var(--text-muted);
 }
 
@@ -136,14 +136,14 @@
 
 .cv__skills dt {
   font-size: var(--fs-body);
-  line-height: 26px;
+  line-height: var(--lh-text);
   color: var(--text-dim);
 }
 
 .cv__skills dd {
   margin: 0;
   font-size: var(--fs-body);
-  line-height: 26px;
+  line-height: var(--lh-text);
   color: var(--text-muted);
 }
 
@@ -172,7 +172,7 @@
   .section-cv { padding-block: calc(var(--header-h) + 32px) 56px; }
 
   .cv__head    { display: block; }
-  .cv__text    { line-height: 26px; }
+  .cv__text    { line-height: var(--lh-text); }
   .cv__actions { gap: 12px; }
 }
 

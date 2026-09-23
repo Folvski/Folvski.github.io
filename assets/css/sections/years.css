@@ -46,7 +46,7 @@
   max-width: 600px;
   margin-inline: auto;
   font-size: var(--fs-lead);
-  line-height: 30px;
+  line-height: var(--lh-lead);
   color: var(--text-muted);
 }
 
@@ -54,11 +54,10 @@
   .section-years { padding-block: 72px; }
   .year + .year  { margin-top: 88px; }
   .year__title   { margin-bottom: 16px; }
-  .year__desc    { max-width: 520px; line-height: 28px; }
+  .year__desc    { max-width: 520px; }
 }
 
 @media (max-width: 480px) {
   .section-years { padding-block: 56px; }
   .year + .year  { margin-top: 64px; }
-  .year__desc    { line-height: 26px; }
 }

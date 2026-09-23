@@ -226,7 +226,7 @@
   max-width: 742px;
   margin-bottom: 32px;
   font-size: var(--fs-lead);
-  line-height: 30px;
+  line-height: var(--lh-lead);
   color: var(--text-muted);
 }
 
@@ -312,7 +312,7 @@
   .section-about--page { padding-block: calc(8px + 56vw) 0; }
   .section-about--page .section-about__photos { inset-block-start: 48px; }
 
-  .section-about__story       { font-size: var(--fs-lead); line-height: 28px; }
+  .section-about__story       { font-size: var(--fs-lead); }
   .section-about__story p + p { margin-top: 28px; }
 
   /* коллаж во всю ширину — значит и затемнение считается от неё */
@@ -330,5 +330,5 @@
   .about-photo { border-radius: var(--r-s); }
 
   .section-about__title { margin-bottom: 16px; }
-  .section-about__text  { font-size: var(--fs-body); line-height: 26px; margin-bottom: 20px; }
+  .section-about__text  { font-size: var(--fs-body); line-height: var(--lh-text); margin-bottom: 20px; }
 }

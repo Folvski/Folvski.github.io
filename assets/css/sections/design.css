@@ -44,7 +44,7 @@
 
 .section-design__lead {
   font-size: var(--fs-lead);
-  line-height: 30px;
+  line-height: var(--lh-lead);
   color: var(--text-muted);
 }
 
@@ -54,7 +54,7 @@
 .section-design__intro {
   margin-top: 48px;
   font-size: var(--fs-lead);
-  line-height: 30px;
+  line-height: var(--lh-lead);
   color: var(--text-muted);
 }
 
@@ -176,7 +176,7 @@
   .section-design { padding-block: 72px 150px; }
 
   .section-design__title  { margin-bottom: 14px; line-height: 1.15; }
-  .section-design__intro  { margin-top: 36px; line-height: 28px; }
+  .section-design__intro  { margin-top: 36px; }
   .section-design__skills { margin-top: 24px; }
 
   .design-cards {
@@ -212,7 +212,7 @@
 @media (max-width: 480px) {
   .section-design { padding-block: 56px 110px; }
 
-  .section-design__intro { margin-top: 28px; line-height: 26px; }
+  .section-design__intro { margin-top: 28px; }
 
   /* на телефоне принудительный перенос мешает — строки ломаются сами */
   .design-quote br { display: none; }

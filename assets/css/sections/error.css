@@ -46,7 +46,7 @@
 .section-error__text {
   max-width: 656px;
   font-size: var(--fs-lead);
-  line-height: 30px;
+  line-height: var(--lh-lead);
   color: var(--text-muted);
 }
 
