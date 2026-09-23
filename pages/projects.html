@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Работы — Нестеренко Иван</title>
+  <meta name="description" content="Сайты, UI/UX, брендинг, графика и личные проекты.">
+
+  <link rel="icon" href="/assets/img/icons/Favicon.ico" sizes="any">
+  <link rel="canonical" href="https://folvski.github.io/pages/projects.html">
+
+  <!-- Карточка при отправке ссылки в мессенджеры и соцсети.
+       Адреса здесь абсолютные не случайно: ботам, которые собирают превью,
+       относительный путь разворачивать не от чего. Preview.png специально
+       оставлен PNG — webp понимают не все такие боты. -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Нестеренко Иван">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:url" content="https://folvski.github.io/pages/projects.html">
+  <meta property="og:title" content="Работы — Нестеренко Иван">
+  <meta property="og:description" content="Сайты, UI/UX, брендинг, графика и личные проекты.">
+  <meta property="og:image" content="https://folvski.github.io/assets/img/icons/Preview.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Портфолио Нестеренко Ивана: дизайн и разработка">
+  <meta name="twitter:card" content="summary_large_image">
+
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap&subset=cyrillic,latin">
+
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <script type="module" src="/assets/js/main.js"></script>
+</head>
+<body>
+
+  <!-- Шторка перехода между страницами. Должна стоять первой в body. -->
+  <div class="page-fade" aria-hidden="true"></div>
+
+
+  <div data-include="/views/layout/header.html"></div>
+
+  <main>
+    <!-- ===== Первый экран =============================================== -->
+    <section class="section-projects-hero section--flush" id="projects-hero">
+      <div class="container container--narrow section-projects-hero__inner">
+
+        <div class="badge badge--orange">
+          <span class="badge__icon">
+            <img src="/assets/img/badges/projects.svg" alt="" width="80" height="80">
+          </span>
+          <span class="badge__label">Проекты</span>
+        </div>
+
+        <h1 class="section-projects-hero__title">
+          Здесь собраны работы, которые я делал <strong>своими руками</strong>:
+          сайты, графика, брендинг, видео, игры.
+        </h1>
+
+        <p class="section-projects-hero__lead">
+          Каждый проект&nbsp;— это история о том, как идея превращается в результат.
+        </p>
+
+      </div>
+    </section>
+
+    <!-- Строка разделов. В макете она нарисована заново над каждым разделом —
+         это дизайнерский способ сказать «она всегда под рукой». В вёрстке она
+         одна и липнет под шапкой, а активный пункт подсвечивается по мере
+         прокрутки (controllers/works-nav.js). -->
+    <div class="works-nav">
+      <div class="container">
+        <nav class="filter-bar" data-works-nav aria-label="Разделы работ">
+          <a class="btn btn--ghost" href="#sites">Сайты</a>
+          <a class="btn btn--ghost" href="#uiux">UI/UX</a>
+          <a class="btn btn--ghost" href="#branding">Брендинг</a>
+          <a class="btn btn--ghost" href="#graphics">Графика</a>
+          <a class="btn btn--ghost" href="#laboratoria">Лаборатория</a>
+        </nav>
+      </div>
+    </div>
+
+    <div data-include="/views/sections/projects-sites.html"></div>
+    <div data-include="/views/sections/projects-uiux.html"></div>
+    <div data-include="/views/sections/projects-branding.html"></div>
+    <div data-include="/views/sections/projects-graphics.html"></div>
+    <div data-include="/views/sections/projects-lab.html"></div>
+  </main>
+
+  <div data-include="/views/layout/footer.html"></div>
+
+</body>
+</html>

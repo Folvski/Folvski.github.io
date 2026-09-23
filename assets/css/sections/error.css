@@ -1,0 +1,78 @@
+/* ==========================================================================
+   error.css — страница 404 «Этот кейс ещё в разработке».
+   Макет: hero 1920x875, шапка 96, контентный блок 1136x350 с отступом 163
+   от низа шапки, внизу фиолетовое свечение.
+   ========================================================================== */
+
+.section-error {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  min-height: 875px;
+  padding-block: calc(var(--header-h) + 163px) var(--sp-2xl);
+}
+
+/* фиолетовое свечение по нижнему краю экрана */
+.section-error::after {
+  content: '';
+  position: absolute;
+  inset-block-end: -96px;
+  inset-inline-start: 50%;
+  translate: -50% 0;
+  width: 1160px;
+  height: 245px;
+  border-radius: 50%;
+  background: radial-gradient(closest-side,
+              #ece2ff 0%, #b98fff 50%, rgba(125, 85, 255, 0) 100%);
+  filter: blur(42px);
+  pointer-events: none;
+}
+
+.section-error__inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* бейдж -> заголовок: 10px, заголовок -> текст: 10px (по макету) */
+.section-error .badge      { margin-bottom: 10px; }
+.section-error__title      { margin-bottom: 10px; }
+
+.section-error__text {
+  max-width: 656px;
+  font-size: var(--fs-lead);
+  line-height: 30px;
+  color: var(--text-muted);
+}
+
+.section-error__actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-m);
+  margin-top: 42px;
+}
+
+@media (max-width: 1024px) {
+  .section-error {
+    min-height: 0;
+    padding-block: calc(var(--header-h) + var(--sp-2xl)) var(--sp-2xl);
+  }
+  .section-error::after { width: 780px; height: 280px; inset-block-end: -120px; }
+}
+
+@media (max-width: 480px) {
+  .section-error {
+    padding-block: calc(var(--header-h) + var(--sp-xl)) var(--sp-xl);
+  }
+  .section-error__actions {
+    gap: var(--sp-s);
+    margin-top: var(--sp-m);
+  }
+  .section-error::after { width: 520px; height: 220px; inset-block-end: -95px; }
+}

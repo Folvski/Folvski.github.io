@@ -1,0 +1,84 @@
+/* ==========================================================================
+   header.css — шапка.
+   Десктоп: пилюля 671x64 по центру, отступ сверху 16px, фиксирована.
+   Поверхность — полупрозрачное чёрное стекло с преломлением фона,
+   рамка ровная светлая, без цветных градиентов.
+   <=1024:  пилюля скрыта, вместо неё бургер справа по краю контейнера.
+   ========================================================================== */
+
+.header {
+  position: fixed;
+  inset-block-start: 0;
+  inset-inline: 0;
+  z-index: var(--z-header);
+  pointer-events: none;            /* клики проходят мимо пустой полосы */
+}
+
+.header__inner {
+  position: relative;
+  z-index: calc(var(--z-menu) + 1);   /* бургер остаётся над открытой панелью */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: var(--header-h);
+  padding-block-start: 16px;
+}
+
+/* --- Пилюля-меню -------------------------------------------------------- */
+
+.header__pill {
+  position: relative;
+  pointer-events: auto;
+  padding: 7px;
+  border: var(--glass-border-header) solid var(--glass-stroke-soft);
+  border-radius: var(--r-pill);
+  background: var(--glass-surface);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  box-shadow: var(--glass-shadow);
+}
+
+.header__list {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2xs);
+  list-style: none;
+}
+
+.header__link {
+  display: flex;
+  align-items: center;
+  height: 50px;
+  padding-inline: 30px;
+  border: 1px solid transparent;
+  border-radius: var(--r-pill);
+  font-size: var(--fs-body);
+  line-height: 21px;
+  letter-spacing: normal;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  transition: color var(--dur) var(--ease),
+              background-color var(--dur) var(--ease),
+              border-color var(--dur) var(--ease);
+}
+
+.header__link:hover { color: var(--text-primary); }
+
+.header__link.is-active {
+  background: rgba(255, 255, 255, .07);
+  border-color: rgba(255, 255, 255, .14);
+  color: var(--accent);
+}
+
+/* --- Планшет и мобильный ------------------------------------------------ */
+
+@media (max-width: 1024px) {
+  .header__inner {
+    justify-content: flex-end;
+    width: min(100% - var(--gutter) * 2, var(--container));
+    margin-inline: auto;
+    padding-block-start: 24px;
+  }
+
+  .header__pill { display: none; }
+}

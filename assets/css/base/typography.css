@@ -1,0 +1,44 @@
+/* typography.css — базовая типографика */
+
+body {
+  font-family: var(--font-sans);
+  font-size: var(--fs-body);
+  font-weight: 400;
+  color: var(--text-secondary);
+  background: var(--bg-page);
+}
+
+h1, h2, h3, h4 {
+  color: var(--text-primary);
+  font-weight: 500;
+  line-height: var(--lh-heading);
+}
+
+h1 { font-size: var(--fs-h1); letter-spacing: var(--ls-h1); line-height: var(--lh-tight); }
+h2 { font-size: var(--fs-h2); letter-spacing: var(--ls-h2); }
+h3 { font-size: var(--fs-h3); }
+
+p { line-height: var(--lh-body); }
+
+/* Акцент внутри текста — только цвет. Ни жирности, ни своего трекинга:
+   выделение белым и так заметно, а лишний вес перегружает абзац. */
+strong, b { color: var(--text-primary); font-weight: inherit; letter-spacing: inherit; }
+
+.lead {
+  font-size: var(--fs-lead);
+  line-height: var(--lh-loose);
+  color: var(--text-muted);
+}
+
+.caption {
+  font-size: var(--fs-caption);
+  color: var(--text-dim);
+}
+
+.text-link {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: opacity var(--dur) var(--ease);
+}
+.text-link:hover { opacity: .75; }

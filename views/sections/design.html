@@ -1,0 +1,85 @@
+<!-- design.html — секция «Я помешан на дизайне» (главная + обо мне).
+     Иконки навыков лежат в assets/img/icons, значки трёх карточек —
+     в assets/img/photo (png в 2x, поэтому размер задан явно). -->
+<section class="section section-design" id="design">
+  <div class="container section-design__inner" data-reveal>
+
+    <header class="section-design__head">
+      <div class="badge badge--green">
+        <span class="badge__icon">
+          <img src="/assets/img/badges/view.svg" alt="" width="80" height="80">
+        </span>
+        <span class="badge__label">Мой взгляд</span>
+      </div>
+
+      <h2 class="section-design__title">Я помешан на дизайне</h2>
+      <p class="section-design__lead">И смотрю на весь мир через призму дизайна.</p>
+    </header>
+
+    <p class="section-design__intro">
+      UI/UX дизайнер и разработчик в одном лице. Я <strong>обладаю огромным</strong>
+      количеством навыков и знаний, а также имею опыт во многих дизайнерских
+      программах&nbsp;— всё это помогает мне создавать удобные, красивые и технически
+      продуманные интерфейсы:
+    </p>
+
+    <!-- data-pack: pack.js укладывает пилюли плотнее, чем обычный wrap -->
+    <ul class="chip-list section-design__skills" data-pack>
+      <li class="chip"><img class="chip__icon" src="/assets/img/icons/code.svg"          alt="" width="32" height="32">Понимание разработки</li>
+      <li class="chip"><img class="chip__icon" src="/assets/img/icons/a11y.svg"          alt="" width="32" height="32">Доступный дизайн</li>
+      <li class="chip"><img class="chip__icon" src="/assets/img/icons/photoshop.svg"     alt="" width="32" height="32">Photoshop</li>
+      <li class="chip"><img class="chip__icon" src="/assets/img/icons/illustrator.svg"   alt="" width="32" height="32">Illustrator</li>
+      <li class="chip"><img class="chip__icon" src="/assets/img/icons/neural.svg"        alt="" width="32" height="32">Нейросети</li>
+
+      <li class="chip"><img class="chip__icon" src="/assets/img/icons/design-system.svg" alt="" width="32" height="32">Дизайн системы</li>
+      <li class="chip"><img class="chip__icon" src="/assets/img/icons/adaptive.svg"      alt="" width="32" height="32">Адаптивный дизайн</li>
+      <li class="chip"><img class="chip__icon" src="/assets/img/icons/testing.svg"       alt="" width="32" height="32">Тестирование</li>
+      <li class="chip"><img class="chip__icon" src="/assets/img/icons/figma.svg"         alt="" width="32" height="32">Figma</li>
+      <li class="chip"><img class="chip__icon" src="/assets/img/icons/research.svg"      alt="" width="32" height="32">Исследования</li>
+
+      <li class="chip"><img class="chip__icon" src="/assets/img/icons/animation.svg"     alt="" width="32" height="32">Анимация</li>
+      <li class="chip"><img class="chip__icon" src="/assets/img/icons/mobile.svg"        alt="" width="32" height="32">Мобильный дизайн</li>
+      <li class="chip"><img class="chip__icon" src="/assets/img/icons/typography.svg"    alt="" width="32" height="32">Типографика</li>
+      <li class="chip"><img class="chip__icon" src="/assets/img/icons/colors.svg"        alt="" width="32" height="32">Работа с цветами</li>
+      <li class="chip"><img class="chip__icon" src="/assets/img/icons/icons.svg"         alt="" width="32" height="32">Иконки</li>
+    </ul>
+
+    <div class="design-cards">
+      <article class="design-card">
+        <img class="design-card__icon" src="/assets/img/photo/Eyes.webp" alt="" width="80" height="80">
+        <p class="design-card__text">
+          Реклама на билбордах, верстка в меню, дизайн кассы самообслуживания&nbsp;—
+          я оцениваю это все с <strong>точки зрения дизайна.</strong>
+        </p>
+      </article>
+
+      <article class="design-card">
+        <img class="design-card__icon" src="/assets/img/photo/zoom.webp" alt="" width="80" height="80">
+        <p class="design-card__text">
+          Я не могу «просто пользоваться» интерфейсами&nbsp;— я всегда анализирую их,
+          чтобы понять, <strong>как можно сделать лучше.</strong>
+        </p>
+      </article>
+
+      <article class="design-card">
+        <img class="design-card__icon" src="/assets/img/photo/hands.webp" alt="" width="80" height="80">
+        <p class="design-card__text">
+          От шрифта на чеке до интерфейса сложнейших систем&nbsp;— каждая деталь
+          заслуживает того, <strong>чтобы быть удобной.</strong>
+        </p>
+      </article>
+    </div>
+
+    <blockquote class="design-quote">
+      <p class="design-quote__intro">
+        Думаю, что отношение к дизайну <br>идеально выразил Стив Джобс:
+      </p>
+      <p class="design-quote__text">
+        «Дизайн&nbsp;— это не то, как предмет <br>выглядит, а то, как он работает»
+      </p>
+    </blockquote>
+
+  </div>
+
+  <div class="section-design__glow" aria-hidden="true" data-appear></div>
+</section>

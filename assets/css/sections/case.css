@@ -1,0 +1,171 @@
+/* ==========================================================================
+   case.css — страница кейса.
+   Макет: контейнер 1200 (поля 360), hero 1920x652 на чёрном,
+   тело кейса на #0d0d0d, блоки через 100px, радиус изображений 30,
+   карточка «Моя задача» — #151515, радиус 24, внутренние поля 101/43.
+   ========================================================================== */
+
+/* --- Шапка кейса --------------------------------------------------------- */
+
+.section-case-hero {
+  position: relative;
+  padding-block: 166px 100px;
+  background: var(--bg-page);
+}
+
+.section-case-hero__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.section-case-hero .badge  { margin-bottom: 10px; }
+.section-case-hero__title  { margin-bottom: 10px; }
+
+.section-case-hero__text {
+  max-width: 656px;
+  margin-bottom: 42px;
+  font-size: var(--fs-body);
+  line-height: 24px;
+  color: var(--text-muted);
+}
+
+/* --- Тело кейса ---------------------------------------------------------- */
+
+.section-case {
+  padding-block: 100px;
+  background: var(--c-grey-5);
+}
+
+.section-case__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
+}
+
+/* заголовок блока: узкая колонка по центру */
+.case-block__head {
+  max-width: 738px;
+  margin-inline: auto;
+  margin-bottom: 42px;
+  text-align: center;
+}
+
+.case-block__head--wide { max-width: none; }
+
+.case-block__title {
+  margin-bottom: 16px;
+  font-size: var(--fs-h1);
+  letter-spacing: var(--ls-h1);
+}
+
+.case-block__lead {
+  font-size: var(--fs-lead);
+  line-height: 30px;
+  color: var(--text-muted);
+}
+
+/* --- Изображения --------------------------------------------------------- */
+
+.case-grid {
+  display: grid;
+  gap: 42px;
+}
+
+.case-grid--1 { grid-template-columns: 1fr; }
+.case-grid--2 { grid-template-columns: repeat(2, 1fr); }
+.case-grid--3 { grid-template-columns: repeat(3, 1fr); }
+
+.case-media {
+  margin: 0;
+  overflow: hidden;
+  border-radius: var(--r-m);
+  background: #404040;               /* плейсхолдер до загрузки скриншота */
+  aspect-ratio: var(--ratio, 3 / 2);
+}
+
+.case-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* --- Карточка «Моя задача» ----------------------------------------------- */
+
+.case-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 43px 101px;
+  border-radius: 24px;
+  background: #151515;
+  text-align: center;
+}
+
+.case-card__title {
+  margin-bottom: 12px;
+  font-size: var(--fs-h1);
+  letter-spacing: var(--ls-h1);
+}
+
+.case-card .badge { margin-bottom: 10px; }
+
+.case-card__text {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;                      /* абзацы через пустую строку, как в макете */
+  max-width: 998px;
+  font-size: var(--fs-lead);
+  line-height: 30px;
+  color: var(--text-muted);
+  text-align: left;
+}
+
+/* --- Галерея результата --------------------------------------------------- */
+
+.case-gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 42px;
+}
+
+/* --- Планшет -------------------------------------------------------------- */
+
+@media (max-width: 1024px) {
+  .section-case-hero { padding-block: calc(var(--header-h) + 64px) 64px; }
+  .section-case      { padding-block: 72px; }
+  .section-case__inner { gap: 72px; }
+
+  .case-grid,
+  .case-gallery { gap: 24px; }
+
+  .case-grid--3 { grid-template-columns: repeat(2, 1fr); }
+
+  .case-block__head { margin-bottom: 32px; }
+
+  .case-card { padding: 40px; }
+  .case-card__text { gap: 24px; }
+}
+
+/* --- Мобильный ------------------------------------------------------------ */
+
+@media (max-width: 480px) {
+  .section-case-hero { padding-block: calc(var(--header-h) + 40px) 48px; }
+  .section-case      { padding-block: 56px; }
+  .section-case__inner { gap: 56px; }
+
+  .section-case-hero__text { margin-bottom: 28px; }
+
+  .case-grid--2,
+  .case-grid--3 { grid-template-columns: 1fr; }
+
+  .case-grid,
+  .case-gallery { gap: 16px; }
+
+  .case-card { padding: 28px 20px; }
+  .case-card__text { font-size: var(--fs-body); line-height: 26px; gap: 20px; }
+
+  .case-block__title,
+  .case-card__title { font-size: var(--fs-h1); }
+}

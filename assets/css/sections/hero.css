@@ -1,0 +1,199 @@
+/* ==========================================================================
+   hero.css — первый экран главной.
+   Макет 1920x814: перспективная сетка, надпись Developer скриптом,
+   леттеринг UI/UX DESIGN одной картинкой, заголовок, лид и две кнопки.
+
+   Сетка, надпись и леттеринг лежат в одном блоке .hero__art шириной 1035px —
+   ровно как в макете. Размеры внутри заданы в процентах и cqw, поэтому
+   композиция масштабируется целиком и не рассыпается на узких экранах.
+   ========================================================================== */
+
+.section-hero {
+  position: relative;
+  overflow: hidden;
+  padding-block: 172px 101px;
+  background: var(--bg-page);
+}
+
+.section-hero__inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* --- Блок с надписями ----------------------------------------------------- */
+
+.hero__art {
+  position: relative;
+  container-type: inline-size;             /* даёт единицы cqw внутри блока */
+  width: min(1035px, 100% - var(--gutter) * 2);
+}
+
+/* --- Перспективная сетка --------------------------------------------------
+   Стоит прямо за надписями. Все ручки настройки здесь:
+
+   --grid-w        ширина сетки относительно блока с надписями
+   --grid-y        сдвиг по вертикали: 0 — верх сетки совпадает с верхом
+                   блока, положительное значение опускает её ниже
+   --grid-opacity  яркость                                                  */
+
+.hero__grid {
+  --grid-w: 235%;
+  --grid-y: -4%;
+  --grid-opacity: 1;
+
+  position: absolute;
+  inset-block-start: var(--grid-y);
+  inset-inline-start: 50%;
+  z-index: 0;
+  width: var(--grid-w);
+  max-width: none;                         /* сетка шире блока — снимаем общий лимит */
+  height: auto;
+  translate: -50% 0;
+  opacity: var(--grid-opacity);
+  pointer-events: none;
+}
+
+/* --- Developer -----------------------------------------------------------
+   Скрипт с вертикальным градиентом: сверху полупрозрачный, снизу белый.
+   Высота блока задана жёстко (--script-h) и текст в нём центрируется —
+   у рукописного шрифта росчерки сильно вылезают за строку, и если
+   полагаться на его метрики, леттеринг ниже поедет.
+   z-index выше леттеринга: иначе хвост буквы «p» уходил бы под картинку. */
+
+.hero__script {
+  --script-opacity: .57;
+  --script-h: 16.23cqw;                    /* 168px при ширине блока 1035 */
+  --script-bleed: 5cqw;                    /* запас под росчерки и хвост «p» */
+
+  position: relative;
+  z-index: 2;
+
+  /* flex, а не grid: иначе слово и «плюс» стали бы двумя grid-элементами
+     в одной ячейке и легли бы друг на друга */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Фон закрашивает буквы (background-clip: text) и рисуется только внутри
+     блока — всё, что вылезает за его край, просто не закрашивается. Хвост
+     «p» и росчерк «D» выходят за строку, поэтому расширяем область внутренним
+     отступом, а отрицательным полем возвращаем блоку прежнюю высоту:
+     раскладка не меняется, а буквы закрашиваются целиком. */
+  box-sizing: content-box;
+  block-size: var(--script-h);
+  padding-block: var(--script-bleed);
+  margin: calc(var(--script-bleed) * -1) 0;
+
+  font-family: 'Pacifico', cursive;
+  font-size: 14.27cqw;                     /* 147.65px при ширине блока 1035 */
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0;
+  opacity: var(--script-opacity);
+
+  /* Границы градиента сдвинуты внутрь ровно на величину запаса
+     (5 / (16.23 + 5 * 2) = 19.1%), чтобы переход белого остался
+     на прежнем месте, а не растянулся вместе с блоком. */
+  background-image: linear-gradient(to bottom,
+                    rgba(255, 255, 255, .40) 19.1%,
+                    rgba(255, 255, 255, 1) 80.9%);
+  -webkit-background-clip: text;
+          background-clip: text;
+  color: transparent;
+}
+
+/* «плюс» после слова. Сидит ниже середины строки; em здесь считается
+   от кегля надписи, поэтому плюс масштабируется вместе с ней.
+
+   --plus-size  размер
+   --plus-x     сдвиг вправо
+   --plus-y     сдвиг вниз                                                 */
+.hero__plus {
+  --plus-size: .6em;      /* было .5em */
+  --plus-x:    .16em;
+  --plus-y:    .34em;
+
+  align-self: center;
+  width: var(--plus-size);
+  height: auto;
+  margin-inline-start: var(--plus-x);
+  translate: 0 var(--plus-y);
+}
+
+/* --- Леттеринг ------------------------------------------------------------ */
+
+.hero__lettering {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* --- Текст и кнопки ------------------------------------------------------- */
+
+.hero__title {
+  margin: 54px 0 0;
+  font-size: var(--fs-h1);
+  line-height: 1;
+  letter-spacing: var(--ls-h1);
+}
+
+/* стрелка между словами: 40px при заголовке 56px.
+   inline-block обязателен: в reset.css у картинок display: block,
+   и строка заголовка ломалась бы на каждой стрелке. */
+.hero__arrow {
+  display: inline-block;
+  width: .71em;
+  height: auto;
+  vertical-align: -.02em;
+  margin-inline: .12em;
+}
+
+.hero__lead {
+  margin: 17px 0 0;
+  font-size: var(--fs-lead);
+  line-height: 30px;
+  color: var(--text-muted);
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 32px;
+}
+
+/* --- Планшет -------------------------------------------------------------- */
+
+@media (max-width: 1024px) {
+  .section-hero { padding-block: calc(var(--header-h) + 56px) 72px; }
+
+  .hero__title   { margin-top: 48px; line-height: 1.15; }
+  .hero__actions { margin-top: 32px; }
+}
+
+/* --- Мобильный ------------------------------------------------------------ */
+
+@media (max-width: 480px) {
+  .section-hero { padding-block: calc(var(--header-h) + 28px) 56px; }
+
+  /* Композиция выходит за поля контейнера почти до краёв экрана:
+     на узком телефоне иначе надпись и леттеринг выглядят мелкими. */
+  /* ширину задаём явно: у блока container-type, и при auto он схлопнулся
+     бы в ноль — размер контейнера не имеет права зависеть от содержимого */
+  .hero__art {
+    width: calc(100% + (var(--gutter) - 8px) * 2);
+    margin-inline: calc((var(--gutter) - 8px) * -1);
+  }
+
+  .hero__grid    { --grid-opacity: .8; }
+  .hero__title   { margin-top: 30px; }
+  .hero__lead    { margin-top: 14px; }
+  .hero__actions { margin-top: 24px; gap: 12px; }
+}

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Карта сайта. Шесть страниц; заглушки (404 и шаблон кейса) сюда не входят.
+     Добавляя страницу, допиши сюда такой же блок <url> и поправь lastmod. -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <url>
+    <loc>https://folvski.github.io/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>1.0</priority>
+  </url>
+
+  <url>
+    <loc>https://folvski.github.io/pages/projects.html</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://folvski.github.io/pages/about.html</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://folvski.github.io/pages/cv.html</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.7</priority>
+  </url>
+
+</urlset>

@@ -1,0 +1,70 @@
+/* ==========================================================================
+   socials.css — секция «Открыт к сотрудничеству и новым проектам».
+   Макет: 1920x870, контейнер 1136, поля секции 101, три карточки 357
+   с шагом 32.
+   ========================================================================== */
+
+.section-socials {
+  position: relative;
+  overflow: hidden;
+  padding-block: 101px;
+  background: var(--c-grey-5);
+}
+
+/* еле заметное фиолетовое свечение за заголовком */
+.section-socials::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 700px 260px at 50% 250px,
+              rgba(140, 60, 255, .10) 0%,
+              rgba(140, 60, 255, 0) 100%);
+  pointer-events: none;
+}
+
+.section-socials__inner {
+  position: relative;
+  z-index: 1;
+}
+
+.section-socials__head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.section-socials__head .badge { margin-bottom: 12px; }
+
+.section-socials__title {
+  font-size: var(--fs-h1);
+  font-weight: 400;
+  line-height: 56px;
+  letter-spacing: var(--ls-h1);
+}
+
+/* перенос строки как в макете; на узких экранах он не нужен */
+@media (max-width: 1024px) {
+  .section-socials__title br { display: none; }
+}
+
+.contact-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  list-style: none;
+  padding: 0;
+}
+
+@media (max-width: 1024px) {
+  .section-socials       { padding-block: 72px; }
+  .section-socials__head { margin-bottom: 32px; }
+  .section-socials__title { line-height: 1.16; }
+  .contact-cards         { grid-template-columns: 1fr; gap: 16px; }
+}
+
+@media (max-width: 480px) {
+  .section-socials       { padding-block: 56px; }
+  .contact-cards         { gap: 12px; }
+}

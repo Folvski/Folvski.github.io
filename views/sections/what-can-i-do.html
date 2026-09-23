@@ -1,0 +1,128 @@
+<!-- what-can-i-do.html — секция «Что я умею» (главная + обо мне).
+     Значки внутри карточек и иконки стека лежат в assets/img/skills.
+     Цвета заголовков карточек приходят из разметки: --from и --to.
+     Вместе шесть карточек дают один спектр — от фиолетового к салатовому. -->
+<section class="section section-skills" id="skills" data-reveal>
+  <div class="container section-skills__inner">
+
+    <header class="section-skills__head">
+      <div class="badge badge--blue">
+        <span class="badge__icon">
+          <img src="/assets/img/badges/skills.svg" alt="" width="80" height="80">
+        </span>
+        <span class="badge__label">Компетенции</span>
+      </div>
+
+      <h2 class="section-skills__title">Что я умею</h2>
+      <p class="section-skills__lead">Сайты, UI/UX, фронтенд-разработка, брендинг, CMS системы.</p>
+    </header>
+
+    <ol class="skill-cards">
+
+      <li class="skill-card" style="--from: #6402f4; --to: #055eff">
+        <img class="skill-card__mark" src="/assets/img/skills/cards/card-sites.svg" alt="" aria-hidden="true">
+        <span class="skill-card__num">01</span>
+        <div class="skill-card__body">
+          <h3 class="skill-card__title">Веб-сайты</h3>
+          <p class="skill-card__text">
+            Проектирую сайты, где дизайн работает на результат: понятная навигация,
+            акценты и чистая подача <strong>с заботой о пользователе.</strong>
+          </p>
+        </div>
+      </li>
+
+      <li class="skill-card" style="--from: #0165ff; --to: #26b3ff">
+        <img class="skill-card__mark" src="/assets/img/skills/cards/card-uiux.svg" alt="" aria-hidden="true">
+        <span class="skill-card__num">02</span>
+        <div class="skill-card__body">
+          <h3 class="skill-card__title">UI / UX</h3>
+          <p class="skill-card__text">
+            Создаю удобные интерфейсы, дизайн-системы и интерактивные прототипы
+            с фокусом на <strong>логику</strong> и <strong>пользовательский опыт</strong>.
+          </p>
+        </div>
+      </li>
+
+      <li class="skill-card" style="--from: #28b8ff; --to: #1cd2e4">
+        <img class="skill-card__mark" src="/assets/img/skills/cards/card-frontend.svg" alt="" aria-hidden="true">
+        <span class="skill-card__num">03</span>
+        <div class="skill-card__body">
+          <h3 class="skill-card__title">Frontend</h3>
+          <p class="skill-card__text">
+            Я переношу дизайн в код: чистая вёрстка, адаптивность, анимации
+            и интерактив на HTML, CSS и JS.
+            <strong>С вниманием к мелким деталям)</strong>
+          </p>
+        </div>
+      </li>
+
+      <li class="skill-card" style="--from: #1bd0e5; --to: #1be581">
+        <img class="skill-card__mark" src="/assets/img/skills/cards/card-cms.svg" alt="" aria-hidden="true">
+        <span class="skill-card__num">04</span>
+        <div class="skill-card__body">
+          <h3 class="skill-card__title">CMS systems</h3>
+          <p class="skill-card__text">
+            Настраиваю сайты на WordPress и других CMS системах с удобным
+            управлением контентом и <strong>гибкой структурой</strong> страниц.
+          </p>
+        </div>
+      </li>
+
+      <li class="skill-card" style="--from: #1be48a; --to: #1be440">
+        <img class="skill-card__mark" src="/assets/img/skills/cards/card-branding.svg" alt="" aria-hidden="true">
+        <span class="skill-card__num">05</span>
+        <div class="skill-card__body">
+          <h3 class="skill-card__title">Брендинг</h3>
+          <p class="skill-card__text">
+            Реклама на билбордах, верстка в меню, дизайн реклам на кассах
+            самообслуживания&nbsp;— я оцениваю это все с
+            <strong>точки зрения дизайна.</strong>
+          </p>
+        </div>
+      </li>
+
+      <li class="skill-card" style="--from: #2ae429; --to: #86d81a">
+        <img class="skill-card__mark" src="/assets/img/skills/cards/card-creative.svg" alt="" aria-hidden="true">
+        <span class="skill-card__num">06</span>
+        <div class="skill-card__body">
+          <h3 class="skill-card__title">Креатив</h3>
+          <p class="skill-card__text">
+            Делаю необычные веб-проекты, микроанимации и эксперименты, которые
+            <strong>выделяют бренд</strong> среди конкурентов.
+          </p>
+        </div>
+      </li>
+
+    </ol>
+
+    <p class="section-skills__intro">
+      Я пишу код, но смотрю на него глазами дизайнера.
+      <strong>Технологий и языков много</strong>&nbsp;— это нужно, чтобы интерфейсы
+      получались удобными, а не просто работали:
+    </p>
+
+    <!-- data-pack: pack.js укладывает пилюли плотнее, чем обычный wrap -->
+    <ul class="chip-list chip-list--tight section-skills__stack" data-pack>
+      <li class="chip chip--s"><img class="chip__icon" src="/assets/img/skills/neural.svg"    alt="" width="32" height="32">Нейросети</li>
+      <li class="chip chip--s"><img class="chip__icon" src="/assets/img/skills/english.svg"   alt="" width="32" height="32">English B1</li>
+      <li class="chip chip--s"><img class="chip__icon" src="/assets/img/skills/html-css.svg"  alt="" width="32" height="32">Html + CSS</li>
+      <li class="chip chip--s"><img class="chip__icon" src="/assets/img/skills/oop.svg"       alt="" width="32" height="32">ООП</li>
+      <li class="chip chip--s"><img class="chip__icon" src="/assets/img/skills/cms.svg"       alt="" width="32" height="32">CMS systems</li>
+      <li class="chip chip--s"><img class="chip__icon" src="/assets/img/skills/layout.svg"    alt="" width="32" height="32">Вёрстка</li>
+
+      <li class="chip chip--s"><img class="chip__icon" src="/assets/img/skills/figma.svg"     alt="" width="32" height="32">Figma</li>
+      <li class="chip chip--s"><img class="chip__icon" src="/assets/img/skills/js.svg"        alt="" width="32" height="32">JavaScript</li>
+      <li class="chip chip--s"><img class="chip__icon" src="/assets/img/skills/photoshop.svg" alt="" width="32" height="32">Photoshop</li>
+      <li class="chip chip--s"><img class="chip__icon" src="/assets/img/skills/csharp.svg"    alt="" width="32" height="32">C#</li>
+      <li class="chip chip--s"><img class="chip__icon" src="/assets/img/skills/grid-flex.svg" alt="" width="32" height="32">Grid + Flexbox</li>
+      <li class="chip chip--s"><img class="chip__icon" src="/assets/img/skills/seo.svg"       alt="" width="32" height="32">SEO&nbsp;- основы</li>
+
+      <li class="chip chip--s"><img class="chip__icon" src="/assets/img/skills/github.svg"    alt="" width="32" height="32">GitHub</li>
+      <li class="chip chip--s"><img class="chip__icon" src="/assets/img/skills/cpp.svg"       alt="" width="32" height="32">C++</li>
+      <li class="chip chip--s"><img class="chip__icon" src="/assets/img/skills/python.svg"    alt="" width="32" height="32">Python</li>
+      <li class="chip chip--s"><img class="chip__icon" src="/assets/img/skills/sql.svg"       alt="" width="32" height="32">SQL</li>
+      <li class="chip chip--s"><img class="chip__icon" src="/assets/img/skills/devtools.svg"  alt="" width="32" height="32">DevTools</li>
+    </ul>
+
+  </div>
+</section>

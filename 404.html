@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Страница не найдена — Нестеренко Иван</title>
+  <meta name="description" content="Такой страницы на сайте нет.">
+  <meta name="robots" content="noindex">
+
+  <link rel="icon" href="/assets/img/icons/Favicon.ico" sizes="any">
+  <link rel="canonical" href="https://folvski.github.io/404.html">
+
+  <!-- Карточка при отправке ссылки в мессенджеры и соцсети.
+       Адреса здесь абсолютные не случайно: ботам, которые собирают превью,
+       относительный путь разворачивать не от чего. Preview.png специально
+       оставлен PNG — webp понимают не все такие боты. -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Нестеренко Иван">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:url" content="https://folvski.github.io/404.html">
+  <meta property="og:title" content="Страница не найдена — Нестеренко Иван">
+  <meta property="og:description" content="Такой страницы на сайте нет.">
+  <meta property="og:image" content="https://folvski.github.io/assets/img/icons/Preview.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Портфолио Нестеренко Ивана: дизайн и разработка">
+  <meta name="twitter:card" content="summary_large_image">
+
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap&subset=cyrillic,latin">
+
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <script type="module" src="/assets/js/main.js"></script>
+</head>
+<body>
+
+  <!-- Шторка перехода между страницами. Должна стоять первой в body. -->
+  <div class="page-fade" aria-hidden="true"></div>
+
+  <div data-include="/views/layout/header.html"></div>
+
+  <main>
+    <!-- Этот файл должен лежать именно в корне сайта: GitHub Pages ищет
+         страницу ошибки строго по адресу /404.html и ни по какому другому.
+         Страница «Кейс в разработке» живёт отдельно, в pages/404.html —
+         это заглушка для несобранных кейсов, а не ошибка адреса. -->
+    <section class="section-error">
+      <div class="container section-error__inner">
+
+        <div class="badge badge--red">
+          <span class="badge__label">Ошибка 404</span>
+        </div>
+
+        <h1 class="section-error__title">Такой страницы нет</h1>
+
+        <p class="section-error__text">
+          Возможно, в адресе опечатка или страницу переименовали.
+          Начните с главной&nbsp;— оттуда видно всё остальное.
+        </p>
+
+        <div class="section-error__actions">
+          <a class="btn btn--primary" href="/index.html">На главную</a>
+
+          <a class="btn btn--ghost btn--icon" href="/pages/projects.html">
+            Смотреть работы
+            <span class="btn__icon" aria-hidden="true">
+              <svg viewBox="0 0 20 20" fill="none">
+                <path d="M6 14 14 6M7 6h7v7" stroke="currentColor" stroke-width="2"
+                      stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </a>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <div data-include="/views/layout/footer.html"></div>
+
+</body>
+</html>

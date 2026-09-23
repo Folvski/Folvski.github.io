@@ -1,0 +1,35 @@
+<!-- header.html — шапка. Пилюля-меню на десктопе, бургер + панель на <=1024. -->
+<header class="header" data-header>
+  <div class="header__inner">
+
+    <nav class="header__pill" aria-label="Основная навигация">
+      <ul class="header__list">
+        <li><a class="header__link" data-nav-link href="/index.html">Главная</a></li>
+        <li><a class="header__link" data-nav-link href="/pages/about.html">Обо мне</a></li>
+        <li><a class="header__link" data-nav-link href="/pages/projects.html">Работы</a></li>
+        <li><a class="header__link" data-nav-link href="/index.html#contacts">Контакты</a></li>
+        <li><a class="header__link" data-nav-link href="/index.html#skills">Стек</a></li>
+      </ul>
+    </nav>
+
+    <button class="burger" type="button" data-burger
+            aria-expanded="false" aria-controls="mobile-menu" aria-label="Открыть меню">
+      <span class="burger__box" aria-hidden="true">
+        <span class="burger__line"></span>
+        <span class="burger__line"></span>
+        <span class="burger__line"></span>
+      </span>
+    </button>
+
+  </div>
+
+  <div class="mobile-menu" id="mobile-menu" data-menu>
+    <nav class="mobile-menu__nav" aria-label="Мобильная навигация">
+      <a class="mobile-menu__link" data-nav-link href="/index.html">Главная</a>
+      <a class="mobile-menu__link" data-nav-link href="/pages/about.html">Обо мне</a>
+      <a class="mobile-menu__link" data-nav-link href="/pages/projects.html">Работы</a>
+      <a class="mobile-menu__link" data-nav-link href="/index.html#contacts">Контакты</a>
+      <a class="mobile-menu__link" data-nav-link href="/index.html#skills">Стек</a>
+    </nav>
+  </div>
+</header>

@@ -1,0 +1,340 @@
+/* ==========================================================================
+   card.css — карточка проекта. Макет: 1136x500, поля 50.
+
+   Идея раскладки: скриншот прижат к ВЕРХУ карточки, текст — к НИЗУ.
+   Высота карточки фиксирована, поэтому текст неизбежно заезжает на фото:
+   у длинного описания (4 строки) он начинается выше, у короткого (3) — ниже.
+   Ровно так и сделано в макете: 254px от верха у первой карточки и 278px
+   у второй с третьей — это один и тот же «низ минус высота текста».
+
+   Читаемость обеспечивает градиент поверх фото: он растворяет низ снимка
+   в фоне карточки, и оранжевая строка с тегами оказывается уже на фоне,
+   а не на скриншоте.
+   ========================================================================== */
+
+.project-card {
+  /* --- Настройка скриншота -----------------------------------------------
+     --shot-radius     скругление углов снимка
+     --shot-fade-start докуда фото видно как есть (доля высоты снимка);
+                       до этой отметки градиента нет вообще
+     --shot-fade-mid   середина перехода: здесь фон уже почти непрозрачный.
+                       Двигать в первую очередь, если теги плохо читаются:
+                       меньше значение — темнеет раньше
+     --shot-fade-soft  насколько непрозрачен фон в этой средней точке
+     --shot-fade-end   где фото растворилось полностью. Должно оставаться
+                       меньше 100%, иначе внизу снимка видна его граница
+     --shot-pull       (планшет и телефон) на сколько текст заезжает на фото
+
+     Любую карточку можно настроить отдельно прямо в разметке:
+       <li class="project-card" style="--shot-fade-mid: 54%">             */
+  --shot-radius:     24px;
+  --shot-fade-start: 30%;
+  --shot-fade-mid:   60%;
+  --shot-fade-soft:  .88;
+  --shot-fade-end:   86%;
+
+  /* фон карточки. Тот же цвет продублирован компонентами —
+     из них собирается градиент поверх фото */
+  --card-bg:     var(--c-grey-10);
+  --card-bg-rgb: 26 26 26;
+
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;          /* текст прижат к низу карточки */
+  min-height: 500px;
+  padding: 50px;
+  border: var(--glass-border) solid var(--chip-stroke);
+  border-radius: 40px;
+  background: var(--card-bg);
+  transition: border-color var(--dur) var(--ease);
+}
+
+.project-card:hover { border-color: var(--chip-stroke-hover); }
+
+/* --- Скриншот ------------------------------------------------------------- */
+
+.project-card__shot {
+  position: absolute;
+  inset: 50px 50px auto;              /* прижат к верху, поля как у карточки */
+  pointer-events: none;
+}
+
+/* Скругление висит на самой картинке, а не на обёртке с overflow: hidden.
+   С обрезкой по скруглённой рамке Chromium сглаживает край дважды — и на
+   картинке, и на градиенте поверх неё, — отчего по нижней дуге оставалась
+   тонкая светлая полоска. Здесь же градиент лежит простым прямоугольником
+   и закрывает низ снимка целиком. */
+.project-card__shot img {
+  display: block;
+  width: 100%;
+  height: auto;                       /* пропорции у всех трёх снимков разные */
+  border-radius: var(--shot-radius);
+}
+
+/* Градиент поверх фото. Заканчивается чистым фоном карточки, поэтому
+   нижней границы снимка не видно, а текст поверх читается. */
+.project-card__shot::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(to bottom,
+    rgb(var(--card-bg-rgb) / 0)                     var(--shot-fade-start),
+    rgb(var(--card-bg-rgb) / var(--shot-fade-soft)) var(--shot-fade-mid),
+    rgb(var(--card-bg-rgb) / 1)                     var(--shot-fade-end));
+}
+
+/* --- Текст ---------------------------------------------------------------- */
+
+.project-card__body {
+  position: relative;                 /* над фото и градиентом */
+  max-width: 678px;
+}
+
+.project-card__tags {
+  margin: 0 0 12px;
+  font-size: var(--fs-body);
+  line-height: 24px;
+  color: var(--c-orange);
+}
+
+.project-card__title {
+  margin: 0 0 8px;
+  font-size: var(--fs-h1);
+  line-height: 56px;
+  letter-spacing: var(--ls-h1);
+  color: var(--text-primary);
+}
+
+.project-card__text {
+  margin: 0;
+  font-size: var(--fs-body);
+  line-height: 24px;
+  color: var(--text-muted);
+}
+
+.project-card__text strong {
+  font-weight: inherit;
+  letter-spacing: inherit;
+  color: var(--c-white);
+}
+
+/* --- Кнопки --------------------------------------------------------------- */
+
+/* В макете стоят в правом нижнем углу, на одной линии с последней
+   строкой описания. Описание не шире 678px, поэтому они не пересекаются. */
+.project-card__actions {
+  position: absolute;
+  inset-block-end: 50px;
+  inset-inline-end: 50px;
+  display: flex;
+  gap: 16px;
+}
+
+/* ==========================================================================
+   Парная карточка. Макет: 547x602, поля 31, две в ряд с зазором 42.
+
+   Здесь скриншот НЕ заезжает на текст: снимок ровно 485x264 и стоит
+   сверху, под ним подпись. Поэтому и градиента над фото нет — он нужен
+   был только ради читаемости текста поверх снимка.
+   ========================================================================== */
+
+.work-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 42px;
+}
+
+.work-card {
+  display: flex;
+  flex-direction: column;
+  min-height: 602px;
+  padding: 31px;
+  border: var(--glass-border) solid var(--chip-stroke);
+  border-radius: 40px;
+  background: var(--c-grey-10);
+  transition: border-color var(--dur) var(--ease);
+}
+
+.work-card:hover { border-color: var(--chip-stroke-hover); }
+
+.work-card__shot {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 485 / 264;
+  object-fit: cover;
+  border-radius: var(--r-s);
+  margin-block-end: 10px;
+}
+
+.work-card__tags {
+  margin: 0 0 16px;
+  font-size: var(--fs-body);
+  line-height: 24px;
+  color: var(--c-orange);
+}
+
+.work-card__title {
+  margin: 0 0 12px;
+  font-size: var(--fs-h2);
+  line-height: 46px;
+  letter-spacing: var(--ls-h2);
+  color: var(--text-primary);
+}
+
+.work-card__text {
+  margin: 0;
+  font-size: var(--fs-body);
+  line-height: 24px;
+  color: var(--text-muted);
+}
+
+/* margin-top: auto — кнопки прижаты к низу карточки. Описания в паре
+   бывают разной длины, и без этого кнопки вставали бы на разной высоте. */
+.work-card__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-block-start: auto;
+  padding-block-start: 16px;
+}
+
+@media (max-width: 1024px) {
+  .work-pair { grid-template-columns: 1fr; gap: 24px; }
+
+  .work-card {
+    min-height: 0;
+    padding: 24px;
+    border-radius: var(--r-m);
+  }
+
+  .work-card__title { font-size: var(--fs-h3); line-height: 1.2; }
+  .work-card__tags  { margin-bottom: 12px; }
+}
+
+@media (max-width: 480px) {
+  .work-pair { gap: 18px; }
+
+  .work-card        { padding: 20px; border-radius: var(--r-s); }
+  .work-card__shot  { border-radius: var(--r-xs); }
+  .work-card__tags  { font-size: var(--fs-small); }
+  .work-card__text  { line-height: 26px; }
+  .work-card__actions { gap: 12px; }
+}
+
+/* --- Планшет --------------------------------------------------------------
+   Карточка становится ниже и уже: фото под текстом уже не помещается,
+   поэтому раскладка обычная — снимок, текст, кнопки. Текст по-прежнему
+   заезжает на растворившийся низ фото, но на фиксированную величину. */
+
+@media (max-width: 1024px) {
+  .project-card {
+    --shot-radius: var(--r-s);
+    --shot-pull: 40px;
+
+    /* Снимок — широкая полоса из шести макетов подряд. На узкой колонке
+       целиком он превращается в нечитаемую ленту высотой в сантиметр,
+       поэтому здесь он кадрируется.
+
+       --shot-crop   пропорции окна, в котором виден снимок
+       --shot-focus  какая часть снимка попадает в окно (как background-position)
+
+       Чтобы вернуть снимок целиком, поставьте карточке его собственные
+       пропорции, например для Merra:  style="--shot-crop: 1036 / 287"      */
+    --shot-crop:  16 / 9;
+    --shot-focus: left top;
+    --shot-fade-end: 80%;     /* кадрированный снимок обрывается резче — гасим раньше */
+
+    display: block;
+    min-height: 0;
+    padding: 32px;
+    border-radius: var(--r-m);
+  }
+
+  .project-card__shot {
+    position: relative;
+    inset: auto;
+    aspect-ratio: var(--shot-crop);
+    margin-block-end: calc(var(--shot-pull) * -1);
+  }
+
+  .project-card__shot img {
+    height: 100%;
+    object-fit: cover;
+    object-position: var(--shot-focus);
+  }
+
+  .project-card__body { max-width: none; }
+
+  .project-card__title { font-size: var(--fs-h2); line-height: 1.15; }
+
+  .project-card__actions {
+    position: static;
+    flex-wrap: wrap;
+    margin-block-start: 28px;
+  }
+}
+
+/* --- Мобильный ------------------------------------------------------------ */
+
+@media (max-width: 480px) {
+  .project-card {
+    --shot-radius: var(--r-xs);
+    --shot-pull: 26px;
+    --shot-crop: 4 / 3;       /* на телефоне окно ещё выше: макеты крупнее */
+
+    padding: 22px;
+    border-radius: var(--r-s);
+  }
+
+  .project-card__tags  { font-size: var(--fs-small); margin-bottom: 10px; }
+  .project-card__title { font-size: var(--fs-h3); }
+
+  /* Описание обрезается на трёх строках. Хвост последней строки вместе
+     с многоточием плавно растворяется — так видно, что текст продолжается,
+     а карточка не растёт на пол-экрана.
+
+     Растворение сделано маской из двух слоёв: первый держит верхние строки
+     как есть, второй гасит только последнюю. Многоточие стоит в самом конце
+     этой строки, поэтому гаснет сильнее всего.
+
+     --desc-lines  сколько строк остаётся видно
+     --desc-lh     высота строки; от неё считается, где лежит маска
+     --desc-fade   с какого места последней строки начинается растворение
+     --desc-tail   насколько виден самый конец: 0 — пропадает совсем,
+                   1 — растворения нет вообще                              */
+  .project-card__text,
+  .work-card__text {
+    --desc-lines: 3;
+    --desc-lh:    26px;
+    --desc-fade:  58%;
+    --desc-tail:  .26;
+
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: var(--desc-lines);
+            line-clamp: var(--desc-lines);
+    overflow: hidden;
+    line-height: var(--desc-lh);
+
+    -webkit-mask-image:
+      linear-gradient(#000, #000),
+      linear-gradient(to right, #000 var(--desc-fade), rgba(0, 0, 0, var(--desc-tail)) 100%);
+            mask-image:
+      linear-gradient(#000, #000),
+      linear-gradient(to right, #000 var(--desc-fade), rgba(0, 0, 0, var(--desc-tail)) 100%);
+
+    -webkit-mask-size: 100% calc(var(--desc-lh) * (var(--desc-lines) - 1)), 100% var(--desc-lh);
+            mask-size: 100% calc(var(--desc-lh) * (var(--desc-lines) - 1)), 100% var(--desc-lh);
+
+    -webkit-mask-position: 0 0, 0 calc(var(--desc-lh) * (var(--desc-lines) - 1));
+            mask-position: 0 0, 0 calc(var(--desc-lh) * (var(--desc-lines) - 1));
+
+    -webkit-mask-repeat: no-repeat;
+            mask-repeat: no-repeat;
+  }
+
+  .project-card__actions { gap: 12px; margin-block-start: 22px; }
+}

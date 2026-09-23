@@ -1,0 +1,162 @@
+/* ==========================================================================
+   how-i-work.css — секция «Как я работаю».
+   Макет: 1920x1318, контейнер 1136, поля секции 101.
+   Этап: заголовок 24 -> 16 -> полоса 12 -> 16 -> описание 18. Шаг между
+   этапами 40. Полоса: трек #1a1a1a, заливка градиентом по своей ширине.
+   ========================================================================== */
+
+.section-how {
+  position: relative;
+  overflow: hidden;
+  padding-block: 101px;
+  background: var(--bg-page);
+}
+
+/* мягкое фиолетовое свечение по нижнему краю секции */
+.section-how::after {
+  content: '';
+  position: absolute;
+  inset-block-end: -520px;
+  inset-inline-start: 50%;
+  translate: -50% 0;
+  width: 3200px;
+  height: 1100px;
+  border-radius: 50%;
+  background: radial-gradient(closest-side,
+              rgba(150, 60, 255, .21) 0%,
+              rgba(120, 45, 220, .12) 50%,
+              rgba(90, 30, 180, 0) 100%);
+  filter: blur(60px);
+  pointer-events: none;
+}
+
+.section-how__inner { position: relative; z-index: 1; }
+
+.section-how__head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 96px;
+}
+
+.section-how__head .badge { margin-bottom: 12px; }
+
+.section-how__title {
+  margin-bottom: 16px;
+  font-size: var(--fs-h1);
+  letter-spacing: var(--ls-h1);
+}
+
+.section-how__lead {
+  max-width: 738px;
+  font-size: var(--fs-lead);
+  line-height: 30px;
+  color: var(--text-muted);
+}
+
+/* --- Этапы ---------------------------------------------------------------- */
+
+.steps {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  list-style: none;
+  padding: 0;
+  counter-reset: step;
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.step__title {
+  font-size: 24px;
+  line-height: 24px;
+  color: var(--c-grey-93);
+}
+
+.step__desc {
+  font-size: var(--fs-body);
+  line-height: 24px;
+  color: var(--text-muted);
+}
+
+.step__bar {
+  height: 12px;
+  border-radius: var(--r-pill);
+  background: var(--c-grey-10);
+  overflow: hidden;
+}
+
+/* Заливка полосы. Градиент бесконечно ползёт вправо.
+
+   Чтобы стык был незаметен, в картинку уложены ДВА одинаковых периода
+   (фиолетовый -> розовый -> светлый -> фиолетовый), а её ширина — 200%
+   полосы. Сдвиг от 100% к 0% по background-position равен ровно одному
+   периоду, поэтому кадр возврата совпадает с кадром старта.
+
+   --flow  скорость: больше значение — медленнее ползёт                   */
+.step__fill {
+  --flow: 6s;
+
+  display: block;
+  width: 0;
+  height: 100%;
+  border-radius: var(--r-pill);
+  background-image: linear-gradient(90deg,
+    #6c45ff 0%,  #fa75f5 16.66%, #fdebff 33.33%,
+    #6c45ff 50%, #fa75f5 66.66%, #fdebff 83.33%,
+    #6c45ff 100%);
+  background-size: 200% 100%;
+  animation: step-flow var(--flow) linear infinite;
+  transition: width 1.1s var(--ease);
+}
+
+@keyframes step-flow {
+  from { background-position: 100% 50%; }
+  to   { background-position: 0% 50%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .step__fill { animation: none; background-position: 0 50%; }
+}
+
+/* заливка «наливается» после появления секции, с лесенкой по этапам */
+.section-how.is-visible .step__fill { width: var(--value); }
+
+.step:nth-child(1) .step__fill { transition-delay: .10s; }
+.step:nth-child(2) .step__fill { transition-delay: .18s; }
+.step:nth-child(3) .step__fill { transition-delay: .26s; }
+.step:nth-child(4) .step__fill { transition-delay: .34s; }
+.step:nth-child(5) .step__fill { transition-delay: .42s; }
+.step:nth-child(6) .step__fill { transition-delay: .50s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .step__fill { width: var(--value); transition: none; }
+}
+
+/* --- Планшет -------------------------------------------------------------- */
+
+@media (max-width: 1024px) {
+  .section-how        { padding-block: 72px; }
+  .section-how__head  { margin-bottom: 56px; }
+  .steps              { gap: 32px; }
+  .step__title        { font-size: 20px; line-height: 26px; }
+  .section-how::after { width: 1400px; height: 460px; inset-block-end: -170px; }
+}
+
+/* --- Мобильный ------------------------------------------------------------ */
+
+@media (max-width: 480px) {
+  .section-how        { padding-block: 56px; }
+  .section-how__head  { margin-bottom: 40px; }
+  .steps              { gap: 28px; }
+  .step               { gap: 12px; }
+  .step__title        { font-size: var(--fs-body); line-height: 24px; }
+  .step__desc         { font-size: var(--fs-small); line-height: 22px; }
+  .step__bar          { height: 10px; }
+  .section-how::after { width: 900px; height: 340px; inset-block-end: -130px; }
+}

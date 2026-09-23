@@ -1,0 +1,229 @@
+/* ==========================================================================
+   design.css — секция «Я помешан на дизайне».
+   Макет 1920x1793: бейдж, заголовок, лид, абзац на всю колонку, 15 чипов
+   с навыками (три ряда), три карточки 368x398 и цитата Джобса.
+   Внизу секции — зелёное свечение, обрезанное нижним краем блока.
+   ========================================================================== */
+
+.section-design {
+  /* Мягкая зеленоватая подложка: у нижнего края секции — --design-tint,
+     к середине блока он полностью уходит в чёрный, выше — ровный чёрный.
+     Крутится здесь: цвет и высота, на которой приходит чёрный. */
+  --design-tint: #00201c;
+  --design-tint-stop: 49%;
+
+  position: relative;
+  overflow: hidden;
+  padding-block: 106px 218px;
+  background:
+    linear-gradient(to top,
+      var(--design-tint) 0%,
+      var(--bg-page) var(--design-tint-stop)),
+    var(--bg-page);
+}
+
+.section-design__inner { position: relative; z-index: 1; }
+
+/* --- Шапка ---------------------------------------------------------------- */
+
+.section-design__head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.section-design__head .badge { margin-bottom: 10px; }
+
+.section-design__title {
+  margin-bottom: 18px;
+  font-size: var(--fs-h1);
+  line-height: 1;
+  letter-spacing: var(--ls-h1);
+}
+
+.section-design__lead {
+  font-size: var(--fs-lead);
+  line-height: 30px;
+  color: var(--text-muted);
+}
+
+/* --- Вводный абзац -------------------------------------------------------- */
+/* в макете он выключен по левому краю на всю ширину колонки */
+
+.section-design__intro {
+  margin-top: 48px;
+  font-size: var(--fs-lead);
+  line-height: 30px;
+  color: var(--text-muted);
+}
+
+.section-design__intro strong,
+.design-card__text strong {
+  font-weight: inherit;
+  letter-spacing: inherit;
+  color: var(--c-white);
+}
+
+.section-design__skills { margin-top: 27px; }
+
+/* --- Три карточки --------------------------------------------------------- */
+
+.design-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 17px;
+  margin-top: 41px;
+}
+
+.design-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--sp-l);
+  min-height: 398px;
+  padding: 40px 32px 32px;
+  border: var(--glass-border) solid var(--chip-stroke);
+  border-radius: 40px;
+  background: var(--c-grey-10);
+  transition: border-color var(--dur) var(--ease);
+}
+
+.design-card:hover { border-color: var(--chip-stroke-hover); }
+
+.design-card__icon {
+  display: block;
+  width: 80px;
+  height: 80px;
+  flex: none;
+}
+
+.design-card__text {
+  margin: 0;
+  font-size: var(--fs-body);
+  line-height: 24px;
+  color: var(--text-muted);
+}
+
+/* --- Цитата --------------------------------------------------------------- */
+
+.design-quote {
+  margin: 136px 0 0;
+  text-align: center;
+}
+
+.design-quote__intro,
+.design-quote__text {
+  margin: 0;
+  font-size: var(--fs-h1);
+  font-weight: 500;
+  line-height: 55px;
+  letter-spacing: var(--ls-h1);
+}
+
+.design-quote__intro { color: var(--text-muted); }
+.design-quote__text  { margin-top: 34px; color: var(--c-white); }
+
+/* --- Зелёное свечение ----------------------------------------------------- */
+/* Пятно шире колонки и заходит за нижний край секции: overflow: hidden
+   срезает его ровно по стыку блоков — как в макете.
+   Все ручки настройки собраны здесь, в переменных: цвет, размер,
+   размытие и насколько пятно опущено под нижний край. */
+
+.section-design__glow {
+  --glow-color: #9dff90;                              /* цвет свечения */
+  --glow-width: min(calc(var(--container) * 1.16), 130%);
+  --glow-height: 200px;                               /* высота пятна */
+  --glow-core: 50%;                                   /* до какого радиуса цвет держится без спада */
+  --glow-blur: 18px;                                  /* мягкость края */
+  --glow-drop: -45px;                                 /* насколько пятно уходит под край секции */
+
+  position: absolute;
+  inset-block-end: var(--glow-drop);
+  inset-inline-start: 50%;
+  z-index: 0;
+  width: var(--glow-width);
+  height: var(--glow-height);
+  translate: -50% 0;
+  background: radial-gradient(ellipse 50% 100% at 50% 100%,
+              var(--glow-color) 0%,
+              var(--glow-color) var(--glow-core),
+              transparent 100%);
+  filter: blur(var(--glow-blur));
+  pointer-events: none;
+
+  /* появление — как у колец в блоке «Автор»: пятно разворачивается
+     из точки у нижнего края и набирает яркость.
+     data-appear висит на самом пятне, а не на секции: иначе класс
+     навешивался бы ещё на подходе к блоку и анимацию никто не увидел. */
+  transform-origin: 50% 100%;
+  transition: scale 1.4s cubic-bezier(.16, 1, .3, 1),
+              opacity .9s var(--ease);
+}
+
+.section-design__glow[data-appear]:not(.is-visible) {
+  scale: .55;
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .section-design__glow { transition: none; }
+}
+
+/* --- Планшет -------------------------------------------------------------- */
+
+@media (max-width: 1024px) {
+  .section-design { padding-block: 72px 150px; }
+
+  .section-design__title  { margin-bottom: 14px; line-height: 1.15; }
+  .section-design__intro  { margin-top: 36px; line-height: 28px; }
+  .section-design__skills { margin-top: 24px; }
+
+  .design-cards {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    margin-top: 32px;
+  }
+
+  .design-card {
+    min-height: 0;
+    gap: var(--sp-m);
+    padding: 28px;
+    border-radius: var(--r-m);
+  }
+
+
+  .design-card__icon { width: 64px; height: 64px; }
+
+  .design-quote { margin-top: 88px; }
+  .design-quote__intro,
+  .design-quote__text { line-height: 1.12; }
+  .design-quote__text { margin-top: 26px; }
+
+  .section-design__glow {
+    --glow-height: 140px;
+    --glow-blur: 14px;
+    --glow-drop: -32px;
+  }
+}
+
+/* --- Мобильный ------------------------------------------------------------ */
+
+@media (max-width: 480px) {
+  .section-design { padding-block: 56px 110px; }
+
+  .section-design__intro { margin-top: 28px; line-height: 26px; }
+
+  /* на телефоне принудительный перенос мешает — строки ломаются сами */
+  .design-quote br { display: none; }
+  .design-card           { padding: 22px; border-radius: var(--r-s); }
+  .design-card__icon     { width: 56px; height: 56px; }
+  .design-quote          { margin-top: 64px; }
+  .design-quote__text    { margin-top: 20px; }
+
+  .section-design__glow {
+    --glow-height: 100px;
+    --glow-blur: 10px;
+    --glow-drop: -24px;
+  }
+}

@@ -1,0 +1,80 @@
+/* ==========================================================================
+   cursor.css — свой курсор: белый полупрозрачный кружок со стеклом,
+   как пилюля в шапке.
+
+   Кружок добавляется скриптом (js/controllers/cursor.js) и только там, где
+   есть настоящая мышь. На тачскрине его нет вовсе, системный курсор при
+   этом не прячется — если скрипт не отработает, человек не останется
+   без указателя.
+   ========================================================================== */
+
+.cursor {
+  /* --- Настройка ---------------------------------------------------------
+     --cursor-size     диаметр в обычном состоянии
+     --cursor-size-lg  диаметр над ссылкой или кнопкой
+     --cursor-fill     заливка: белая с низкой прозрачностью
+     --cursor-stroke   рамка
+     --cursor-glass    само «стекло». Здесь блюр небольшой: на кружке в
+                       три сантиметра блюр шапки (var(--glass-blur))
+                       размазывает фон в кашу. Хочешь ровно как в шапке —
+                       поставь сюда var(--glass-blur)
+     --cursor-ease     «вязкость» хвоста: скрипт читает её же              */
+  --cursor-size:    26px;
+  --cursor-size-lg: 54px;
+  --cursor-fill:    rgba(255, 255, 255, .10);
+  --cursor-fill-lg: rgba(41, 41, 41, 0);
+  --cursor-stroke:  rgba(250, 247, 247, 0.456);
+  --cursor-glass:   blur(10px) saturate(880%);
+
+  position: fixed;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  z-index: var(--z-cursor);
+  width: var(--cursor-size);
+  height: var(--cursor-size);
+  margin: calc(var(--cursor-size) / -2);   /* центр кружка — в точке мыши */
+  border: var(--glass-border) solid var(--cursor-stroke);
+  border-radius: 50%;
+  background: var(--cursor-fill);
+  backdrop-filter: var(--cursor-glass);
+  -webkit-backdrop-filter: var(--cursor-glass);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, .35);
+  opacity: 0;
+  pointer-events: none;                    /* кружок не перехватывает клики */
+  will-change: translate;
+  transition: width var(--dur) var(--ease),
+              height var(--dur) var(--ease),
+              margin var(--dur) var(--ease),
+              background-color var(--dur) var(--ease),
+              opacity var(--dur) var(--ease),
+              scale var(--dur-fast) var(--ease);
+}
+
+/* появляется после первого движения мыши, иначе на старте висел бы в углу */
+.cursor.is-visible { opacity: 1; }
+
+/* над ссылкой, кнопкой или пилюлей со скиллом кружок раздувается */
+.cursor.is-active {
+  width: var(--cursor-size-lg);
+  height: var(--cursor-size-lg);
+  margin: calc(var(--cursor-size-lg) / -2);
+  background: var(--cursor-fill-lg);
+}
+
+/* нажатие */
+.cursor.is-down { scale: .82; }
+
+/* --- Системный курсор -----------------------------------------------------
+   Прячем только когда свой кружок уже на странице. В полях ввода оставляем
+   обычную каретку: без неё не видно, куда встанет текст. */
+
+html.has-cursor,
+html.has-cursor * { cursor: none; }
+
+html.has-cursor input,
+html.has-cursor textarea,
+html.has-cursor select { cursor: auto; }
+
+@media (prefers-reduced-motion: reduce) {
+  .cursor { transition: opacity var(--dur) var(--ease); }
+}

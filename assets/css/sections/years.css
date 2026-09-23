@@ -1,0 +1,64 @@
+/* ==========================================================================
+   years.css — «Как я развивался»: таймлайн по годам на странице «Обо мне».
+   Макет: 1920, шаг между записями 290px, заголовок 56px с горизонтальным
+   градиентом (белый -> салатовый -> цвет года), описание 22/30 по центру.
+   ========================================================================== */
+
+.section-years {
+  padding-block: 98px 100px;
+  background: var(--bg-page);
+}
+
+.years {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.year { text-align: center; }
+.year + .year { margin-top: 122px; }
+
+/* Заголовок «14 лет - 2020».
+   Цвета года приходят из разметки в --mid и --end: градиент стартует
+   белым (на него приходится «NN ле»), к правому краю уходит в цвет года. */
+.year__title {
+  /* inline-block обязателен: градиент красит фон элемента, а не сами буквы.
+     У блока во всю ширину контейнера текст попадал бы в середину градиента
+     и выходил одноцветным. */
+  display: inline-block;
+  margin: 0 0 14px;
+  font-size: var(--fs-h1);
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: var(--ls-h1);
+
+  background-image: linear-gradient(90deg,
+                    #fff 0%,
+                    #fff 18%,
+                    var(--mid, #c6ff6c) 52%,
+                    var(--end, #82ff7c) 100%);
+  -webkit-background-clip: text;
+          background-clip: text;
+  color: transparent;
+}
+
+.year__desc {
+  max-width: 600px;
+  margin-inline: auto;
+  font-size: var(--fs-lead);
+  line-height: 30px;
+  color: var(--text-muted);
+}
+
+@media (max-width: 1024px) {
+  .section-years { padding-block: 72px; }
+  .year + .year  { margin-top: 88px; }
+  .year__title   { margin-bottom: 16px; }
+  .year__desc    { max-width: 520px; line-height: 28px; }
+}
+
+@media (max-width: 480px) {
+  .section-years { padding-block: 56px; }
+  .year + .year  { margin-top: 64px; }
+  .year__desc    { line-height: 26px; }
+}

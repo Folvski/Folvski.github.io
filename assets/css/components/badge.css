@@ -1,0 +1,51 @@
+/* ==========================================================================
+   badge.css — «бейдж» над заголовком секции: круглая иконка 80x80
+   и подпись под ней.
+
+   Сама иконка — готовый SVG из assets/img/badges/ (кружок с градиентом
+   и глифом внутри). В CSS остаётся только размер и цвет подписи:
+   модификатор .badge--* задаёт --badge-label.
+   ========================================================================== */
+
+.badge {
+  --badge-label: var(--text-secondary);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-xs);
+}
+
+.badge__icon {
+  display: block;
+  width: 80px;
+  height: 80px;
+  flex: none;
+}
+
+.badge__icon img,
+.badge__icon svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.badge__label {
+  font-size: var(--fs-body);
+  line-height: 24px;
+  color: var(--badge-label);
+}
+
+/* --- Цвет подписи под иконку --------------------------------------------- */
+
+.badge--violet  { --badge-label: #ac91ff; }
+.badge--green   { --badge-label: #85eb60; }
+.badge--orange  { --badge-label: #ff8b4d; }
+.badge--blue    { --badge-label: #899dff; }
+.badge--magenta { --badge-label: #c36efb; }
+.badge--red     { --badge-label: #ff7a7a; }
+
+@media (max-width: 480px) {
+  .badge__icon  { width: 64px; height: 64px; }
+  .badge__label { font-size: var(--fs-small); }
+}

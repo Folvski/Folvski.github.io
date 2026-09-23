@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Нестеренко Иван — дизайнер и разработчик</title>
+  <meta name="description" content="Портфолио: сайты, UI/UX, фронтенд, брендинг и CMS.">
+
+  <link rel="icon" href="/assets/img/icons/Favicon.ico" sizes="any">
+  <link rel="canonical" href="https://folvski.github.io/">
+
+  <!-- Карточка при отправке ссылки в мессенджеры и соцсети.
+       Адреса здесь абсолютные не случайно: ботам, которые собирают превью,
+       относительный путь разворачивать не от чего. Preview.png специально
+       оставлен PNG — webp понимают не все такие боты. -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Нестеренко Иван">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:url" content="https://folvski.github.io/">
+  <meta property="og:title" content="Нестеренко Иван — дизайнер и разработчик">
+  <meta property="og:description" content="Портфолио: сайты, UI/UX, фронтенд, брендинг и CMS.">
+  <meta property="og:image" content="https://folvski.github.io/assets/img/icons/Preview.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Портфолио Нестеренко Ивана: дизайн и разработка">
+  <meta name="twitter:card" content="summary_large_image">
+
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap&subset=cyrillic,latin">
+  <!-- Pacifico — только для надписи Developer на первом экране -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap">
+
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <script type="module" src="/assets/js/main.js"></script>
+</head>
+<body>
+
+  <!-- Шторка перехода между страницами. Должна стоять первой в body. -->
+  <div class="page-fade" aria-hidden="true"></div>
+
+
+  <div data-include="/views/layout/header.html"></div>
+
+  <main>
+    <!-- ===== Первый экран =============================================== -->
+    <section class="section section-hero section--flush" id="hero">
+      <div class="container section-hero__inner">
+
+        <!-- Сетка, надпись и леттеринг лежат в одном блоке шириной 1035px —
+             как в макете. Всё внутри задано в процентах и cqw, поэтому
+             композиция масштабируется целиком. -->
+        <div class="hero__art">
+          <img class="hero__grid" src="/assets/img/hero/grid-bg.webp" alt="" aria-hidden="true">
+
+          <p class="hero__script">Developer<img class="hero__plus"
+             src="/assets/img/hero/plus.webp" alt="" aria-hidden="true"></p>
+
+          <img class="hero__lettering" src="/assets/img/hero/lettering.webp"
+               alt="UI UX Design" width="2132" height="266">
+        </div>
+
+        <h1 class="hero__title">Design <img class="hero__arrow" src="/assets/img/hero/arrow.webp"
+            alt="→"> Code <img class="hero__arrow" src="/assets/img/hero/arrow.webp" alt="→"> Product</h1>
+
+        <p class="hero__lead">Создаю цифровые продукты, в которых дизайн и код работают вместе.</p>
+
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="/pages/projects.html">Смотреть работы</a>
+
+          <!-- Резюме — страница сайта (pages/cv.html), а не файл: текст правится
+               в вёрстке, а посетитель сохраняет его в PDF кнопкой на самой
+               странице. Поэтому здесь обычная ссылка, без download. -->
+          <a class="btn btn--ghost btn--icon" href="/pages/cv.html">
+            Смотреть CV
+            <span class="btn__icon" aria-hidden="true">
+              <svg viewBox="0 0 20 20" fill="none">
+                <path d="M4 10h11M11 6l4 4-4 4" stroke="currentColor" stroke-width="2"
+                      stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===== Привет! Меня зовут Иван ==================================== -->
+    <section class="section section-about section--flush" id="about" data-appear>
+      <div class="section-about__bg" aria-hidden="true"></div>
+
+      <div class="section-about__photos">
+        <figure class="about-photo about-photo--left">
+          <img src="/assets/img/photo/author-2.webp" alt="" loading="lazy">
+        </figure>
+        <figure class="about-photo about-photo--center">
+          <img src="/assets/img/photo/author-1.webp" alt="Иван Нестеренко" loading="lazy">
+        </figure>
+        <figure class="about-photo about-photo--right">
+          <img src="/assets/img/photo/author-3.webp" alt="" loading="lazy">
+        </figure>
+      </div>
+
+      <div class="container section-about__inner" data-reveal>
+        <div class="badge badge--green">
+          <span class="badge__icon">
+            <img src="/assets/img/badges/author.svg" alt="" width="80" height="80">
+          </span>
+          <span class="badge__label">Автор</span>
+        </div>
+
+        <h2 class="section-about__title">Привет! Меня зовут Иван</h2>
+
+        <p class="section-about__text">
+          Я дизайнер и разработчик из Гродно. Более 6 лет занимаюсь дизайном
+          и 4 года развиваюсь в программировании. Создаю сайты, интерфейсы
+          и цифровые продукты, соединяя дизайн и код.
+        </p>
+
+        <a class="btn btn--ghost btn--to-primary btn--icon" href="/pages/about.html">
+          Обо мне
+          <span class="btn__icon" aria-hidden="true">
+            <svg viewBox="0 0 20 20" fill="none">
+              <path d="M4 10h11M11 6l4 4-4 4" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+        </a>
+      </div>
+    </section>
+
+    <div data-include="/views/sections/projects.html"></div>
+    <div data-include="/views/sections/design.html"></div>
+    <div data-include="/views/sections/how-i-work.html"></div>
+    <div data-include="/views/sections/what-can-i-do.html"></div>
+    <div data-include="/views/sections/contacts.html"></div>
+  </main>
+
+  <div data-include="/views/layout/footer.html"></div>
+
+</body>
+</html>

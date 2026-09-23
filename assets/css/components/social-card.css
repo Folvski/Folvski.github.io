@@ -1,0 +1,121 @@
+/* ==========================================================================
+   social-card.css — карточка контакта.
+   Макет: 357x392, радиус 48, фон #181818, поля 48.
+   Знак сети выходит за левый край примерно на 30%, справа сверху круглая
+   кнопка со стрелкой, снизу слева подпись.
+
+   Классы намеренно названы contact-*, а не social-*: блокировщики рекламы
+   любят прятать элементы с «social» в классе.
+   ========================================================================== */
+
+.contact-card {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  aspect-ratio: 357 / 392;
+  border: var(--glass-border) solid var(--glass-stroke);
+  border-radius: var(--r-l);
+  background: #181818;
+  transition: background-color var(--dur) var(--ease),
+              border-color var(--dur) var(--ease);
+}
+
+.contact-card:hover {
+  background: #1f1f1f;
+  border-color: rgba(255, 255, 255, .32);
+}
+
+/* --------------------------------------------------------------------------
+   Знак сети.
+   .contact-card__glyph — это ровно тот круг, который нарисован внутри svg:
+   обводка ложится точно по его краю. Сама картинка внутри увеличена на
+   1 / --d, потому что в каждом svg круг занимает свою долю холста
+   (Telegram 83.25%, Instagram 78%, Viber 75%).
+   -------------------------------------------------------------------------- */
+.contact-card__glyph {
+  --d: .8325;
+  position: absolute;
+  inset-block-start: -3.6%;
+  inset-inline-start: -24.6%;       /* 30% круга уходит за левый край */
+  width: 82%;
+  aspect-ratio: 1;
+  border: 1.5px solid rgba(255, 255, 255, .1);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.contact-card__glyph img {
+  position: absolute;
+  inset-block-start: 50%;
+  inset-inline-start: 50%;
+  display: block;
+  width: calc(100% / var(--d));
+  height: auto;
+  translate: -50% -50%;
+}
+
+.contact-card--tg .contact-card__glyph { --d: .8325; }
+.contact-card--ig .contact-card__glyph { --d: .78; }
+.contact-card--vb .contact-card__glyph { --d: .75; }
+
+.contact-card__go {
+  position: absolute;
+  inset-block-start: 12.2%;         /* 48 / 392 */
+  inset-inline-end: 13.4%;          /* 48 / 357 */
+  display: grid;
+  place-items: center;
+  width: 17.9%;                     /* 64 / 357 */
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: #393939;
+  color: var(--c-white);
+  transition: background-color var(--dur) var(--ease);
+}
+
+.contact-card__go svg { width: 56%; height: 56%; }
+
+.contact-card:hover .contact-card__go { background: #4a4a4a; }
+
+.contact-card__label {
+  position: absolute;
+  inset-block-end: 12.2%;
+  inset-inline-start: 13.4%;
+  inset-inline-end: 13.4%;
+  font-size: 20px;
+  line-height: 30px;
+  letter-spacing: var(--ls-btn);
+  color: var(--text-primary);
+}
+
+/* на планшете колонка узкая — карточки идут столбиком, широкими и низкими.
+   Знак переезжает в левый верхний угол и срезается сразу двумя краями
+   карточки: слева примерно на 30%, сверху примерно на 15% — как в примере. */
+@media (max-width: 1024px) {
+  .contact-card {
+    aspect-ratio: 656 / 220;
+    border-radius: var(--r-m);
+  }
+  .contact-card__glyph {
+    width: 25%;
+    inset-block-start: -11%;
+    inset-inline-start: -7.5%;
+  }
+  .contact-card__go    { width: 64px; inset-block-start: 24px; inset-inline-end: 24px; }
+  .contact-card__label {
+    inset-block-end: 24px;
+    inset-inline-start: 24px;
+    font-size: var(--fs-body);
+    line-height: 26px;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-card        { aspect-ratio: 357 / 220; }
+  .contact-card__glyph {
+    width: 36%;
+    inset-block-start: -11%;
+    inset-inline-start: -10.8%;
+  }
+  .contact-card__go    { width: 52px; inset-block-start: 18px; inset-inline-end: 18px; }
+  .contact-card__label { inset-block-end: 18px; inset-inline-start: 18px; font-size: var(--fs-small); }
+}

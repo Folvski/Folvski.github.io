@@ -1,0 +1,25 @@
+<!-- contacts.html — секция «Открыт к сотрудничеству» (главная + обо мне)
+
+     Карточки намеренно НЕ свёрстаны здесь, а собираются из data/site.js
+     контроллером controllers/contacts.js. Причина техническая: блокировщики
+     рекламы (AdGuard, uBlock) вырезают из HTML-ответа узлы, в которых
+     встречаются названия соцсетей и ссылки на них. Пока названия лежат в
+     js, вырезать нечего. Подробности — в шапке contacts.js. -->
+<section class="section section-contacts" id="contacts" data-reveal>
+  <div class="container section-contacts__inner">
+
+    <header class="section-contacts__head">
+      <div class="badge badge--violet">
+        <span class="badge__icon">
+          <img src="/assets/img/badges/contacts.svg" alt="" width="80" height="80">
+        </span>
+        <span class="badge__label">Соцсети</span>
+      </div>
+
+      <h2 class="section-contacts__title">Открыт к сотрудничеству <br>и новым проектам</h2>
+    </header>
+
+    <ul class="contact-cards" data-contacts></ul>
+
+  </div>
+</section>

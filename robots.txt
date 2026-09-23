@@ -1,0 +1,9 @@
+# Открыт весь сайт, кроме заглушек: страницу ошибки и шаблон кейса
+# индексировать незачем. У них ещё и meta robots=noindex в разметке.
+User-agent: *
+Allow: /
+Disallow: /pages/404.html
+Disallow: /404.html
+Disallow: /pages/case.html
+
+Sitemap: https://folvski.github.io/sitemap.xml

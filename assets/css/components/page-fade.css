@@ -1,0 +1,39 @@
+/* ==========================================================================
+   page-fade.css — переход между страницами через чёрный.
+
+   Шторка лежит первым элементом в <body> каждой страницы. Уход в чёрный
+   делает скрипт (js/controllers/page-fade.js), а проявление — анимация
+   здесь же: она стартует сразу, как только применился CSS, ещё до того как
+   отработает скрипт. Поэтому даже если скрипт отвалится, страница всё
+   равно проявится, а не останется чёрной.
+   ========================================================================== */
+
+.page-fade {
+  /* --fade-out  уход в чёрный при клике по ссылке
+     --fade-in   проявление новой страницы                                 */
+  --fade-out: .42s;
+  --fade-in:  .55s;
+
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-fade);
+  background: var(--c-black);
+  opacity: 0;
+  pointer-events: none;            /* шторка не ловит ни клики, ни колесо */
+  transition: opacity var(--fade-out) var(--ease);
+  animation: page-fade-in var(--fade-in) var(--ease) backwards;
+}
+
+/* конечное значение берётся из самого правила — opacity: 0 */
+@keyframes page-fade-in {
+  from { opacity: 1; }
+}
+
+.page-fade.is-out {
+  opacity: 1;
+  animation: none;                 /* уход важнее незаконченного проявления */
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-fade { animation: none; transition: none; opacity: 0; }
+}

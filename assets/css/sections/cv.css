@@ -1,0 +1,230 @@
+/* ==========================================================================
+   cv.css — страница резюме.
+
+   Это обычная страница сайта, а не картинка и не PDF: текст правится прямо
+   в pages/cv.html, как и везде. Кнопка «Скачать PDF» открывает печать
+   браузера — в диалоге выбирается «Сохранить как PDF». Как всё это будет
+   выглядеть на бумаге, описано в самом низу файла, в @media print.
+   ========================================================================== */
+
+.section-cv {
+  position: relative;
+  padding-block: 166px 100px;
+  background: var(--bg-page);
+}
+
+.section-cv__inner { max-width: 860px; margin-inline: auto; }
+
+/* --- Шапка резюме --------------------------------------------------------- */
+
+.cv__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--sp-sm);
+  padding-block-end: var(--sp-m);
+  border-block-end: 1px solid var(--divider);
+}
+
+.cv__name {
+  margin: 0 0 6px;
+  font-size: var(--fs-h1);
+  line-height: 1.05;
+  letter-spacing: var(--ls-h1);
+}
+
+.cv__role {
+  margin: 0;
+  font-size: var(--fs-lead);
+  line-height: 30px;
+  color: var(--c-orange);
+}
+
+/* --- Контакты ------------------------------------------------------------- */
+
+.cv__contacts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+  margin: var(--sp-sm) 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: var(--fs-body);
+  line-height: 26px;
+  color: var(--text-muted);
+}
+
+.cv__contacts a { transition: color var(--dur) var(--ease); }
+.cv__contacts a:hover { color: var(--c-white); }
+
+/* --- Блоки ---------------------------------------------------------------- */
+
+.cv__block { margin-block-start: var(--sp-xl); }
+
+.cv__title {
+  margin: 0 0 var(--sp-sm);
+  font-size: var(--fs-h3);
+  line-height: 1.2;
+  letter-spacing: var(--ls-h2);
+  color: var(--c-grey-93);
+}
+
+.cv__text {
+  margin: 0;
+  font-size: var(--fs-body);
+  line-height: 28px;
+  color: var(--text-muted);
+}
+
+.cv__text + .cv__text { margin-block-start: 14px; }
+
+.cv__text strong {
+  font-weight: inherit;
+  letter-spacing: inherit;
+  color: var(--c-grey-93);
+}
+
+/* --- Список записей: опыт, образование ------------------------------------ */
+
+.cv__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-sm);
+}
+
+.cv__item {
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  gap: var(--sp-sm);
+}
+
+.cv__when {
+  font-size: var(--fs-body);
+  line-height: 26px;
+  color: var(--text-dim);
+}
+
+.cv__what { min-width: 0; }
+
+.cv__what h3 {
+  margin: 0 0 6px;
+  font-size: var(--fs-body);
+  font-weight: 500;
+  line-height: 26px;
+  color: var(--c-white);
+}
+
+.cv__what p {
+  margin: 0;
+  font-size: var(--fs-body);
+  line-height: 26px;
+  color: var(--text-muted);
+}
+
+/* --- Навыки --------------------------------------------------------------- */
+
+.cv__skills {
+  margin: 0;
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  gap: 14px var(--sp-sm);
+}
+
+.cv__skills dt {
+  font-size: var(--fs-body);
+  line-height: 26px;
+  color: var(--text-dim);
+}
+
+.cv__skills dd {
+  margin: 0;
+  font-size: var(--fs-body);
+  line-height: 26px;
+  color: var(--text-muted);
+}
+
+/* --- Кнопки --------------------------------------------------------------- */
+
+.cv__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-block-start: var(--sp-xl);
+}
+
+/* --- Планшет и телефон ---------------------------------------------------- */
+
+@media (max-width: 1024px) {
+  .section-cv { padding-block: calc(var(--header-h) + 56px) 72px; }
+
+  .cv__block  { margin-block-start: var(--sp-l); }
+  .cv__item,
+  .cv__skills { grid-template-columns: 1fr; gap: 6px; }
+  .cv__when   { color: var(--c-orange); }
+  .cv__actions { margin-block-start: var(--sp-l); }
+}
+
+@media (max-width: 480px) {
+  .section-cv { padding-block: calc(var(--header-h) + 32px) 56px; }
+
+  .cv__head    { display: block; }
+  .cv__text    { line-height: 26px; }
+  .cv__actions { gap: 12px; }
+}
+
+/* ==========================================================================
+   Печать. Ctrl+P или кнопка «Скачать PDF» -> «Сохранить как PDF».
+
+   На бумаге убираем всё, что к резюме не относится: шапку сайта, подвал,
+   кнопки, шторку перехода. Фон делаем белым — чёрная заливка на печати
+   съедает тонер и выглядит грязно.
+   ========================================================================== */
+
+@media print {
+  .header,
+  .footer,
+  .to-top,
+  .page-fade,
+  .cursor,
+  .cv__actions { display: none !important; }
+
+  /* появление блоков по скроллу на бумаге не отработает — показываем всё */
+  [data-reveal],
+  [data-appear] { opacity: 1 !important; transform: none !important; }
+
+  html, body { background: #fff !important; }
+
+  .section-cv {
+    padding: 0 !important;
+    background: #fff !important;
+  }
+
+  .section-cv__inner { max-width: none; }
+
+  .cv__name,
+  .cv__title,
+  .cv__what h3,
+  .cv__text strong { color: #000 !important; }
+
+  .cv__role,
+  .cv__when { color: #444 !important; }
+
+  .cv__text,
+  .cv__what p,
+  .cv__skills dd,
+  .cv__contacts { color: #222 !important; }
+
+  .cv__contacts a { color: #000 !important; text-decoration: underline; }
+
+  .cv__head { border-block-end: 1px solid #ccc; }
+
+  /* блок не должен разрываться между страницами по середине */
+  .cv__block,
+  .cv__item { break-inside: avoid; }
+
+  @page { margin: 14mm; }
+}

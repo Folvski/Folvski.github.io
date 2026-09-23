@@ -1,0 +1,172 @@
+/* ==========================================================================
+   chip.css — пилюли-теги.
+   .tag       — тег без иконки (стек кейса, категории)
+   .chip      — тег с иконкой (навыки в блоке «Дизайн»)
+   ========================================================================== */
+
+.tag-list,
+.chip-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-s);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.tag-list--center,
+.chip-list--center { justify-content: center; }
+
+.tag,
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2xs);
+  min-height: 56px;
+  padding-inline: 30px;
+  border: var(--glass-border) solid var(--glass-stroke);
+  border-radius: var(--r-pill);
+  background: rgba(58, 58, 58, .82);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  font-size: 20px;
+  line-height: 25px;
+  letter-spacing: var(--ls-btn);
+  color: var(--c-grey-93);
+  white-space: nowrap;
+}
+
+/* --- Чип с иконкой -------------------------------------------------------- */
+/* Макет: высота 72, поля 22, иконка 32, отступ до текста 14,
+   фон #1a1a1a, текст 18/24 серый.
+   Обводка и её цвет при наведении — токены --chip-stroke
+   и --chip-stroke-hover в base/tokens.css. */
+
+.chip-list { gap: 20px 19px; }
+
+.chip {
+  gap: 14px;
+  min-height: 72px;
+  padding-inline: 22px;
+  border: var(--glass-border) solid var(--chip-stroke);
+  background: var(--bg-surface);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  font-size: var(--fs-body);
+  line-height: 24px;
+  letter-spacing: normal;
+  color: var(--text-muted);
+  cursor: default;
+  transition: background-color var(--dur) var(--ease),
+              border-color var(--dur) var(--ease),
+              color var(--dur) var(--ease),
+              translate var(--dur) var(--ease);
+}
+
+.chip:hover {
+  background: #232323;
+  border-color: var(--chip-stroke-hover);
+  color: var(--c-grey-93);
+  translate: 0 -2px;
+}
+
+.chip:hover .chip__icon { opacity: 1; }
+
+/* --- Бегущий блик ---------------------------------------------------------
+   По обводке пилюли слева направо проползает светлое пятно. Дойдя до
+   правого края, оно продолжает путь с ЛЕВОГО края следующей пилюли — и так
+   по всем подряд. После последней волна выжидает паузу и начинается снова.
+
+   Как это сделано. Пятно — это светлая середина градиента шириной в три
+   пилюли. Сдвигая фон, пятно проводят слева направо; границы прохода
+   считает shine.js, чтобы пятно не простаивало за краем. В покое
+   (background-position: 0) оно стоит за правым краем и не видно.
+
+   Порядок пилюль берётся не из разметки, а с экрана: их раскладывает
+   pack.js и меняет местами. Поэтому очередь и сам ход волны ведёт
+   controllers/shine.js — он же читает ручки ниже.
+
+   Ручки — здесь, на списке:
+     --shine-step   сколько времени пятно ползёт по ОДНОЙ пилюле.
+                    Это и есть скорость волны
+     --shine-pause  пауза в конце круга, в тех же шагах
+     --shine-color  цвет пятна. Основная ручка яркости
+     --shine-spot   полуширина пятна в координатах градиента; пилюля втрое
+                    уже него, так что 6% — это примерно пятая часть пилюли
+                    в каждую сторону от центра
+     --shine-width  толщина обводки                                       */
+
+.chip-list {
+  --shine-step:  .78s;
+  --shine-pause: 4;
+  --shine-color: rgba(255, 255, 255, .42);
+  --shine-spot:  6%;
+  --shine-width: var(--glass-border);
+}
+
+.chip { position: relative; }
+
+.chip__shine {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: var(--shine-width, 1.5px);
+
+  background-image: linear-gradient(90deg,
+    transparent 0,
+    transparent calc(50% - var(--shine-spot, 6%)),
+    var(--shine-color, rgba(255, 255, 255, .42)) 50%,
+    transparent calc(50% + var(--shine-spot, 6%)),
+    transparent 100%);
+  background-size: 300% 100%;
+  background-repeat: no-repeat;
+  background-position: 0 0;        /* покой: пятно стоит за правым краем */
+
+  /* красим только рамку: из залитого прямоугольника вычитается его же
+     внутренняя часть, остаётся ободок толщиной в padding */
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+          mask-composite: exclude;
+
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chip { transition: none; }
+  .chip:hover { translate: none; }
+}
+
+/* вариант поменьше — стек в блоке «Что я умею» */
+.chip--s { min-height: 66px; }
+.chip-list--tight { gap: 12px 14px; }
+
+.chip__icon {
+  display: block;
+  width: 32px;
+  height: 32px;
+  flex: none;
+  opacity: .82;
+  transition: opacity var(--dur) var(--ease);
+}
+
+@media (max-width: 1024px) {
+  .chip-list  { gap: 14px 12px; }
+  .chip       { gap: 10px; min-height: 56px; padding-inline: 18px; font-size: var(--fs-small); }
+  .chip__icon { width: 26px; height: 26px; }
+}
+
+@media (max-width: 480px) {
+  .tag-list  { gap: var(--sp-xs); }
+  .chip-list { gap: 10px 8px; }
+
+  .tag {
+    min-height: 44px;
+    padding-inline: 20px;
+    font-size: var(--fs-small);
+    line-height: 20px;
+  }
+
+  .chip       { gap: 8px; min-height: 48px; padding-inline: 14px; font-size: 14px; }
+  .chip__icon { width: 22px; height: 22px; }
+}

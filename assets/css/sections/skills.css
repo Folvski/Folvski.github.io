@@ -1,0 +1,203 @@
+/* ==========================================================================
+   skills.css — секция «Что я умею».
+   Макет 1920x1680: бейдж, заголовок, лид, шесть карточек 368x398 в сетке
+   3x2, абзац на всю колонку и семнадцать пилюль со стеком.
+   ========================================================================== */
+
+.section-skills {
+  position: relative;
+  padding-block: 100px 135px;
+  background: var(--bg-page);
+}
+
+/* --- Шапка ---------------------------------------------------------------- */
+
+.section-skills__head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.section-skills__head .badge { margin-bottom: 10px; }
+
+.section-skills__title {
+  margin-bottom: 18px;
+  font-size: var(--fs-h1);
+  line-height: 1;
+  letter-spacing: var(--ls-h1);
+}
+
+.section-skills__lead {
+  font-size: var(--fs-lead);
+  line-height: 30px;
+  color: var(--text-muted);
+}
+
+/* --- Шесть карточек ------------------------------------------------------- */
+
+.skill-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 17px;
+  margin: 45px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.skill-card {
+  position: relative;
+  overflow: hidden;                /* знак уходит за правый край карточки */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--sp-l);
+  min-height: 398px;
+  padding: 34px;
+  border: var(--glass-border) solid var(--chip-stroke);
+  border-radius: 40px;
+  background: var(--c-grey-10);
+  transition: border-color var(--dur) var(--ease);
+
+  /* --- Настройка знака в карточке --------------------------------------
+     Четыре ручки. Проценты считаются от размеров самой карточки, так что
+     знак остаётся на месте на любой ширине экрана.
+
+     --mark-size     размер знака: доля от ШИРИНЫ карточки.
+                     Больше значение — крупнее знак.
+     --mark-top      сдвиг по вертикали. 0 — знак начинается ровно у
+                     верхнего края; отрицательное значение поднимает его
+                     выше и срезает верхушку.
+     --mark-right    сдвиг по горизонтали. 0 — знак прижат к правому краю;
+                     отрицательное выдвигает его вправо за край.
+     --mark-opacity  яркость. Прозрачность уже вшита внутрь svg, поэтому
+                     1 — это то, что нарисовано в файле; 2 сделает вдвое
+                     заметнее, .5 — вдвое бледнее.
+
+     Значения ниже — общие для всех шести карточек. Любую можно настроить
+     отдельно прямо в разметке what-can-i-do.html, дописав к нужной
+     карточке, например:  style="--mark-size: 70%; --mark-top: 4%"
+
+     Как было в макете один в один: 62% / 0 / -8%.                       */
+  --mark-size: 74%;
+  --mark-top: -10%;
+  --mark-right: -18%;
+  --mark-opacity: 1;
+}
+
+.skill-card:hover { border-color: var(--chip-stroke-hover); }
+
+/* Сам знак: только раскладка, все числа приходят из .skill-card выше. */
+.skill-card__mark {
+  position: absolute;
+  inset-block-start: var(--mark-top);
+  inset-inline-end: var(--mark-right);
+  width: var(--mark-size);
+  height: auto;
+  opacity: var(--mark-opacity);
+  pointer-events: none;
+}
+
+.skill-card__num,
+.skill-card__body { position: relative; }   /* над знаком */
+
+.skill-card__num {
+  font-size: 36px;
+  line-height: 1;
+  font-weight: 500;
+  color: var(--c-white);
+}
+
+/* Заголовок карточки — градиент из разметки (--from / --to).
+   inline-block обязателен: градиент красит фон элемента, а у блока
+   во всю ширину текст попал бы в его середину и вышел одноцветным. */
+.skill-card__title {
+  display: inline-block;
+  margin: 0 0 10px;
+  font-size: 24px;
+  line-height: 1.2;
+  font-weight: 500;
+  background-image: linear-gradient(90deg, var(--from, #fff), var(--to, #fff));
+  -webkit-background-clip: text;
+          background-clip: text;
+  color: transparent;
+}
+
+.skill-card__text {
+  margin: 0;
+  font-size: var(--fs-body);
+  line-height: 24px;
+  color: var(--text-muted);
+}
+
+.skill-card__text strong,
+.section-skills__intro strong {
+  font-weight: inherit;
+  letter-spacing: inherit;
+  color: var(--c-white);
+}
+
+/* --- Абзац и стек --------------------------------------------------------- */
+
+.section-skills__intro {
+  margin-top: 42px;
+  font-size: var(--fs-lead);
+  line-height: 30px;
+  color: var(--text-muted);
+}
+
+.section-skills__stack { margin-top: 40px; }
+
+/* --- Планшет -------------------------------------------------------------- */
+
+@media (max-width: 1024px) {
+  .section-skills { padding-block: 72px 90px; }
+
+  .section-skills__title { margin-bottom: 14px; line-height: 1.15; }
+
+  .skill-cards {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    margin-top: 32px;
+  }
+
+  .skill-card {
+    min-height: 0;
+    gap: var(--sp-m);
+    padding: 28px;
+    border-radius: var(--r-m);
+  }
+
+  .skill-card__num   { font-size: 30px; }
+  .skill-card__title { font-size: 22px; }
+
+  /* Карточки здесь низкие и широкие, поэтому знак меряется от ВЫСОТЫ
+     карточки: --mark-size в этом режиме задаёт высоту, а ширина
+     подстраивается сама. Остальные ручки работают так же. */
+  .skill-card {
+    --mark-size: 230%;
+    --mark-top: -55%;
+    --mark-right: -8%;
+  }
+
+  .skill-card__mark {
+    width: auto;
+    height: var(--mark-size);
+  }
+
+  .section-skills__intro { margin-top: 32px; line-height: 28px; }
+  .section-skills__stack { margin-top: 28px; }
+}
+
+/* --- Мобильный ------------------------------------------------------------ */
+
+@media (max-width: 480px) {
+  .section-skills { padding-block: 56px 72px; }
+
+  .skill-card        { padding: 22px; border-radius: var(--r-s); }
+  .skill-card__num   { font-size: 26px; }
+  .skill-card__title { font-size: 20px; }
+
+  .section-skills__intro { margin-top: 24px; line-height: 26px; }
+  .section-skills__stack { margin-top: 22px; }
+}

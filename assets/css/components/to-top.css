@@ -1,0 +1,93 @@
+/* ==========================================================================
+   to-top.css — круглая кнопка «наверх» в правом нижнем углу.
+   Стекло то же, что у бургера и пилюли шапки.
+
+   Появляется, только когда пролистали заметно вниз: вверху страницы она
+   не нужна и лишь закрывает контент. Порог и сама прокрутка — в
+   js/controllers/to-top.js.
+   ========================================================================== */
+
+.to-top {
+  /* --to-top-size   диаметр
+     --to-top-gap    отступ от правого и нижнего края экрана
+     --to-top-arrow  размер стрелки, доля от диаметра
+     --to-top-glass  стекло: блюр и преломление цвета
+     --to-top-bg     подложка. Чуть светлее шапки: кнопка почти всегда
+                     висит над чёрным, и на совсем тёмной подложке стекла
+                     просто не видно — преломлять там нечего              */
+  --to-top-size:  56px;
+  --to-top-gap:   28px;
+  --to-top-arrow: 52%;
+  --to-top-glass: blur(25px) saturate(900%);
+  --to-top-bg:    rgba(22, 22, 22, .62);
+
+  position: fixed;
+  inset-block-end: var(--to-top-gap);
+  inset-inline-end: var(--to-top-gap);
+  z-index: var(--z-header);
+
+  display: grid;
+  place-items: center;
+  width: var(--to-top-size);
+  height: var(--to-top-size);
+  padding: 0;
+
+  border: var(--glass-border-header) solid var(--glass-stroke-soft);
+  border-radius: 50%;
+  background: var(--to-top-bg);
+  backdrop-filter: var(--to-top-glass);
+  -webkit-backdrop-filter: var(--to-top-glass);
+  box-shadow: var(--glass-shadow);
+  color: var(--text-secondary);
+
+  /* спрятана: чуть ниже своего места и без объёма */
+  opacity: 0;
+  translate: 0 12px;
+  scale: .9;
+  pointer-events: none;
+
+  transition: opacity var(--dur) var(--ease),
+              translate var(--dur) var(--ease),
+              scale var(--dur) var(--ease),
+              background-color var(--dur) var(--ease),
+              border-color var(--dur) var(--ease),
+              color var(--dur) var(--ease);
+}
+
+.to-top.is-visible {
+  opacity: 1;
+  translate: 0 0;
+  scale: 1;
+  pointer-events: auto;
+}
+
+.to-top:hover {
+  background: rgba(74, 74, 74, .86);
+  border-color: rgba(255, 255, 255, .32);
+  color: var(--c-white);
+}
+
+.to-top:active { scale: .94; }
+
+.to-top svg {
+  width: var(--to-top-arrow);
+  height: var(--to-top-arrow);
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+@media (max-width: 1024px) {
+  .to-top { --to-top-gap: 22px; }
+}
+
+@media (max-width: 480px) {
+  .to-top { --to-top-size: 48px; --to-top-gap: 18px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .to-top { transition: opacity var(--dur) var(--ease); translate: none; scale: 1; }
+  .to-top:active { scale: 1; }
+}

@@ -1,0 +1,298 @@
+/* ==========================================================================
+   projects.css — секция «Избранные работы» на главной
+   и первый экран страницы «Работы».
+
+   Макет секции: 1920x2185. Шапка на 100 от верха, три карточки 1136x500
+   через 42, кнопка «Смотреть все» ещё через 42, нижнее поле 100.
+   Сама карточка — в components/card.css.
+   ========================================================================== */
+
+.section-projects {
+  position: relative;
+  padding-block: 100px;
+  background: var(--bg-page);
+}
+
+/* --- Шапка ---------------------------------------------------------------- */
+
+.section-projects__head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.section-projects__head .badge { margin-bottom: 12px; }
+
+.section-projects__title {
+  margin-bottom: 16px;
+  font-size: var(--fs-h1);
+  line-height: 56px;
+  letter-spacing: var(--ls-h1);
+}
+
+.section-projects__lead {
+  max-width: 742px;
+  font-size: var(--fs-lead);
+  line-height: 30px;
+  color: var(--text-muted);
+}
+
+/* --- Карточки ------------------------------------------------------------- */
+
+.project-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 42px;
+  margin: 42px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.section-projects__more {
+  display: flex;
+  justify-content: center;
+  margin-top: 42px;
+}
+
+/* --- Планшет -------------------------------------------------------------- */
+
+@media (max-width: 1024px) {
+  .section-projects { padding-block: 72px; }
+
+  .section-projects__title { margin-bottom: 14px; line-height: 1.15; }
+
+  .project-cards          { gap: 24px; margin-top: 32px; }
+  .section-projects__more { margin-top: 32px; }
+}
+
+/* --- Мобильный ------------------------------------------------------------ */
+
+@media (max-width: 480px) {
+  .section-projects { padding-block: 56px; }
+
+  .project-cards          { gap: 18px; margin-top: 26px; }
+  .section-projects__more { margin-top: 26px; }
+}
+
+/* ==========================================================================
+   Список работ на странице «Работы».
+   Макет: строка с категориями, через 42 первая карточка, дальше тот же
+   шаг 542 (карточка 500 + 42), снизу 100.
+   ========================================================================== */
+
+/* Строка категорий. В макете 744px на пять кнопок с зазором 16.
+   Липнет под шапкой: в макете она нарисована заново над каждым разделом,
+   то есть должна быть под рукой всё время. Фона у полосы нет — кнопки
+   сами стеклянные, как пилюля шапки, и содержимое просвечивает сквозь них. */
+.works-nav {
+  position: sticky;
+  inset-block-start: calc(var(--header-h) + 8px);
+  z-index: 5;
+  padding-block: 8px;
+  pointer-events: none;            /* пустые поля полосы не перехватывают клики */
+}
+
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  pointer-events: auto;
+}
+
+.filter-bar .btn.is-active {
+  background: var(--accent);
+  border-color: rgba(255, 255, 255, .38);
+  color: var(--c-white);
+}
+
+.section-projects-list {
+  position: relative;
+  padding-block: 42px 100px;
+  background: var(--bg-page);
+}
+
+/* отступ до первой карточки держит сама секция — иначе он удвоится */
+.section-projects-list .project-cards { margin-top: 0; }
+
+/* --- Шапка «Лаборатории» ---------------------------------------------------
+   Единственный раздел со своим заголовком: в макете он представляет
+   личные проекты, а не просто перечисляет их. */
+
+.section-lab__head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 42px;
+}
+
+.section-lab__head .badge { margin-bottom: 10px; }
+
+.section-lab__title {
+  margin-bottom: 10px;
+  font-size: var(--fs-h1);
+  line-height: 56px;
+  letter-spacing: var(--ls-h1);
+}
+
+.section-lab__lead {
+  max-width: 574px;
+  font-size: var(--fs-lead);
+  line-height: 30px;
+  color: var(--text-muted);
+}
+
+/* --- Планшет и телефон: стопка вместо строки -------------------------------
+   Пять пилюль в ряд съедают на узком экране пол-экрана. Поэтому как только
+   строка прилипает, она собирается в стопку у левого края: впереди активный
+   раздел, остальные уезжают под него и выглядывают краями. При наведении
+   (или по касанию) стопка раскрывается обратно в строку.
+
+   Встаёт она на ту же высоту, что и шапка: пилюля-меню на этих ширинах
+   скрыта, справа только бургер, и левый угол свободен.
+
+   Раскладка обеих фаз считается в js (controllers/works-nav.js): он меряет
+   строку в обычном потоке и раздаёт каждой пилюле --x, --y, --w и --z.
+   Здесь только правила перехода между ними.
+
+   --nav-top   высота, на которой встаёт стопка (равняется на бургер)
+   --nav-peek  насколько выглядывает каждая следующая пилюля
+   --nav-dur   длительность сворачивания                                  */
+
+@media (max-width: 1024px) {
+  .works-nav {
+    --nav-top:  24px;
+    --nav-peek: 14px;
+    --nav-dur:  .45s;
+
+    inset-block-start: calc(var(--nav-top) - 8px);
+    z-index: 90;                      /* под шапкой: бургер остаётся кликабельным */
+  }
+
+  /* слева, а не по центру — и в потоке, и в стопке */
+  .filter-bar { gap: 12px; justify-content: flex-start; }
+
+  /* в липком состоянии строка встаёт в один ряд с бургером — оставляем
+     ему место, иначе раскрытая строка уезжает прямо под него */
+  .works-nav.is-stuck > .container { padding-inline-end: 72px; }
+
+  /* .is-measuring снимает раскладку на время замеров: js читает размеры
+     строки в обычном потоке, иначе мерить было бы нечего */
+  .works-nav.is-stuck:not(.is-measuring) .filter-bar {
+    position: relative;
+    display: block;
+    height: var(--nav-h, 56px);
+    pointer-events: none;             /* ловят только сами пилюли */
+    transition: height var(--nav-dur) var(--ease);
+  }
+
+  .works-nav.is-stuck.is-open:not(.is-measuring) .filter-bar {
+    pointer-events: auto;             /* раскрытую строку не теряем на зазорах */
+  }
+
+  .works-nav.is-stuck:not(.is-measuring) .filter-bar .btn {
+    position: absolute;
+    inset-block-start: 0;
+    inset-inline-start: 0;
+    width: var(--w, auto);
+    padding-inline: 0;                /* ширину задаёт --w, поля не нужны */
+    translate: var(--x, 0) var(--y, 0);
+    z-index: var(--z, 1);
+    pointer-events: auto;
+    transition: translate var(--nav-dur) var(--ease),
+                width     var(--nav-dur) var(--ease),
+                color     .25s var(--ease),
+                background-color var(--dur) var(--ease),
+                border-color var(--dur) var(--ease);
+  }
+
+  /* Свёрнуто: наружу торчит только край, поэтому подпись у задних гасим.
+     Заодно снимаем с них стекло — четыре блюра друг на друге и дороги,
+     и выглядят грязно; в макете это ровные тёмные дуги. */
+  .works-nav.is-stuck:not(.is-open):not(.is-measuring) .filter-bar .btn:not(.is-active) {
+    color: transparent;
+    background: #3a3a3a;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    box-shadow: none;
+  }
+
+  .section-projects-list { padding-block: 32px 72px; }
+
+  .section-lab__head  { margin-bottom: 32px; }
+  .section-lab__title { line-height: 1.15; }
+}
+
+@media (max-width: 480px) {
+  .works-nav  { --nav-top: 28px; --nav-peek: 12px; }
+  .filter-bar { gap: 10px; }
+
+  .section-projects-list { padding-block: 26px 56px; }
+  .section-lab__head     { margin-bottom: 26px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .works-nav .filter-bar,
+  .works-nav .filter-bar .btn { transition: none; }
+}
+
+/* ==========================================================================
+   Первый экран страницы «Работы».
+   1920x665, колонка 960 по центру, верхнее поле 166, нижнее 100.
+   Заголовок 56/56 серый, выделение светлое.
+   ========================================================================== */
+
+.section-projects-hero {
+  position: relative;
+  padding-block: 166px 100px;
+  background: var(--bg-page);
+}
+
+.section-projects-hero__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.section-projects-hero .badge { margin-bottom: 42px; }
+
+.section-projects-hero__title {
+  margin-bottom: 42px;
+  font-size: var(--fs-h1);
+  line-height: 56px;
+  letter-spacing: var(--ls-h1);
+  color: var(--text-muted);
+}
+
+.section-projects-hero__title strong {
+  color: var(--c-grey-93);
+  font-weight: inherit;
+  letter-spacing: inherit;
+}
+
+.section-projects-hero__lead {
+  font-size: var(--fs-lead);
+  line-height: 30px;
+  color: var(--text-muted);
+}
+
+/* --- Планшет -------------------------------------------------------------- */
+
+@media (max-width: 1024px) {
+  .section-projects-hero { padding-block: calc(var(--header-h) + 64px) 64px; }
+
+  .section-projects-hero .badge       { margin-bottom: 28px; }
+  .section-projects-hero__title       { margin-bottom: 28px; line-height: 1.16; }
+}
+
+/* --- Мобильный ------------------------------------------------------------ */
+
+@media (max-width: 480px) {
+  .section-projects-hero { padding-block: calc(var(--header-h) + 40px) 48px; }
+
+  .section-projects-hero .badge { margin-bottom: 20px; }
+  .section-projects-hero__title { margin-bottom: 20px; line-height: 1.2; }
+}

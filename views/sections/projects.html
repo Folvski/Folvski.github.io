@@ -1,0 +1,115 @@
+<!-- projects.html — секция «Избранные работы» (главная).
+
+     Анатомия карточки (как в макете, 1136x500):
+       • скриншот прижат к верху, ширина = ширина карточки минус поля;
+       • поверх него градиент, который растворяет низ фото в фоне карточки;
+       • текст прижат к НИЗУ карточки и заезжает на растворившийся низ фото —
+         поэтому оранжевая строка с тегами читается поверх скриншота;
+       • кнопки стоят в правом нижнем углу, на одной линии с текстом.
+
+     Все ручки настройки фото и градиента — в assets/css/components/card.css,
+     блок «Настройка скриншота». Любую карточку можно подстроить отдельно,
+     дописав переменную прямо сюда, например:
+       <article class="project-card" style="--shot-fade-end: 78%"> -->
+<section class="section section-projects" id="projects" data-reveal>
+  <div class="container section-projects__inner">
+
+    <header class="section-projects__head">
+      <div class="badge badge--orange">
+        <span class="badge__icon">
+          <img src="/assets/img/badges/projects.svg" alt="" width="80" height="80">
+        </span>
+        <span class="badge__label">Проекты</span>
+      </div>
+
+      <h2 class="section-projects__title">Избранные работы</h2>
+
+      <p class="section-projects__lead">
+        Проекты, в которых я соединяю дизайн, разработку и решение реальных задач.
+      </p>
+    </header>
+
+    <ul class="project-cards">
+
+      <li class="project-card">
+        <div class="project-card__shot">
+          <img src="/assets/img/projects/Merra.webp" alt="Сайт Merra Immobiliare"
+               width="2072" height="574" loading="lazy">
+        </div>
+
+        <div class="project-card__body">
+          <p class="project-card__tags">Веб-дизайн · CMS · SEO · Разработка</p>
+          <h3 class="project-card__title">Merra Immobiliare</h3>
+          <p class="project-card__text">
+            Сайт итальянского агентства недвижимости, разработанный под ключ:
+            от структуры и дизайна до CMS. Настроил удобное управление объектами
+            для клиентов агентства, проработал навигацию и подачу недвижимости.
+            Сейчас веду работу над редизайном главной страницы.
+          </p>
+        </div>
+
+        <div class="project-card__actions">
+          <a class="btn btn--ghost" href="/pages/404.html">Редизайн</a>
+          <a class="btn btn--primary" href="/pages/404.html">Подробнее</a>
+        </div>
+      </li>
+
+      <li class="project-card">
+        <div class="project-card__shot">
+          <img src="/assets/img/projects/Studio.webp" alt="Портфолио Nesterenko Studio"
+               width="2072" height="654" loading="lazy">
+        </div>
+
+        <div class="project-card__body">
+          <p class="project-card__tags">Figma · Адаптив · UI/UX · Компоненты</p>
+          <h3 class="project-card__title">Nesterenko Studio</h3>
+          <p class="project-card__text">
+            Концептуальный дизайн портфолио студии: от брендинга до готового сайта.
+            9 страниц, светлая и тёмная версии, адаптивность от 1440 до 2560px.
+            Собрал UI Kit, настроил компоненты и стили&nbsp;— всё для того, чтобы
+            проект масштабировался и выглядел целостно.
+          </p>
+        </div>
+
+        <div class="project-card__actions">
+          <a class="btn btn--primary" href="/pages/404.html">Подробнее</a>
+        </div>
+      </li>
+
+      <li class="project-card">
+        <div class="project-card__shot">
+          <img src="/assets/img/projects/VibeX.webp" alt="Сайт event-агентства VibeX"
+               width="2072" height="680" loading="lazy">
+        </div>
+
+        <div class="project-card__body">
+          <p class="project-card__tags">Веб-дизайн · WordPress · UI/UX · CMS</p>
+          <h3 class="project-card__title">VibeX&nbsp;- Event-агентство</h3>
+          <p class="project-card__text">
+            Сайт для компании, которая занимается организацией мероприятий.
+            Разработал структуру, дизайн и собрал всё на WordPress&nbsp;— с удобным
+            управлением контентом, галереей событий и формой заявки для клиентов.
+          </p>
+        </div>
+
+        <div class="project-card__actions">
+          <a class="btn btn--primary" href="/pages/404.html">Подробнее</a>
+        </div>
+      </li>
+
+    </ul>
+
+    <div class="section-projects__more">
+      <a class="btn btn--ghost btn--icon" href="/pages/projects.html">
+        Смотреть все
+        <span class="btn__icon" aria-hidden="true">
+          <svg viewBox="0 0 20 20" fill="none">
+            <path d="M4 10h11M11 6l4 4-4 4" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+      </a>
+    </div>
+
+  </div>
+</section>
