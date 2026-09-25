@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Neverland — кейс</title>
+  <meta name="description" content="2D-аркада на C++ и SFML: пять уровней, кот в поисках своей половинки и сильный акцент на графику и анимацию.">
+
+  <link rel="icon" href="/assets/img/icons/Favicon.ico" sizes="any">
+  <link rel="canonical" href="https://folvski.github.io/pages/cases/neverland.html">
+
+  <!-- Карточка при отправке ссылки в мессенджеры и соцсети.
+       Адреса здесь абсолютные не случайно: ботам, которые собирают превью,
+       относительный путь разворачивать не от чего. Preview.png специально
+       оставлен PNG — webp понимают не все такие боты. -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Нестеренко Иван">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:url" content="https://folvski.github.io/pages/cases/neverland.html">
+  <meta property="og:title" content="Neverland — кейс">
+  <meta property="og:description" content="2D-аркада на C++ и SFML: пять уровней, кот в поисках своей половинки и сильный акцент на графику и анимацию.">
+  <meta property="og:image" content="https://folvski.github.io/assets/img/icons/Preview.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Портфолио Нестеренко Ивана: дизайн и разработка">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap&subset=cyrillic,latin">
+
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <script type="module" src="/assets/js/main.js"></script>
+</head>
+<body>
+
+  <!-- Шторка перехода между страницами. Должна стоять первой в body. -->
+  <div class="page-fade" aria-hidden="true"></div>
+
+  <div data-include="/views/layout/header.html"></div>
+
+  <main>
+
+    <!-- ===== Первый экран =============================================== -->
+    <section class="section-case-hero section--flush">
+      <div class="container container--wide section-case-hero__inner">
+
+        <div class="badge badge--red">
+          <span class="badge__icon">
+            <img src="/assets/img/badges/Laboratoria.svg" alt="" width="80" height="80">
+          </span>
+          <span class="badge__label">Игра на C++</span>
+        </div>
+
+        <h1 class="section-case-hero__title">Neverland</h1>
+
+        <p class="section-case-hero__text">
+          <strong>2D инди-аркада</strong> на C++ и библиотеке SFML. Пять уровней, главный герой — кот, который ищет свою вторую половинку в затерянном городе. В игре я сделал большой акцент на графику: персонажи и анимации проработаны отдельно. Курсовой проект конца второго курса, участвовал в конкурсе.
+        </p>
+
+        <!-- Если у проекта появится живая ссылка, она встаёт сюда первой кнопкой:
+             <a class="btn btn--primary" href="https://..." target="_blank"
+                rel="noopener noreferrer">Смотреть сайт</a> -->
+        <div class="section-case-hero__actions">
+          <a class="btn btn--primary" href="/pages/projects.html#laboratoria">Все работы</a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===== Тело кейса ================================================== -->
+    <section class="section section-case">
+      <div class="container container--max section-case__inner">
+
+        <!-- --- Моя задача ------------------------------------------------ -->
+        <article class="case-card case-w" data-reveal>
+          <div class="badge">
+            <span class="badge__icon">
+              <img src="/assets/img/badges/brief.svg" alt="" width="80" height="80">
+            </span>
+          </div>
+
+          <h2 class="case-card__title">Моя задача</h2>
+
+          <div class="case-card__text">
+            <p>Это была моя первая игра, и писал я её на C++ почти без движка — SFML даёт только окно, графику и ввод, всё остальное надо делать руками. Задача была:</p>
+
+            <ul class="case-list">
+              <li>написать игровой цикл, физику и столкновения с нуля</li>
+              <li>собрать пять уровней с историей, а не просто с препятствиями</li>
+              <li>сделать графику и анимации уровня, за который не стыдно на конкурсе</li>
+              <li>рассказать простую историю без единой строчки диалога</li>
+            </ul>
+
+            <p>Акцент я сознательно сделал на визуал: в аркаде без сюжета именно графика заставляет доиграть до конца.</p>
+          </div>
+        </article>
+
+        <!-- --- Процесс --------------------------------------------------- -->
+        <article class="case-process" data-reveal>
+          <h2 class="case-process__title">Процесс</h2>
+
+          <ol class="case-steps">
+            <li class="case-step">
+              <div class="case-w--col">
+                <h3 class="case-step__title">Идея и геймплей</h3>
+                <p class="case-step__text">Придумал историю: кот ищет свою половинку в затерянном городе. От неё оттолкнулся в механике — движение, прыжки, препятствия, которые читаются как испытания на пути.</p>
+              </div>
+              <div class="case-step__media">
+                <div class="case-row" style="--cols: 1">
+                  <figure class="case-media">
+                    <img src="/assets/img/Cases/Neverland/frame-1-2.webp"
+                         alt="Neverland — идея и геймплей"
+                         width="2048" height="1469" loading="lazy" decoding="async">
+                  </figure>
+                </div>
+              </div>
+            </li>
+
+            <li class="case-step">
+              <div class="case-w--col">
+                <h3 class="case-step__title">Прототип механик</h3>
+                <p class="case-step__text">Собрал игровой цикл на SFML: обработка ввода, движение, столкновения, состояния уровня. Всё писалось руками, поэтому прототип занял больше времени, чем ожидал.</p>
+              </div>
+              <div class="case-step__media">
+                <div class="case-row" style="--cols: 1">
+                  <figure class="case-media">
+                    <img src="/assets/img/Cases/Neverland/section-2.webp"
+                         alt="Neverland — прототип механик"
+                         width="2400" height="1355" loading="lazy" decoding="async">
+                  </figure>
+                </div>
+              </div>
+            </li>
+
+            <li class="case-step">
+              <div class="case-w--col">
+                <h3 class="case-step__title">Арт и анимация</h3>
+                <p class="case-step__text">Главный этап проекта. Отрисовал персонажей и окружение, собрал покадровые анимации, выстроил параллакс и настроение каждого уровня. Именно за графику игру и заметили.</p>
+              </div>
+              <div class="case-step__media">
+                <div class="case-row" style="--cols: 1">
+                  <figure class="case-media">
+                    <img src="/assets/img/Cases/Neverland/personazh.webp"
+                         alt="Neverland — арт и анимация"
+                         width="2118" height="1073" loading="lazy" decoding="async">
+                  </figure>
+                </div>
+                <div class="case-row" style="--cols: 1">
+                  <figure class="case-media">
+                    <img src="/assets/img/Cases/Neverland/tekstury.webp"
+                         alt="Neverland — арт и анимация"
+                         width="2400" height="1587" loading="lazy" decoding="async">
+                  </figure>
+                </div>
+              </div>
+            </li>
+
+            <li class="case-step">
+              <div class="case-w--col">
+                <h3 class="case-step__title">Уровни</h3>
+                <p class="case-step__text">Спроектировал пять уровней так, чтобы они рассказывали путь героя: от города к финалу, с нарастанием сложности и сменой настроения.</p>
+              </div>
+              <div class="case-step__media">
+                <div class="case-row" style="--cols: 2">
+                  <figure class="case-media">
+                    <img src="/assets/img/Cases/Neverland/image-66.webp"
+                         alt="Neverland — уровни"
+                         width="1919" height="1079" loading="lazy" decoding="async">
+                  </figure>
+                  <figure class="case-media">
+                    <img src="/assets/img/Cases/Neverland/image-67.webp"
+                         alt="Neverland — уровни"
+                         width="1919" height="1077" loading="lazy" decoding="async">
+                  </figure>
+                </div>
+                <div class="case-row" style="--cols: 2">
+                  <figure class="case-media">
+                    <img src="/assets/img/Cases/Neverland/image-68.webp"
+                         alt="Neverland — уровни"
+                         width="1919" height="1079" loading="lazy" decoding="async">
+                  </figure>
+                  <figure class="case-media">
+                    <img src="/assets/img/Cases/Neverland/image-69.webp"
+                         alt="Neverland — уровни"
+                         width="1917" height="1076" loading="lazy" decoding="async">
+                  </figure>
+                </div>
+                <div class="case-row" style="--cols: 2">
+                  <figure class="case-media">
+                    <img src="/assets/img/Cases/Neverland/image-70.webp"
+                         alt="Neverland — уровни"
+                         width="1919" height="1079" loading="lazy" decoding="async">
+                  </figure>
+                  <figure class="case-media">
+                    <img src="/assets/img/Cases/Neverland/image-71.webp"
+                         alt="Neverland — уровни"
+                         width="1919" height="1079" loading="lazy" decoding="async">
+                  </figure>
+                </div>
+                <div class="case-row" style="--cols: 2">
+                  <figure class="case-media">
+                    <img src="/assets/img/Cases/Neverland/image-72.webp"
+                         alt="Neverland — уровни"
+                         width="1919" height="1079" loading="lazy" decoding="async">
+                  </figure>
+                  <figure class="case-media">
+                    <img src="/assets/img/Cases/Neverland/image-73.webp"
+                         alt="Neverland — уровни"
+                         width="1919" height="1079" loading="lazy" decoding="async">
+                  </figure>
+                </div>
+                <div class="case-row" style="--cols: 1">
+                  <figure class="case-media">
+                    <img src="/assets/img/Cases/Neverland/image-74.webp"
+                         alt="Neverland — уровни"
+                         width="1919" height="1079" loading="lazy" decoding="async">
+                  </figure>
+                </div>
+              </div>
+            </li>
+
+            <li class="case-step">
+              <div class="case-w--col">
+                <h3 class="case-step__title">Разработка и сборка</h3>
+                <p class="case-step__text">Довёл логику на C++, связал уровни, меню и переходы, собрал финальную версию и подготовил её к показу на конкурсе.</p>
+              </div>
+              <div class="case-step__media">
+                <div class="case-row" style="--cols: 2">
+                  <figure class="case-media">
+                    <img src="/assets/img/Cases/Neverland/image-65.webp"
+                         alt="Neverland — разработка и сборка"
+                         width="1919" height="1079" loading="lazy" decoding="async">
+                  </figure>
+                  <figure class="case-media">
+                    <img src="/assets/img/Cases/Neverland/image-64.webp"
+                         alt="Neverland — разработка и сборка"
+                         width="1916" height="1072" loading="lazy" decoding="async">
+                  </figure>
+                </div>
+              </div>
+            </li>
+          </ol>
+
+          <div class="case-w">
+            <ul class="tag-list tag-list--center case-process__tags">
+              <li class="tag">GameDev</li>
+              <li class="tag">SFML library</li>
+              <li class="tag">C++</li>
+              <li class="tag">2D</li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- --- Результат -------------------------------------------------- -->
+        <article class="case-result" data-reveal>
+          <h2 class="case-result__title">Результат</h2>
+
+          <div class="case-result__text case-w">
+            <p>Первая моя игра — и первая работа, где графика стала главным аргументом:</p>
+
+            <ul class="case-list">
+              <li>пять уровней с выстроенным путём героя</li>
+              <li>персонажи и анимации, отрисованные вручную</li>
+              <li>игровой цикл, физика и столкновения, написанные на C++ без движка</li>
+              <li>участие в конкурсе — игру отметили именно за визуал</li>
+            </ul>
+
+            <p>После Neverland я перешёл на Unity, но именно здесь понял, из чего игра состоит на самом низком уровне.</p>
+          </div>
+
+          <div class="case-gallery">
+            <div class="case-row" style="--cols: 1">
+              <figure class="case-media">
+                <img src="/assets/img/Cases/Neverland/frame-1707483469.webp"
+                     alt="Neverland — результат"
+                     width="1920" height="1046" loading="lazy" decoding="async">
+              </figure>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+  </main>
+
+  <div data-include="/views/layout/footer.html"></div>
+
+</body>
+</html>

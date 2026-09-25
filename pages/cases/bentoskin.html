@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BentoSkin — кейс</title>
+  <meta name="description" content="Многостраничный e-commerce на C# и ASP.NET: регистрация, личный кабинет, корзина, оплата, фильтрация и скидки.">
+
+  <link rel="icon" href="/assets/img/icons/Favicon.ico" sizes="any">
+  <link rel="canonical" href="https://folvski.github.io/pages/cases/bentoskin.html">
+
+  <!-- Карточка при отправке ссылки в мессенджеры и соцсети.
+       Адреса здесь абсолютные не случайно: ботам, которые собирают превью,
+       относительный путь разворачивать не от чего. Preview.png специально
+       оставлен PNG — webp понимают не все такие боты. -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Нестеренко Иван">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:url" content="https://folvski.github.io/pages/cases/bentoskin.html">
+  <meta property="og:title" content="BentoSkin — кейс">
+  <meta property="og:description" content="Многостраничный e-commerce на C# и ASP.NET: регистрация, личный кабинет, корзина, оплата, фильтрация и скидки.">
+  <meta property="og:image" content="https://folvski.github.io/assets/img/icons/Preview.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Портфолио Нестеренко Ивана: дизайн и разработка">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap&subset=cyrillic,latin">
+
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <script type="module" src="/assets/js/main.js"></script>
+</head>
+<body>
+
+  <!-- Шторка перехода между страницами. Должна стоять первой в body. -->
+  <div class="page-fade" aria-hidden="true"></div>
+
+  <div data-include="/views/layout/header.html"></div>
+
+  <main>
+
+    <!-- ===== Первый экран =============================================== -->
+    <section class="section-case-hero section--flush">
+      <div class="container container--wide section-case-hero__inner">
+
+        <div class="badge badge--violet">
+          <span class="badge__icon">
+            <img src="/assets/img/badges/task.svg" alt="" width="80" height="80">
+          </span>
+          <span class="badge__label">E-commerce на C#</span>
+        </div>
+
+        <h1 class="section-case-hero__title">BentoSkin</h1>
+
+        <p class="section-case-hero__text">
+          Полноценный <strong>e-commerce проект на C#</strong>: многостраничный сайт с регистрацией, личным кабинетом, корзиной и системой оплаты. Реализовал блок статей, скидочную систему и фильтрацию товаров — внутри около 56 скриптов, отвечающих за логику. Курсовой проект на платформе ASP.NET.
+        </p>
+
+        <!-- Если у проекта появится живая ссылка, она встаёт сюда первой кнопкой:
+             <a class="btn btn--primary" href="https://..." target="_blank"
+                rel="noopener noreferrer">Смотреть сайт</a> -->
+        <div class="section-case-hero__actions">
+          <a class="btn btn--primary" href="/pages/projects.html#sites">Все работы</a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===== Тело кейса ================================================== -->
+    <section class="section section-case">
+      <div class="container container--max section-case__inner">
+
+        <!-- --- Моя задача ------------------------------------------------ -->
+        <article class="case-card case-w" data-reveal>
+          <div class="badge">
+            <span class="badge__icon">
+              <img src="/assets/img/badges/brief.svg" alt="" width="80" height="80">
+            </span>
+          </div>
+
+          <h2 class="case-card__title">Моя задача</h2>
+
+          <div class="case-card__text">
+            <p>Здесь задача была обратная обычной: не собрать магазин на готовой CMS, а написать его логику руками. Нужно было сделать проект, в котором:</p>
+
+            <ul class="case-list">
+              <li>пользователь регистрируется, входит и имеет свой личный кабинет</li>
+              <li>товары фильтруются по параметрам, а не просто лежат списком</li>
+              <li>корзина и оформление заказа работают на серверной логике</li>
+              <li>работают скидки, статьи и админская часть</li>
+            </ul>
+
+            <p>То есть весь магазин — от модели данных до интерфейса — надо было спроектировать и написать самому.</p>
+          </div>
+        </article>
+
+        <!-- --- Процесс --------------------------------------------------- -->
+        <article class="case-process" data-reveal>
+          <h2 class="case-process__title">Процесс</h2>
+
+          <ol class="case-steps">
+            <li class="case-step">
+              <div class="case-w--col">
+                <h3 class="case-step__title">Бриф и исследование</h3>
+                <p class="case-step__text">Разобрал, из чего вообще состоит интернет-магазин на уровне логики: пользователи, товары, категории, корзина, заказы, скидки. Расписал сущности и связи между ними до того, как открыл редактор.</p>
+              </div>
+              <div class="case-step__media">
+                <div class="case-row" style="--cols: 1">
+                  <figure class="case-media">
+                    <img src="/assets/img/Cases/BentoSkin/hero.webp"
+                         alt="BentoSkin — бриф и исследование"
+                         width="1554" height="490" loading="lazy" decoding="async">
+                  </figure>
+                </div>
+              </div>
+            </li>
+
+            <li class="case-step">
+              <div class="case-w--col">
+                <h3 class="case-step__title">Прототип и структура</h3>
+                <p class="case-step__text">Спроектировал карту страниц и пользовательские сценарии: гость, авторизованный покупатель, администратор. Каждый сценарий развёл по своим экранам, чтобы интерфейс не превратился в одну универсальную страницу с кучей условий.</p>
+              </div>
+              <div class="case-step__media">
+                <div class="case-row" style="--cols: 2">
+                  <figure class="case-media">
+                    <img src="/assets/img/Cases/BentoSkin/11.webp"
+                         alt="BentoSkin — прототип и структура"
+                         width="1921" height="1974" loading="lazy" decoding="async">
+                  </figure>
+                </div>
+                <div class="case-row" style="--cols: 1">
+                  <figure class="case-media">
+                    <img src="/assets/img/Cases/BentoSkin/12.webp"
+                         alt="BentoSkin — прототип и структура"
+                         width="1921" height="1518" loading="lazy" decoding="async">
+                  </figure>
+                </div>
+              </div>
+            </li>
+
+            <li class="case-step">
+              <div class="case-w--col">
+                <h3 class="case-step__title">Дизайн-концепция</h3>
+                <p class="case-step__text">Сделал визуал сдержанным: акцент на товаре, много воздуха, спокойная сетка. Для учебного проекта было важно, чтобы интерфейс не мешал читать логику работы.</p>
+              </div>
+              <div class="case-step__media">
+                <div class="case-row" style="--cols: 3" data-narrow>
+                  <figure class="case-media">
+                    <img src="/assets/img/Cases/BentoSkin/1.webp"
+                         alt="BentoSkin — дизайн-концепция"
+                         width="1292" height="2400" loading="lazy" decoding="async">
+                  </figure>
+                  <figure class="case-media">
+                    <img src="/assets/img/Cases/BentoSkin/10.webp"
+                         alt="BentoSkin — дизайн-концепция"
+                         width="1631" height="2400" loading="lazy" decoding="async">
+                  </figure>
+                  <figure class="case-media">
+                    <img src="/assets/img/Cases/BentoSkin/9.webp"
+                         alt="BentoSkin — дизайн-концепция"
+                         width="1631" height="2400" loading="lazy" decoding="async">
+                  </figure>
+                </div>
+              </div>
+            </li>
+
+            <li class="case-step">
+              <div class="case-w--col">
+                <h3 class="case-step__title">Адаптив и UI Kit</h3>
+                <p class="case-step__text">Собрал повторяющиеся элементы — карточку товара, фильтры, формы, таблицы заказов — и проработал состояния: пустая корзина, товар не найден, ошибка входа.</p>
+              </div>
+              <div class="case-step__media">
+                <div class="case-row" style="--cols: 3" data-narrow>
+                  <figure class="case-media">
+                    <img src="/assets/img/Cases/BentoSkin/2.webp"
+                         alt="BentoSkin — адаптив и ui kit"
+                         width="1921" height="2306" loading="lazy" decoding="async">
+                  </figure>
+                  <figure class="case-media">
+                    <img src="/assets/img/Cases/BentoSkin/3.webp"
+                         alt="BentoSkin — адаптив и ui kit"
+                         width="1921" height="2062" loading="lazy" decoding="async">
+                  </figure>
+                  <figure class="case-media">
+                    <img src="/assets/img/Cases/BentoSkin/8.webp"
+                         alt="BentoSkin — адаптив и ui kit"
+                         width="1921" height="1729" loading="lazy" decoding="async">
+                  </figure>
+                </div>
+              </div>
+            </li>
+
+            <li class="case-step">
+              <div class="case-w--col">
+                <h3 class="case-step__title">Разработка</h3>
+                <p class="case-step__text">Написал проект на C# под ASP.NET. Регистрация и личный кабинет, корзина и оформление, система оплаты, скидки, фильтрация и блок статей. Логика разложена примерно по 56 скриптам, каждый отвечает за свою часть.</p>
+              </div>
+              <div class="case-step__media">
+                <div class="case-row" style="--cols: 1">
+                  <figure class="case-media">
+                    <img src="/assets/img/Cases/BentoSkin/code.webp"
+                         alt="BentoSkin — разработка"
+                         width="1920" height="1200" loading="lazy" decoding="async">
+                  </figure>
+                </div>
+                <div class="case-row case-row--wide" style="--cols: 1">
+                  <figure class="case-media">
+                    <img src="/assets/img/Cases/BentoSkin/files.webp"
+                         alt="BentoSkin — разработка"
+                         width="1920" height="346" loading="lazy" decoding="async">
+                  </figure>
+                </div>
+                <div class="case-row" style="--cols: 2">
+                  <figure class="case-media">
+                    <img src="/assets/img/Cases/BentoSkin/6.webp"
+                         alt="BentoSkin — разработка"
+                         width="1920" height="1677" loading="lazy" decoding="async">
+                  </figure>
+                </div>
+              </div>
+            </li>
+
+            <li class="case-step">
+              <div class="case-w--col">
+                <h3 class="case-step__title">Тестирование и запуск</h3>
+                <p class="case-step__text">Проверил сценарии по кругу: регистрация, вход, добавление в корзину, оформление, скидка, ошибочные данные. Поправил места, где логика вела себя не так, как ожидал пользователь.</p>
+              </div>
+              <div class="case-step__media">
+                <div class="case-row" style="--cols: 2">
+                  <figure class="case-media">
+                    <img src="/assets/img/Cases/BentoSkin/14.webp"
+                         alt="BentoSkin — тестирование и запуск"
+                         width="1921" height="1977" loading="lazy" decoding="async">
+                  </figure>
+                  <figure class="case-media">
+                    <img src="/assets/img/Cases/BentoSkin/15.webp"
+                         alt="BentoSkin — тестирование и запуск"
+                         width="1921" height="1560" loading="lazy" decoding="async">
+                  </figure>
+                </div>
+              </div>
+            </li>
+          </ol>
+
+          <div class="case-w">
+            <ul class="tag-list tag-list--center case-process__tags">
+              <li class="tag">Веб-дизайн</li>
+              <li class="tag">E-commerce</li>
+              <li class="tag">C#</li>
+              <li class="tag">UI/UX</li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- --- Результат -------------------------------------------------- -->
+        <article class="case-result" data-reveal>
+          <h2 class="case-result__title">Результат</h2>
+
+          <div class="case-result__text case-w">
+            <p>Получился работающий многостраничный магазин, написанный с нуля. Что дал проект:</p>
+
+            <ul class="case-list">
+              <li>понимание, как e-commerce устроен изнутри, а не на уровне плагинов</li>
+              <li>практика проектирования данных: пользователи, товары, заказы и связи между ними</li>
+              <li>опыт серверной логики на C# и ASP.NET</li>
+              <li>привычка разводить сценарии по ролям, а не сваливать всё в одну страницу</li>
+            </ul>
+
+            <p>После этого проекта я стал иначе рисовать макеты интернет-магазинов: заранее видно, какой экран во что превратится в коде.</p>
+          </div>
+
+          <div class="case-gallery">
+            <div class="case-row" style="--cols: 3" data-narrow>
+              <figure class="case-media">
+                <img src="/assets/img/Cases/BentoSkin/4.webp"
+                     alt="BentoSkin — результат"
+                     width="1739" height="2400" loading="lazy" decoding="async">
+              </figure>
+              <figure class="case-media">
+                <img src="/assets/img/Cases/BentoSkin/5.webp"
+                     alt="BentoSkin — результат"
+                     width="1921" height="2362" loading="lazy" decoding="async">
+              </figure>
+              <figure class="case-media">
+                <img src="/assets/img/Cases/BentoSkin/7.webp"
+                     alt="BentoSkin — результат"
+                     width="1921" height="1974" loading="lazy" decoding="async">
+              </figure>
+            </div>
+            <div class="case-row" style="--cols: 2">
+              <figure class="case-media">
+                <img src="/assets/img/Cases/BentoSkin/13.webp"
+                     alt="BentoSkin — результат"
+                     width="1921" height="2132" loading="lazy" decoding="async">
+              </figure>
+              <figure class="case-media">
+                <img src="/assets/img/Cases/BentoSkin/16.webp"
+                     alt="BentoSkin — результат"
+                     width="1921" height="2123" loading="lazy" decoding="async">
+              </figure>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+  </main>
+
+  <div data-include="/views/layout/footer.html"></div>
+
+</body>
+</html>

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BestClean Grodno — кейс</title>
+  <meta name="description" content="Макет сайта клининговой компании в Гродно: одна цель — объяснить услугу и получить заявку. Bento UI.">
+
+  <link rel="icon" href="/assets/img/icons/Favicon.ico" sizes="any">
+  <link rel="canonical" href="https://folvski.github.io/pages/cases/bestclean.html">
+
+  <!-- Карточка при отправке ссылки в мессенджеры и соцсети.
+       Адреса здесь абсолютные не случайно: ботам, которые собирают превью,
+       относительный путь разворачивать не от чего. Preview.png специально
+       оставлен PNG — webp понимают не все такие боты. -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Нестеренко Иван">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:url" content="https://folvski.github.io/pages/cases/bestclean.html">
+  <meta property="og:title" content="BestClean Grodno — кейс">
+  <meta property="og:description" content="Макет сайта клининговой компании в Гродно: одна цель — объяснить услугу и получить заявку. Bento UI.">
+  <meta property="og:image" content="https://folvski.github.io/assets/img/icons/Preview.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Портфолио Нестеренко Ивана: дизайн и разработка">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap&subset=cyrillic,latin">
+
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <script type="module" src="/assets/js/main.js"></script>
+</head>
+<body>
+
+  <!-- Шторка перехода между страницами. Должна стоять первой в body. -->
+  <div class="page-fade" aria-hidden="true"></div>
+
+  <div data-include="/views/layout/header.html"></div>
+
+  <main>
+
+    <!-- ===== Первый экран =============================================== -->
+    <section class="section-case-hero section--flush">
+      <div class="container container--wide section-case-hero__inner">
+
+        <div class="badge badge--magenta">
+          <span class="badge__icon">
+            <img src="/assets/img/badges/process.svg" alt="" width="80" height="80">
+          </span>
+          <span class="badge__label">Коммерческий макет</span>
+        </div>
+
+        <h1 class="section-case-hero__title">BestClean Grodno</h1>
+
+        <p class="section-case-hero__text">
+          Макет сайта <strong>клининговой компании в Гродно</strong>, где всё подчинено одной цели: быстро и понятно объяснить услугу, а затем получить заявку. Сделан в стиле Bento UI и в фирменной стилистике самой компании.
+        </p>
+
+        <!-- Если у проекта появится живая ссылка, она встаёт сюда первой кнопкой:
+             <a class="btn btn--primary" href="https://..." target="_blank"
+                rel="noopener noreferrer">Смотреть сайт</a> -->
+        <div class="section-case-hero__actions">
+          <a class="btn btn--primary" href="/pages/projects.html#uiux">Все работы</a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===== Тело кейса ================================================== -->
+    <section class="section section-case">
+      <div class="container container--max section-case__inner">
+
+        <!-- --- Моя задача ------------------------------------------------ -->
+        <article class="case-card case-w" data-reveal>
+          <div class="badge">
+            <span class="badge__icon">
+              <img src="/assets/img/badges/brief.svg" alt="" width="80" height="80">
+            </span>
+          </div>
+
+          <h2 class="case-card__title">Моя задача</h2>
+
+          <div class="case-card__text">
+            <p>У клининга короткий путь принятия решения: человек хочет понять, что именно уберут, сколько это стоит и как быстро приедут. Всё остальное на сайте — помеха. Задача была:</p>
+
+            <ul class="case-list">
+              <li>уложить услуги в структуру, которую видно с одного экрана</li>
+              <li>сделать цену и объём работ понятными без звонка</li>
+              <li>привести к форме заявки с любого места страницы</li>
+              <li>остаться в фирменных цветах компании, а не придумывать бренд заново</li>
+            </ul>
+
+            <p>Компания уже работала и имела свою стилистику — её надо было сохранить, но собрать в современную подачу.</p>
+          </div>
+        </article>
+
+        <!-- --- Процесс --------------------------------------------------- -->
+        <article class="case-process" data-reveal>
+          <h2 class="case-process__title">Процесс</h2>
+
+          <ol class="case-steps">
+            <li class="case-step">
+              <div class="case-w--col">
+                <h3 class="case-step__title">Бриф и исследование</h3>
+                <p class="case-step__text">Разобрал, как выбирают клининг: сравнивают цену, смотрят состав услуги и отзывы, звонят. Посмотрел сайты конкурентов по городу и увидел общую проблему — прайс спрятан, состав услуги описан общими словами. Решил строить страницу от ясности.</p>
+              </div>
+            </li>
+
+            <li class="case-step">
+              <div class="case-w--col">
+                <h3 class="case-step__title">Прототип и структура</h3>
+                <p class="case-step__text">Собрал структуру: первый экран с сутью и заявкой, услуги плитками, состав каждой услуги, цены, отзывы, контакты. Вынес форму так, чтобы к ней приводил каждый блок.</p>
+              </div>
+              <div class="case-step__media">
+                <div class="case-row" style="--cols: 2">
+                  <figure class="case-media">
+                    <img src="/assets/img/Cases/CleanGrodno/3-service.webp"
+                         alt="BestClean Grodno — прототип и структура"
+                         width="1920" height="1248" loading="lazy" decoding="async">
+                  </figure>
+                  <figure class="case-media">
+                    <img src="/assets/img/Cases/CleanGrodno/5-work.webp"
+                         alt="BestClean Grodno — прототип и структура"
+                         width="1920" height="1145" loading="lazy" decoding="async">
+                  </figure>
+                </div>
+              </div>
+            </li>
+
+            <li class="case-step">
+              <div class="case-w--col">
+                <h3 class="case-step__title">Дизайн-концепция</h3>
+                <p class="case-step__text">Выбрал Bento UI: услуги ложатся в плитки разного размера, и сразу видно, что главное, а что дополнительное. Сохранил фирменные цвета компании, добавил воздух и крупную типографику — сайт стал современнее, но узнаваемым.</p>
+              </div>
+              <div class="case-step__media">
+                <div class="case-row case-row--wide" style="--cols: 1">
+                  <figure class="case-media">
+                    <img src="/assets/img/Cases/CleanGrodno/1-hero.webp"
+                         alt="BestClean Grodno — дизайн-концепция"
+                         width="1920" height="733" loading="lazy" decoding="async">
+                  </figure>
+                </div>
+                <div class="case-row case-row--wide" style="--cols: 1">
+                  <figure class="case-media">
+                    <img src="/assets/img/Cases/CleanGrodno/1-hero-1.webp"
+                         alt="BestClean Grodno — дизайн-концепция"
+                         width="1920" height="733" loading="lazy" decoding="async">
+                  </figure>
+                </div>
+                <div class="case-row" style="--cols: 1">
+                  <figure class="case-media">
+                    <img src="/assets/img/Cases/CleanGrodno/2-about.webp"
+                         alt="BestClean Grodno — дизайн-концепция"
+                         width="1920" height="972" loading="lazy" decoding="async">
+                  </figure>
+                </div>
+              </div>
+            </li>
+
+            <li class="case-step">
+              <div class="case-w--col">
+                <h3 class="case-step__title">Адаптив и UI Kit</h3>
+                <p class="case-step__text">Проработал разрешения: на телефоне бенто-сетка разворачивается в одну колонку без потери приоритетов. Собрал компоненты — плитку услуги, карточку цены, форму, отзыв — со всеми состояниями.</p>
+              </div>
+              <div class="case-step__media">
+                <div class="case-row" style="--cols: 1">
+                  <figure class="case-media">
+                    <img src="/assets/img/Cases/CleanGrodno/7-pluses.webp"
+                         alt="BestClean Grodno — адаптив и ui kit"
+                         width="1920" height="1013" loading="lazy" decoding="async">
+                  </figure>
+                </div>
+                <div class="case-row" style="--cols: 1">
+                  <figure class="case-media">
+                    <img src="/assets/img/Cases/CleanGrodno/10-form.webp"
+                         alt="BestClean Grodno — адаптив и ui kit"
+                         width="1920" height="1008" loading="lazy" decoding="async">
+                  </figure>
+                </div>
+                <div class="case-row case-row--wide" style="--cols: 1">
+                  <figure class="case-media">
+                    <img src="/assets/img/Cases/CleanGrodno/11-footer.webp"
+                         alt="BestClean Grodno — адаптив и ui kit"
+                         width="1920" height="615" loading="lazy" decoding="async">
+                  </figure>
+                </div>
+              </div>
+            </li>
+          </ol>
+
+          <div class="case-w">
+            <ul class="tag-list tag-list--center case-process__tags">
+              <li class="tag">UI/UX</li>
+              <li class="tag">Figma</li>
+              <li class="tag">Bento UI</li>
+              <li class="tag">Веб-дизайн</li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- --- Результат -------------------------------------------------- -->
+        <article class="case-result" data-reveal>
+          <h2 class="case-result__title">Результат</h2>
+
+          <div class="case-result__text case-w">
+            <p>Получился макет, который решает ровно одну задачу — довести до заявки. Итог:</p>
+
+            <ul class="case-list">
+              <li>услуги и их состав читаются без звонка менеджеру</li>
+              <li>бенто-сетка расставила приоритеты: главное крупнее, дополнительное мельче</li>
+              <li>фирменные цвета сохранены, подача стала современнее</li>
+              <li>макет собран на компонентах и готов к передаче в вёрстку</li>
+            </ul>
+          </div>
+
+          <div class="case-gallery">
+            <div class="case-row" style="--cols: 2">
+              <figure class="case-media case-media--tall">
+                <img src="/assets/img/Cases/CleanGrodno/bestclean-grodno-dark-version.webp"
+                     alt="BestClean Grodno — результат"
+                     width="442" height="2400" loading="lazy" decoding="async">
+              </figure>
+              <figure class="case-media case-media--tall">
+                <img src="/assets/img/Cases/CleanGrodno/bestclean-grodno-light-version-1.webp"
+                     alt="BestClean Grodno — результат"
+                     width="442" height="2400" loading="lazy" decoding="async">
+              </figure>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+  </main>
+
+  <div data-include="/views/layout/footer.html"></div>
+
+</body>
+</html>

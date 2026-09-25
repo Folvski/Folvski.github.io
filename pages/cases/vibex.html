@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>VibeX — кейс</title>
+  <meta name="description" content="Сайт event-агентства на WordPress: структура, дизайн, галерея мероприятий и форма заявки.">
+
+  <link rel="icon" href="/assets/img/icons/Favicon.ico" sizes="any">
+  <link rel="canonical" href="https://folvski.github.io/pages/cases/vibex.html">
+
+  <!-- Карточка при отправке ссылки в мессенджеры и соцсети.
+       Адреса здесь абсолютные не случайно: ботам, которые собирают превью,
+       относительный путь разворачивать не от чего. Preview.png специально
+       оставлен PNG — webp понимают не все такие боты. -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Нестеренко Иван">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:url" content="https://folvski.github.io/pages/cases/vibex.html">
+  <meta property="og:title" content="VibeX — кейс">
+  <meta property="og:description" content="Сайт event-агентства на WordPress: структура, дизайн, галерея мероприятий и форма заявки.">
+  <meta property="og:image" content="https://folvski.github.io/assets/img/icons/Preview.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Портфолио Нестеренко Ивана: дизайн и разработка">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap&subset=cyrillic,latin">
+
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <script type="module" src="/assets/js/main.js"></script>
+</head>
+<body>
+
+  <!-- Шторка перехода между страницами. Должна стоять первой в body. -->
+  <div class="page-fade" aria-hidden="true"></div>
+
+  <div data-include="/views/layout/header.html"></div>
+
+  <main>
+
+    <!-- ===== Первый экран =============================================== -->
+    <section class="section-case-hero section--flush">
+      <div class="container container--wide section-case-hero__inner">
+
+        <div class="badge badge--violet">
+          <span class="badge__icon">
+            <img src="/assets/img/badges/task.svg" alt="" width="80" height="80">
+          </span>
+          <span class="badge__label">Сайт event-агентства</span>
+        </div>
+
+        <h1 class="section-case-hero__title">VibeX</h1>
+
+        <p class="section-case-hero__text">
+          Сайт для компании, которая занимается <strong>организацией мероприятий</strong>. Разработал структуру и дизайн, собрал всё на WordPress: удобное управление контентом, галерею проведённых событий и форму заявки. Проект я делал в ходе практики в колледже.
+        </p>
+
+        <!-- Если у проекта появится живая ссылка, она встаёт сюда первой кнопкой:
+             <a class="btn btn--primary" href="https://..." target="_blank"
+                rel="noopener noreferrer">Смотреть сайт</a> -->
+        <div class="section-case-hero__actions">
+          <a class="btn btn--primary" href="/pages/projects.html#sites">Все работы</a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===== Тело кейса ================================================== -->
+    <section class="section section-case">
+      <div class="container container--max section-case__inner">
+
+        <!-- --- Моя задача ------------------------------------------------ -->
+        <article class="case-card case-w" data-reveal>
+          <div class="badge">
+            <span class="badge__icon">
+              <img src="/assets/img/badges/brief.svg" alt="" width="80" height="80">
+            </span>
+          </div>
+
+          <h2 class="case-card__title">Моя задача</h2>
+
+          <div class="case-card__text">
+            <p>Event-агентству нужен был сайт, который продаёт не услугу, а атмосферу. Люди выбирают организатора глазами: смотрят, как выглядели прошлые мероприятия, и только потом читают. Значит, сайт должен был:</p>
+
+            <ul class="case-list">
+              <li>показывать прошедшие мероприятия так, чтобы их хотелось рассматривать</li>
+              <li>коротко и без канцелярита объяснять, что агентство умеет</li>
+              <li>приводить к форме заявки с любой страницы</li>
+              <li>наполняться силами самого агентства, без разработчика</li>
+            </ul>
+
+            <p>Отдельная сложность: контент у агентства появляется после каждого мероприятия, то есть галерея должна расти постоянно и не разваливаться от новых фотографий.</p>
+          </div>
+        </article>
+
+        <!-- --- Процесс --------------------------------------------------- -->
+        <article class="case-process" data-reveal>
+          <h2 class="case-process__title">Процесс</h2>
+
+          <ol class="case-steps">
+            <li class="case-step">
+              <div class="case-w--col">
+                <h3 class="case-step__title">Бриф и исследование</h3>
+                <p class="case-step__text">Разобрал, как выбирают организатора мероприятий: смотрят портфолио, ищут похожий формат, оценивают масштаб. Посмотрел сайты агентств и увидел общую беду — много текста и мало доказательств. Решил строить сайт вокруг галереи.</p>
+              </div>
+            </li>
+
+            <li class="case-step">
+              <div class="case-w--col">
+                <h3 class="case-step__title">Прототип и структура</h3>
+                <p class="case-step__text">Собрал структуру: главная с сильным первым экраном, услуги, галерея мероприятий, о команде, контакты с формой. Продумал сценарий: человек попадает на сайт, листает события, узнаёт формат и оставляет заявку — без лишних переходов.</p>
+              </div>
+              <div class="case-step__media">
+                <div class="case-row" style="--cols: 1">
+                  <figure class="case-media">
+                    <img src="/assets/img/Cases/VibeX/prototype.webp"
+                         alt="VibeX — прототип и структура"
+                         width="1590" height="841" loading="lazy" decoding="async">
+                  </figure>
+                </div>
+              </div>
+            </li>
+
+            <li class="case-step">
+              <div class="case-w--col">
+                <h3 class="case-step__title">Дизайн-концепция</h3>
+                <p class="case-step__text">Сделал визуал ярким и живым, но так, чтобы он не спорил с фотографиями. Крупные обложки событий, воздух между блоками, акцентный цвет только на кнопках и активных элементах.</p>
+              </div>
+              <div class="case-step__media">
+                <div class="case-row" style="--cols: 2">
+                  <figure class="case-media">
+                    <img src="/assets/img/Cases/VibeX/section-section1.webp"
+                         alt="VibeX — дизайн-концепция"
+                         width="1425" height="900" loading="lazy" decoding="async">
+                  </figure>
+                  <figure class="case-media">
+                    <img src="/assets/img/Cases/VibeX/div.webp"
+                         alt="VibeX — дизайн-концепция"
+                         width="1423" height="1107" loading="lazy" decoding="async">
+                  </figure>
+                </div>
+                <div class="case-row" style="--cols: 2">
+                  <figure class="case-media">
+                    <img src="/assets/img/Cases/VibeX/frame-37-1.webp"
+                         alt="VibeX — дизайн-концепция"
+                         width="1043" height="1043" loading="lazy" decoding="async">
+                  </figure>
+                </div>
+              </div>
+            </li>
+
+            <li class="case-step">
+              <div class="case-w--col">
+                <h3 class="case-step__title">Адаптив и UI Kit</h3>
+                <p class="case-step__text">Проработал разрешения от телефона до большого монитора. Собрал компоненты: карточку мероприятия, блок услуги, форму, шапку и подвал — чтобы новые страницы собирались быстро.</p>
+              </div>
+              <div class="case-step__media">
+                <div class="case-row" style="--cols: 2">
+                  <figure class="case-media">
+                    <img src="/assets/img/Cases/VibeX/gideline.webp"
+                         alt="VibeX — адаптив и ui kit"
+                         width="1236" height="2400" loading="lazy" decoding="async">
+                  </figure>
+                </div>
+                <div class="case-row" style="--cols: 3" data-narrow>
+                  <figure class="case-media case-media--tall">
+                    <img src="/assets/img/Cases/VibeX/mobile.webp"
+                         alt="VibeX — адаптив и ui kit"
+                         width="114" height="2400" loading="lazy" decoding="async">
+                  </figure>
+                  <figure class="case-media case-media--tall">
+                    <img src="/assets/img/Cases/VibeX/tablet.webp"
+                         alt="VibeX — адаптив и ui kit"
+                         width="266" height="2400" loading="lazy" decoding="async">
+                  </figure>
+                  <figure class="case-media case-media--tall">
+                    <img src="/assets/img/Cases/VibeX/body.webp"
+                         alt="VibeX — адаптив и ui kit"
+                         width="532" height="2400" loading="lazy" decoding="async">
+                  </figure>
+                </div>
+              </div>
+            </li>
+
+            <li class="case-step">
+              <div class="case-w--col">
+                <h3 class="case-step__title">Разработка</h3>
+                <p class="case-step__text">Собрал сайт на WordPress. Галерея мероприятий сделана отдельным типом записей: агентство добавляет событие, загружает фотографии, и карточка сама встаёт в сетку. Форма заявки отправляет письмо и сохраняет обращение в админке.</p>
+              </div>
+              <div class="case-step__media">
+                <div class="case-row" style="--cols: 2">
+                  <figure class="case-media">
+                    <img src="/assets/img/Cases/VibeX/2.webp"
+                         alt="VibeX — разработка"
+                         width="1920" height="2090" loading="lazy" decoding="async">
+                  </figure>
+                </div>
+                <div class="case-row" style="--cols: 2">
+                  <figure class="case-media case-media--tall">
+                    <img src="/assets/img/Cases/VibeX/page.webp"
+                         alt="VibeX — разработка"
+                         width="722" height="2400" loading="lazy" decoding="async">
+                  </figure>
+                </div>
+              </div>
+            </li>
+
+            <li class="case-step">
+              <div class="case-w--col">
+                <h3 class="case-step__title">Тестирование и запуск</h3>
+                <p class="case-step__text">Проверил вёрстку на устройствах, прогнал формы, исправил мелочи в отступах и состояниях. Показал, как добавлять события и менять тексты.</p>
+              </div>
+            </li>
+          </ol>
+
+          <div class="case-w">
+            <ul class="tag-list tag-list--center case-process__tags">
+              <li class="tag">Веб-дизайн</li>
+              <li class="tag">WordPress</li>
+              <li class="tag">UI/UX</li>
+              <li class="tag">CMS</li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- --- Результат -------------------------------------------------- -->
+        <article class="case-result" data-reveal>
+          <h2 class="case-result__title">Результат</h2>
+
+          <div class="case-result__text case-w">
+            <p>Агентство получило сайт, который можно вести самостоятельно. Что получилось:</p>
+
+            <ul class="case-list">
+              <li>галерея мероприятий работает как главный аргумент и пополняется без разработчика</li>
+              <li>форма заявки собирает обращения в одном месте</li>
+              <li>структура выдерживает рост: новые события не ломают сетку</li>
+              <li>дизайн и вёрстка сделаны одним человеком, поэтому макет и код не разошлись</li>
+            </ul>
+
+            <p>Для меня это был первый полный цикл — от брифа до запуска, — пройденный целиком в рамках учебной практики.</p>
+          </div>
+
+          <div class="case-gallery">
+            <div class="case-row case-row--wide" style="--cols: 1">
+              <figure class="case-media">
+                <img src="/assets/img/Cases/VibeX/hero.webp"
+                     alt="VibeX — результат"
+                     width="2400" height="950" loading="lazy" decoding="async">
+              </figure>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+  </main>
+
+  <div data-include="/views/layout/footer.html"></div>
+
+</body>
+</html>

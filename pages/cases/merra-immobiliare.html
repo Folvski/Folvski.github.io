@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Merra Immobiliare — кейс</title>
+  <meta name="description" content="Сайт итальянского агентства недвижимости под ключ: структура, дизайн, WordPress и настройка управления объектами.">
+
+  <link rel="icon" href="/assets/img/icons/Favicon.ico" sizes="any">
+  <link rel="canonical" href="https://folvski.github.io/pages/cases/merra-immobiliare.html">
+
+  <!-- Карточка при отправке ссылки в мессенджеры и соцсети.
+       Адреса здесь абсолютные не случайно: ботам, которые собирают превью,
+       относительный путь разворачивать не от чего. Preview.png специально
+       оставлен PNG — webp понимают не все такие боты. -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Нестеренко Иван">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:url" content="https://folvski.github.io/pages/cases/merra-immobiliare.html">
+  <meta property="og:title" content="Merra Immobiliare — кейс">
+  <meta property="og:description" content="Сайт итальянского агентства недвижимости под ключ: структура, дизайн, WordPress и настройка управления объектами.">
+  <meta property="og:image" content="https://folvski.github.io/assets/img/icons/Preview.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Портфолио Нестеренко Ивана: дизайн и разработка">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap&subset=cyrillic,latin">
+
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <script type="module" src="/assets/js/main.js"></script>
+</head>
+<body>
+
+  <!-- Шторка перехода между страницами. Должна стоять первой в body. -->
+  <div class="page-fade" aria-hidden="true"></div>
+
+  <div data-include="/views/layout/header.html"></div>
+
+  <main>
+
+    <!-- ===== Первый экран =============================================== -->
+    <section class="section-case-hero section--flush">
+      <div class="container container--wide section-case-hero__inner">
+
+        <div class="badge badge--violet">
+          <span class="badge__icon">
+            <img src="/assets/img/badges/task.svg" alt="" width="80" height="80">
+          </span>
+          <span class="badge__label">Сайт недвижимости</span>
+        </div>
+
+        <h1 class="section-case-hero__title">Merra Immobiliare</h1>
+
+        <p class="section-case-hero__text">
+          Сайт <strong>итальянского агентства недвижимости</strong>, разработанный под ключ: от структуры и дизайна до CMS. Настроил удобное управление объектами для клиентов агентства, проработал навигацию и подачу недвижимости. Сейчас веду работу над <a class="text-link" href="/pages/cases/merra-redesign.html">редизайном</a> главной страницы.
+        </p>
+
+        <!-- Если у проекта появится живая ссылка, она встаёт сюда первой кнопкой:
+             <a class="btn btn--primary" href="https://..." target="_blank"
+                rel="noopener noreferrer">Смотреть сайт</a> -->
+        <div class="section-case-hero__actions">
+          <a class="btn btn--primary" href="/pages/projects.html#sites">Все работы</a>
+
+          <a class="btn btn--ghost btn--icon" href="/pages/cases/merra-redesign.html">
+            Кейс с редизайном
+            <span class="btn__icon" aria-hidden="true">
+              <svg viewBox="0 0 20 20" fill="none">
+            <path d="M4 10h11M11 6l4 4-4 4" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+            </span>
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===== Тело кейса ================================================== -->
+    <section class="section section-case">
+      <div class="container container--max section-case__inner">
+
+        <!-- --- Моя задача ------------------------------------------------ -->
+        <article class="case-card case-w" data-reveal>
+          <div class="badge">
+            <span class="badge__icon">
+              <img src="/assets/img/badges/brief.svg" alt="" width="80" height="80">
+            </span>
+          </div>
+
+          <h2 class="case-card__title">Моя задача</h2>
+
+          <div class="case-card__text">
+            <p>Клиент — агентство недвижимости из Италии — обратился с запросом на создание сайта для продажи и аренды жилья. Нужен был ресурс, который:</p>
+
+            <ul class="case-list">
+              <li>понятно и красиво показывает объекты недвижимости</li>
+              <li>позволяет сотрудникам агентства самостоятельно добавлять и редактировать объекты</li>
+              <li>легко находится в поиске по запросам, связанным с недвижимостью в Италии</li>
+              <li>работает на итальянскую аудиторию и вызывает доверие</li>
+            </ul>
+
+            <p>Отдельный запрос — удобная админ-панель, чтобы контентом занимались сотрудники, а не разработчик.</p>
+          </div>
+        </article>
+
+        <!-- --- Процесс --------------------------------------------------- -->
+        <article class="case-process" data-reveal>
+          <h2 class="case-process__title">Процесс</h2>
+
+          <ol class="case-steps">
+            <li class="case-step">
+              <div class="case-w--col">
+                <h3 class="case-step__title">Бриф и исследование</h3>
+                <p class="case-step__text">Изучил конкурентов на итальянском рынке недвижимости: как устроены каталоги, какие фильтры используют, как подают фотографии и описания. Собрал структуру сайта: главная, каталог, карточка объекта, о компании, контакты.</p>
+              </div>
+            </li>
+
+            <li class="case-step">
+              <div class="case-w--col">
+                <h3 class="case-step__title">Прототип и структура</h3>
+                <p class="case-step__text">Собрал логику будущего сайта: навигацию, блоки и пользовательские сценарии. Создал wireframe с акцентом на каталог и карточки объектов — именно через них идёт весь путь клиента.</p>
+              </div>
+              <div class="case-step__media">
+                <div class="case-row" style="--cols: 3" data-narrow>
+                  <figure class="case-media">
+                    <img src="/assets/img/Cases/MerraImmobiliare/3.webp"
+                         alt="Merra Immobiliare — прототип и структура"
+                         width="342" height="507" loading="lazy" decoding="async">
+                  </figure>
+                  <figure class="case-media">
+                    <img src="/assets/img/Cases/MerraImmobiliare/4.webp"
+                         alt="Merra Immobiliare — прототип и структура"
+                         width="342" height="591" loading="lazy" decoding="async">
+                  </figure>
+                  <figure class="case-media">
+                    <img src="/assets/img/Cases/MerraImmobiliare/main4.webp"
+                         alt="Merra Immobiliare — прототип и структура"
+                         width="271" height="338" loading="lazy" decoding="async">
+                  </figure>
+                </div>
+              </div>
+            </li>
+
+            <li class="case-step">
+              <div class="case-w--col">
+                <h3 class="case-step__title">Дизайн-концепция</h3>
+                <p class="case-step__text">Разработал визуальный стиль: чистый, спокойный, с акцентом на фотографии недвижимости. Подобрал типографику и цвета. Собрал ключевые экраны — главную, каталог и карточку объекта.</p>
+              </div>
+              <div class="case-step__media">
+                <div class="case-row" style="--cols: 1">
+                  <figure class="case-media">
+                    <img src="/assets/img/Cases/MerraImmobiliare/1.webp"
+                         alt="Merra Immobiliare — дизайн-концепция"
+                         width="1919" height="1024" loading="lazy" decoding="async">
+                  </figure>
+                </div>
+                <div class="case-row" style="--cols: 1">
+                  <figure class="case-media">
+                    <img src="/assets/img/Cases/MerraImmobiliare/logo.webp"
+                         alt="Merra Immobiliare — дизайн-концепция"
+                         width="1200" height="630" loading="lazy" decoding="async">
+                  </figure>
+                </div>
+              </div>
+            </li>
+
+            <li class="case-step">
+              <div class="case-w--col">
+                <h3 class="case-step__title">Адаптив и UI Kit</h3>
+                <p class="case-step__text">Проработал все разрешения и состояния. Собрал компонентную библиотеку для масштабирования: карточки, фильтры, формы, навигацию — чтобы новые страницы собирались из готовых деталей.</p>
+              </div>
+              <div class="case-step__media">
+                <div class="case-row" style="--cols: 2">
+                  <figure class="case-media">
+                    <img src="/assets/img/Cases/MerraImmobiliare/main1.webp"
+                         alt="Merra Immobiliare — адаптив и ui kit"
+                         width="1920" height="2400" loading="lazy" decoding="async">
+                  </figure>
+                  <figure class="case-media">
+                    <img src="/assets/img/Cases/MerraImmobiliare/main2.webp"
+                         alt="Merra Immobiliare — адаптив и ui kit"
+                         width="1920" height="2400" loading="lazy" decoding="async">
+                  </figure>
+                </div>
+              </div>
+            </li>
+
+            <li class="case-step">
+              <div class="case-w--col">
+                <h3 class="case-step__title">Разработка</h3>
+                <p class="case-step__text">Собрал сайт на WordPress с кастомной темой. Настроил управление объектами через админку: добавление, редактирование, загрузка фото, статусы «продано» и «в продаже». Подключил SEO-плагины и настроил мета-теги для каждой страницы.</p>
+              </div>
+              <div class="case-step__media">
+                <div class="case-row case-row--wide" style="--cols: 1">
+                  <figure class="case-media">
+                    <img src="/assets/img/Cases/MerraImmobiliare/banner.webp"
+                         alt="Merra Immobiliare — разработка"
+                         width="1920" height="794" loading="lazy" decoding="async">
+                  </figure>
+                </div>
+              </div>
+            </li>
+
+            <li class="case-step">
+              <div class="case-w--col">
+                <h3 class="case-step__title">Тестирование и запуск</h3>
+                <p class="case-step__text">Проверил сайт на всех устройствах, исправил детали и запустил проект. Передал клиенту файлы и документацию по управлению контентом.</p>
+              </div>
+            </li>
+          </ol>
+
+          <div class="case-w">
+            <ul class="tag-list tag-list--center case-process__tags">
+              <li class="tag">CMS</li>
+              <li class="tag">SEO</li>
+              <li class="tag">Разработка</li>
+              <li class="tag">Веб-дизайн</li>
+              <li class="tag">UI/UX</li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- --- Результат -------------------------------------------------- -->
+        <article class="case-result" data-reveal>
+          <h2 class="case-result__title">Результат</h2>
+
+          <div class="case-result__text case-w">
+            <p>Сайт работает до сих пор и приносит клиентов агентству. Что получилось:</p>
+
+            <ul class="case-list">
+              <li>агентство получило рабочий сайт с каталогом недвижимости и удобной админкой</li>
+              <li>сотрудники самостоятельно управляют объектами без разработчика</li>
+              <li>сайт оптимизирован под поиск и находит итальянскую аудиторию</li>
+              <li>структура и подача объектов вызывают доверие у клиентов</li>
+            </ul>
+
+            <p><strong>Сейчас:</strong> веду редизайн сайта в Figma на компонентах и автолейаутах — обновляю визуал, улучшаю навигацию и делаю подачу объектов ещё понятнее.</p>
+          </div>
+
+          <div class="case-gallery">
+            <div class="case-row case-row--wide" style="--cols: 1">
+              <figure class="case-media">
+                <img src="/assets/img/Cases/MerraImmobiliare/hero.webp"
+                     alt="Merra Immobiliare — результат"
+                     width="2072" height="574" loading="lazy" decoding="async">
+              </figure>
+            </div>
+            <div class="case-row" style="--cols: 2">
+              <figure class="case-media">
+                <img src="/assets/img/Cases/MerraImmobiliare/main3.webp"
+                     alt="Merra Immobiliare — результат"
+                     width="1920" height="2400" loading="lazy" decoding="async">
+              </figure>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+  </main>
+
+  <div data-include="/views/layout/footer.html"></div>
+
+</body>
+</html>

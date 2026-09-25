@@ -1,30 +1,146 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Карта сайта. Шесть страниц; заглушки (404 и шаблон кейса) сюда не входят.
-     Добавляя страницу, допиши сюда такой же блок <url> и поправь lastmod. -->
+<!-- Карта сайта: четыре основные страницы и 19 кейсов.
+     Заглушки (404 и pages/case.html — пустой шаблон кейса) сюда не входят.
+     Добавляя страницу, допиши такой же блок <url> и поправь lastmod. -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
   <url>
     <loc>https://folvski.github.io/</loc>
-    <lastmod>2026-09-23</lastmod>
+    <lastmod>2026-09-24</lastmod>
     <priority>1.0</priority>
   </url>
 
   <url>
     <loc>https://folvski.github.io/pages/projects.html</loc>
-    <lastmod>2026-09-23</lastmod>
+    <lastmod>2026-09-24</lastmod>
     <priority>0.9</priority>
   </url>
 
   <url>
     <loc>https://folvski.github.io/pages/about.html</loc>
-    <lastmod>2026-09-23</lastmod>
+    <lastmod>2026-09-24</lastmod>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://folvski.github.io/pages/cv.html</loc>
-    <lastmod>2026-09-23</lastmod>
+    <lastmod>2026-09-24</lastmod>
     <priority>0.7</priority>
+  </url>
+
+  <!-- Кейсы -->
+  <url>
+    <loc>https://folvski.github.io/pages/cases/merra-immobiliare.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://folvski.github.io/pages/cases/vibex.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://folvski.github.io/pages/cases/jenniet-home.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://folvski.github.io/pages/cases/bentoskin.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://folvski.github.io/pages/cases/nesterenko-studio.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://folvski.github.io/pages/cases/bestclean.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://folvski.github.io/pages/cases/vov.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://folvski.github.io/pages/cases/merra-redesign.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://folvski.github.io/pages/cases/ssps.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://folvski.github.io/pages/cases/uvd-grodno.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://folvski.github.io/pages/cases/lidskaya-muka.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://folvski.github.io/pages/cases/jenniet-card.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://folvski.github.io/pages/cases/vittur.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://folvski.github.io/pages/cases/cyberview.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://folvski.github.io/pages/cases/i-origins.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://folvski.github.io/pages/cases/allstarsgym.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://folvski.github.io/pages/cases/photoshop-art.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://folvski.github.io/pages/cases/jigsaw.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://folvski.github.io/pages/cases/neverland.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.8</priority>
   </url>
 
 </urlset>

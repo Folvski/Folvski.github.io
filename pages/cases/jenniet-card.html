@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Jenniet — визитка — кейс</title>
+  <meta name="description" content="Визитка для блогера Jenniet с аудиторией 500 000 подписчиков: продолжение фирменного стиля магазина в печати.">
+
+  <link rel="icon" href="/assets/img/icons/Favicon.ico" sizes="any">
+  <link rel="canonical" href="https://folvski.github.io/pages/cases/jenniet-card.html">
+
+  <!-- Карточка при отправке ссылки в мессенджеры и соцсети.
+       Адреса здесь абсолютные не случайно: ботам, которые собирают превью,
+       относительный путь разворачивать не от чего. Preview.png специально
+       оставлен PNG — webp понимают не все такие боты. -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Нестеренко Иван">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:url" content="https://folvski.github.io/pages/cases/jenniet-card.html">
+  <meta property="og:title" content="Jenniet — визитка — кейс">
+  <meta property="og:description" content="Визитка для блогера Jenniet с аудиторией 500 000 подписчиков: продолжение фирменного стиля магазина в печати.">
+  <meta property="og:image" content="https://folvski.github.io/assets/img/icons/Preview.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Портфолио Нестеренко Ивана: дизайн и разработка">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap&subset=cyrillic,latin">
+
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <script type="module" src="/assets/js/main.js"></script>
+</head>
+<body>
+
+  <!-- Шторка перехода между страницами. Должна стоять первой в body. -->
+  <div class="page-fade" aria-hidden="true"></div>
+
+  <div data-include="/views/layout/header.html"></div>
+
+  <main>
+
+    <!-- ===== Первый экран =============================================== -->
+    <section class="section-case-hero section--flush">
+      <div class="container container--wide section-case-hero__inner">
+
+        <div class="badge badge--blue">
+          <span class="badge__icon">
+            <img src="/assets/img/badges/contacts.svg" alt="" width="80" height="80">
+          </span>
+          <span class="badge__label">Полиграфия</span>
+        </div>
+
+        <h1 class="section-case-hero__title">Jenniet — визитка</h1>
+
+        <p class="section-case-hero__text">
+          Визитка для <strong>блогера Jenniet</strong> с аудиторией 500 000 подписчиков — той же, для кого я собирал магазин азиатских сладостей. Задача была перенести экранный стиль бренда в печать так, чтобы визитка и сайт читались как одно целое.
+        </p>
+
+        <!-- Если у проекта появится живая ссылка, она встаёт сюда первой кнопкой:
+             <a class="btn btn--primary" href="https://..." target="_blank"
+                rel="noopener noreferrer">Смотреть сайт</a> -->
+        <div class="section-case-hero__actions">
+          <a class="btn btn--primary" href="/pages/projects.html#branding">Все работы</a>
+
+          <a class="btn btn--ghost btn--icon" href="/pages/cases/jenniet-home.html">
+            Магазин Jenniet Home
+            <span class="btn__icon" aria-hidden="true">
+              <svg viewBox="0 0 20 20" fill="none">
+            <path d="M4 10h11M11 6l4 4-4 4" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+            </span>
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===== Тело кейса ================================================== -->
+    <section class="section section-case">
+      <div class="container container--max section-case__inner">
+
+        <!-- --- Моя задача ------------------------------------------------ -->
+        <article class="case-card case-w" data-reveal>
+          <div class="badge">
+            <span class="badge__icon">
+              <img src="/assets/img/badges/brief.svg" alt="" width="80" height="80">
+            </span>
+          </div>
+
+          <h2 class="case-card__title">Моя задача</h2>
+
+          <div class="case-card__text">
+            <p>У бренда уже был сложившийся образ: светлая розово-синяя палитра, дружелюбная подача, подростковая аудитория. Всё это придумано для экрана. Нужно было:</p>
+
+            <ul class="case-list">
+              <li>сохранить узнаваемость бренда на носителе размером с ладонь</li>
+              <li>уместить контакты и соцсети, не превратив визитку в справочник</li>
+              <li>подобрать цвета, которые не потеряются в печати</li>
+              <li>сделать вещь, которую приятно отдать в руки, а не выбросить</li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- --- Процесс --------------------------------------------------- -->
+        <article class="case-process" data-reveal>
+          <h2 class="case-process__title">Процесс</h2>
+
+          <ol class="case-steps">
+            <li class="case-step">
+              <div class="case-w--col">
+                <h3 class="case-step__title">Бриф и исследование</h3>
+                <p class="case-step__text">Отобрал из стиля магазина то, что переживёт печать: палитру, шрифтовую пару, характер графики. Экранные градиенты и тонкие детали сразу вынес за скобки.</p>
+              </div>
+            </li>
+
+            <li class="case-step">
+              <div class="case-w--col">
+                <h3 class="case-step__title">Идея и эскизы</h3>
+                <p class="case-step__text">Набросал варианты компоновки: где логотип, где контакты, что выносить на оборот. Проверял каждый на главном вопросе — что человек увидит за первую секунду.</p>
+              </div>
+            </li>
+
+            <li class="case-step">
+              <div class="case-w--col">
+                <h3 class="case-step__title">Отрисовка</h3>
+                <p class="case-step__text">Собрал финальный макет обеих сторон: лицевая держит бренд, оборотная — контакты и соцсети. Размеры шрифтов подобрал так, чтобы текст читался без прищура.</p>
+              </div>
+              <div class="case-step__media">
+                <div class="case-row" style="--cols: 1">
+                  <figure class="case-media">
+                    <img src="/assets/img/Cases/jennietCreditCard/1.webp"
+                         alt="Jenniet — визитка — отрисовка"
+                         width="1726" height="940" loading="lazy" decoding="async">
+                  </figure>
+                </div>
+              </div>
+            </li>
+
+            <li class="case-step">
+              <div class="case-w--col">
+                <h3 class="case-step__title">Подготовка к печати</h3>
+                <p class="case-step__text">Перевёл макет в печатные параметры: цветовой профиль, вылеты, безопасные поля, контроль контраста на бумаге.</p>
+              </div>
+              <div class="case-step__media">
+                <div class="case-row" style="--cols: 2">
+                  <figure class="case-media">
+                    <img src="/assets/img/Cases/jennietCreditCard/2.webp"
+                         alt="Jenniet — визитка — подготовка к печати"
+                         width="1714" height="1286" loading="lazy" decoding="async">
+                  </figure>
+                  <figure class="case-media">
+                    <img src="/assets/img/Cases/jennietCreditCard/3.webp"
+                         alt="Jenniet — визитка — подготовка к печати"
+                         width="1694" height="1322" loading="lazy" decoding="async">
+                  </figure>
+                </div>
+              </div>
+            </li>
+          </ol>
+
+          <div class="case-w">
+            <ul class="tag-list tag-list--center case-process__tags">
+              <li class="tag">Графический дизайн</li>
+              <li class="tag">Полиграфия</li>
+              <li class="tag">Брендинг</li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- --- Результат -------------------------------------------------- -->
+        <article class="case-result" data-reveal>
+          <h2 class="case-result__title">Результат</h2>
+
+          <div class="case-result__text case-w">
+            <p>Визитка стала продолжением магазина, а не отдельной вещью:</p>
+
+            <ul class="case-list">
+              <li>фирменная палитра и характер бренда узнаются в печати</li>
+              <li>контакты и соцсети уместились без перегруза</li>
+              <li>макет подготовлен к типографии со всеми техническими требованиями</li>
+              <li>сайт и визитка читаются как один бренд</li>
+            </ul>
+          </div>
+
+          <div class="case-gallery">
+            <div class="case-row" style="--cols: 1">
+              <figure class="case-media">
+                <img src="/assets/img/Cases/jennietCreditCard/4.webp"
+                     alt="Jenniet — визитка — результат"
+                     width="1727" height="1296" loading="lazy" decoding="async">
+              </figure>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+  </main>
+
+  <div data-include="/views/layout/footer.html"></div>
+
+</body>
+</html>

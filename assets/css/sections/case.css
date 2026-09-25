@@ -1,11 +1,26 @@
 /* ==========================================================================
    case.css — страница кейса.
-   Макет: контейнер 1200 (поля 360), hero 1920x652 на чёрном,
-   тело кейса на #0d0d0d, блоки через 100px, радиус изображений 30,
-   карточка «Моя задача» — #151515, радиус 24, внутренние поля 101/43.
+
+   Ширины. На странице их три, и это не прихоть:
+     • 738  — колонка «Процесса». Этапов до шести, читать их подряд,
+              поэтому строка узкая: глаз возвращается к началу без усилия;
+     • 1200 — карточка «Моя задача», «Результат» и обычные ряды картинок;
+     • 1560 — широкие ряды. Панорамный скриншот в 1200 выглядит маркой,
+              поэтому такие ряды выходят за основную колонку.
+
+   Картинки НИКОГДА не кадрируются. У каждого <img> проставлены width и
+   height из самого файла, поэтому браузер знает пропорции заранее: место
+   резервируется до загрузки, а фигура принимает ровно ту форму, что у
+   снимка. Ни серых полей, ни обрезанных краёв.
+
+   Исключение — снимки страниц целиком, от шапки до подвала (бывает
+   и 1:20). Ставить их в полный рост нельзя: один такой занял бы
+   несколько экранов. Для них .case-media--tall — окно фиксированной
+   высоты с прокруткой внутри: ничего не обрезано, просто показывается
+   по частям. Целиком снимок открывается по клику в просмотрщике.
    ========================================================================== */
 
-/* --- Шапка кейса --------------------------------------------------------- */
+/* --- Первый экран --------------------------------------------------------- */
 
 .section-case-hero {
   position: relative;
@@ -20,152 +35,468 @@
   text-align: center;
 }
 
-.section-case-hero .badge  { margin-bottom: 10px; }
-.section-case-hero__title  { margin-bottom: 10px; }
+.section-case-hero .badge { margin-bottom: 10px; }
+.section-case-hero__title { margin-bottom: 10px; }
 
 .section-case-hero__text {
   max-width: 656px;
-  margin-bottom: 42px;
+  margin: 0;
   font-size: var(--fs-body);
   line-height: 24px;
   color: var(--text-muted);
 }
 
-/* --- Тело кейса ---------------------------------------------------------- */
+.section-case-hero__text strong {
+  font-weight: inherit;
+  letter-spacing: inherit;
+  color: var(--c-white);
+}
+
+.section-case-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  margin-block-start: 42px;
+}
+
+/* --- Тело кейса ----------------------------------------------------------- */
 
 .section-case {
   padding-block: 100px;
   background: var(--c-grey-5);
 }
 
+/* Контейнер здесь широкий (1560): в него должны помещаться широкие ряды.
+   Всё остальное сужается собственным max-width. */
 .section-case__inner {
   display: flex;
   flex-direction: column;
   gap: 100px;
 }
 
-/* заголовок блока: узкая колонка по центру */
-.case-block__head {
-  max-width: 738px;
-  margin-inline: auto;
-  margin-bottom: 42px;
-  text-align: center;
-}
+.case-w      { max-width: 1200px; margin-inline: auto; width: 100%; }
+.case-w--col { max-width: 738px;  margin-inline: auto; width: 100%; }
 
-.case-block__head--wide { max-width: none; }
-
-.case-block__title {
-  margin-bottom: 16px;
-  font-size: var(--fs-h1);
-  letter-spacing: var(--ls-h1);
-}
-
-.case-block__lead {
-  font-size: var(--fs-lead);
-  line-height: var(--lh-lead);
-  color: var(--text-muted);
-}
-
-/* --- Изображения --------------------------------------------------------- */
-
-.case-grid {
-  display: grid;
-  gap: 42px;
-}
-
-.case-grid--1 { grid-template-columns: 1fr; }
-.case-grid--2 { grid-template-columns: repeat(2, 1fr); }
-.case-grid--3 { grid-template-columns: repeat(3, 1fr); }
-
-.case-media {
-  margin: 0;
-  overflow: hidden;
-  border-radius: var(--r-m);
-  background: #404040;               /* плейсхолдер до загрузки скриншота */
-  aspect-ratio: var(--ratio, 3 / 2);
-}
-
-.case-media img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-/* --- Карточка «Моя задача» ----------------------------------------------- */
+/* --- Карточка «Моя задача» ------------------------------------------------ */
 
 .case-card {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 43px 101px;
-  border-radius: 24px;
-  background: #151515;
+  padding: 60px 100px 70px;
+  border: var(--glass-border) solid var(--chip-stroke);
+  border-radius: 40px;
+  background: #121212;
   text-align: center;
 }
 
+.case-card .badge { margin-bottom: 16px; }
+
 .case-card__title {
-  margin-bottom: 12px;
+  margin-bottom: 30px;
   font-size: var(--fs-h1);
   letter-spacing: var(--ls-h1);
 }
 
-.case-card .badge { margin-bottom: 10px; }
-
+/* Заголовок по центру, текст — по левому краю. Так и в макете: центр
+   держит блок, а абзацы с перечислением по центру читать невозможно. */
 .case-card__text {
   display: flex;
   flex-direction: column;
-  gap: 30px;                      /* абзацы через пустую строку, как в макете */
-  max-width: 998px;
+  gap: 24px;
+  width: 100%;
   font-size: var(--fs-lead);
   line-height: var(--lh-lead);
   color: var(--text-muted);
-  text-align: left;
+  text-align: start;
 }
 
-/* --- Галерея результата --------------------------------------------------- */
+/* --- Процесс -------------------------------------------------------------- */
 
-.case-gallery {
+.case-process__title {
+  margin-bottom: 42px;
+  font-size: var(--fs-h1);
+  letter-spacing: var(--ls-h1);
+  color: var(--c-orange);
+  text-align: center;
+}
+
+.case-steps {
   display: flex;
   flex-direction: column;
-  gap: 42px;
+  gap: 56px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: step;
 }
 
-/* --- Планшет -------------------------------------------------------------- */
+.case-step__title {
+  margin: 0 0 14px;
+  font-size: var(--fs-h3);
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--text-primary);
+}
+
+/* Номер приписывают стили, а не разметка: набор этапов у разных кейсов
+   разный, и при добавлении или удалении одного нумерация не поедет. */
+.case-step__title::before {
+  counter-increment: step;
+  content: counter(step, decimal-leading-zero) '. ';
+}
+
+.case-step__text {
+  margin: 0;
+  font-size: var(--fs-lead);
+  line-height: var(--lh-lead);
+  color: var(--text-muted);
+}
+
+.case-step__media { margin-block-start: 30px; }
+
+.case-process__tags { margin-block-start: 64px; }
+
+/* --- Результат ------------------------------------------------------------ */
+
+.case-result__title {
+  margin-bottom: 30px;
+  font-size: var(--fs-h1);
+  letter-spacing: var(--ls-h1);
+  text-align: center;
+}
+
+.case-result__text {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  font-size: var(--fs-lead);
+  line-height: var(--lh-lead);
+  color: var(--text-muted);
+}
+
+.case-result__text strong,
+.case-card__text strong,
+.case-step__text strong {
+  font-weight: inherit;
+  letter-spacing: inherit;
+  color: var(--c-white);
+}
+
+/* --- Перечисления через тире ---------------------------------------------- */
+/* В макете это не маркированный список, а строки, начинающиеся с тире,
+   и идут они вплотную. Поэтому список без маркеров, а тире рисует
+   псевдоэлемент: копировать текст со страницы оно не мешает. */
+
+.case-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.case-list li { padding-inline-start: 1.2em; text-indent: -1.2em; }
+.case-list li::before { content: '\2014\00a0'; }
+
+/* --- Ряды картинок ---------------------------------------------------------
+   Сколько снимков влезает в ряд, решает их форма, а не общая сетка:
+   панорама идёт одна, макеты — по два, вертикальные — по три.
+   Число приходит из разметки в --cols, ширина считается от него.       */
+
+.case-row {
+  --cols: 2;
+  --row-gap: 42px;
+
+  max-width: 1200px;
+  margin-inline: auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: center;
+  gap: var(--row-gap);
+}
+
+.case-row + .case-row { margin-block-start: var(--row-gap); }
+
+/* панораме 1200 тесно — такой ряд выходит на всю ширину страницы */
+.case-row--wide { max-width: none; }
+
+.case-row > * {
+  flex: 0 1 calc((100% - (var(--cols) - 1) * var(--row-gap)) / var(--cols));
+  min-width: 0;
+}
+
+/* --- Фигура --------------------------------------------------------------- */
+
+.case-media {
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+  border-radius: var(--r-m);
+  background: #1c1c1c;
+  cursor: zoom-in;
+  transition: transform var(--dur) var(--ease),
+              box-shadow var(--dur) var(--ease);
+}
+
+.case-media img {
+  display: block;
+  width: 100%;
+  height: auto;                      /* пропорции держит сам файл */
+}
+
+.case-media:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 44px rgba(0, 0, 0, .45);
+}
+
+/* Значок лупы. Появляется при наведении и подсказывает, что снимок
+   открывается крупно. На тач-устройствах наведения нет, поэтому там
+   он виден всегда, но приглушённо. */
+.case-media::after {
+  content: '';
+  position: absolute;
+  inset-block-end: 12px;
+  inset-inline-end: 12px;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(12, 12, 12, .72) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='M16 16l5 5M11 8v6M8 11h6'/%3E%3C/svg%3E") center / 18px no-repeat;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  opacity: 0;
+  transition: opacity var(--dur) var(--ease);
+  pointer-events: none;
+}
+
+.case-media:hover::after { opacity: 1; }
+
+@media (hover: none) {
+  .case-media::after { opacity: .55; }
+  .case-media:hover  { transform: none; box-shadow: none; }
+}
+
+/* --- Снимок страницы целиком ------------------------------------------------
+   Пропорции вроде 1:20 в полный рост поставить нельзя — такой снимок
+   занял бы несколько экранов. Здесь он живёт в окне с прокруткой:
+   ничего не обрезано, просто показывается по частям. Целиком —
+   по клику в просмотрщике.                                              */
+
+.case-media--tall {
+  --tall-h: 520px;
+  height: var(--tall-h);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, .25) transparent;
+}
+
+.case-media--tall::-webkit-scrollbar { width: 6px; }
+.case-media--tall::-webkit-scrollbar-thumb {
+  border-radius: 3px;
+  background: rgba(255, 255, 255, .25);
+}
+
+/* нижняя кромка растворяется — видно, что снимок продолжается */
+.case-media--tall::before {
+  content: '';
+  position: sticky;
+  z-index: 1;
+  display: block;
+  inset-block-end: 0;
+  height: 56px;
+  margin-block-start: -56px;
+  background: linear-gradient(to bottom, rgba(28, 28, 28, 0), rgba(18, 18, 18, .9));
+  pointer-events: none;
+}
+
+/* Значок лупы внутри прокручиваемого окна должен оставаться на месте,
+   а не уезжать вместе со снимком: sticky + display:block, иначе
+   псевдоэлемент останется строчным и размеры к нему не применятся. */
+.case-media--tall::after {
+  display: block;
+  position: sticky;
+  z-index: 2;
+  inset-block-end: 12px;
+  margin: -46px 12px 0 auto;
+  opacity: .8;
+}
+
+.case-media--tall:hover::after { opacity: 1; }
+
+/* --- Подпись под снимком ---------------------------------------------------- */
+
+.case-caption {
+  margin: 12px 0 0;
+  font-size: var(--fs-small);
+  line-height: 22px;
+  color: var(--text-dim);
+  text-align: center;
+}
+
+/* --- Галерея результата ------------------------------------------------------ */
+
+.case-gallery { margin-block-start: 42px; }
+
+/* --- Просмотрщик ------------------------------------------------------------
+   Разметку создаёт controllers/lightbox.js. Снимок показывается целиком:
+   обычный вписывается в экран, сверхвысокий выводится в ширину и
+   прокручивается — кадрировать нельзя ничего.                            */
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-fade);
+  display: grid;
+  place-items: center;
+  padding: clamp(16px, 4vw, 56px);
+  background: rgba(0, 0, 0, .93);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--dur) var(--ease), visibility var(--dur) var(--ease);
+}
+
+.lightbox.is-open { opacity: 1; visibility: visible; }
+
+.lightbox__scroll {
+  max-width: 100%;
+  max-height: 100%;
+  overflow: auto;
+  overscroll-behavior: contain;
+  border-radius: var(--r-s);
+}
+
+.lightbox__img {
+  display: block;
+  max-width: 100%;
+  max-height: calc(100vh - clamp(32px, 8vw, 112px));
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  scale: .96;
+  transition: scale var(--dur-slow) var(--ease);
+}
+
+.lightbox.is-open .lightbox__img { scale: 1; }
+
+/* Сверхвысокий снимок вписывать в высоту бессмысленно — останется полоска
+   в палец шириной. Такой показываем в ширину и даём прокрутить.
+   Ширину задаём окну, а не картинке: окно ужимается под содержимое,
+   и min(100%, 900px) на самой картинке считался бы от неё же. */
+.lightbox.is-tall .lightbox__scroll { width: min(100%, 860px); }
+
+.lightbox.is-tall .lightbox__img {
+  width: 100%;
+  max-width: none;
+  max-height: none;
+}
+
+.lightbox__btn {
+  position: fixed;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  border: var(--glass-border) solid var(--glass-stroke);
+  border-radius: var(--r-pill);
+  background: rgba(58, 58, 58, .82);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  color: var(--c-grey-93);
+  cursor: pointer;
+  transition: background-color var(--dur) var(--ease),
+              border-color var(--dur) var(--ease);
+}
+
+.lightbox__btn:hover {
+  background: rgba(74, 74, 74, .86);
+  border-color: rgba(255, 255, 255, .32);
+  color: var(--c-white);
+}
+
+.lightbox__btn svg { width: 22px; height: 22px; }
+
+.lightbox__close { inset-block-start: 24px; inset-inline-end: 24px; }
+.lightbox__prev  { inset-inline-start: 24px; inset-block-start: 50%; translate: 0 -50%; }
+.lightbox__next  { inset-inline-end: 24px;  inset-block-start: 50%; translate: 0 -50%; }
+
+.lightbox__count {
+  position: fixed;
+  inset-block-end: 24px;
+  inset-inline-start: 50%;
+  translate: -50% 0;
+  padding: 8px 18px;
+  border-radius: var(--r-pill);
+  background: rgba(20, 20, 20, .8);
+  font-size: var(--fs-small);
+  color: var(--text-dim);
+}
+
+.lightbox__btn[hidden] { display: none; }
+
+/* --- Планшет --------------------------------------------------------------- */
 
 @media (max-width: 1024px) {
   .section-case-hero { padding-block: calc(var(--header-h) + 64px) 64px; }
   .section-case      { padding-block: 72px; }
   .section-case__inner { gap: 72px; }
 
-  .case-grid,
-  .case-gallery { gap: 24px; }
+  .section-case-hero__actions { margin-block-start: 32px; }
 
-  .case-grid--3 { grid-template-columns: repeat(2, 1fr); }
+  .case-card { padding: 40px; border-radius: 30px; }
+  .case-card__title { margin-bottom: 22px; }
 
-  .case-block__head { margin-bottom: 32px; }
+  .case-process__title,
+  .case-result__title { margin-bottom: 32px; }
 
-  .case-card { padding: 40px; }
-  .case-card__text { gap: 24px; }
+  .case-steps { gap: 40px; }
+  .case-step__media { margin-block-start: 22px; }
+  .case-process__tags { margin-block-start: 44px; }
+
+  .case-row { --row-gap: 24px; }
+
+  /* на планшете ряд по четыре нечитаем — сводим к трём */
+  .case-row[style*='--cols: 4'] { --cols: 3 !important; }
+
+  .case-media--tall { --tall-h: 440px; }
+  .case-gallery { margin-block-start: 32px; }
 }
 
-/* --- Мобильный ------------------------------------------------------------ */
+/* --- Мобильный -------------------------------------------------------------- */
 
 @media (max-width: 480px) {
   .section-case-hero { padding-block: calc(var(--header-h) + 40px) 48px; }
   .section-case      { padding-block: 56px; }
   .section-case__inner { gap: 56px; }
 
-  .section-case-hero__text { margin-bottom: 28px; }
+  .section-case-hero__actions { margin-block-start: 26px; gap: 10px; }
+  .section-case-hero__actions .btn { padding-inline: clamp(14px, 4.6vw, 24px); }
 
-  .case-grid--2,
-  .case-grid--3 { grid-template-columns: 1fr; }
+  .case-card { padding: 28px 20px 32px; border-radius: 24px; }
 
-  .case-grid,
-  .case-gallery { gap: 16px; }
+  .case-card__text,
+  .case-result__text,
+  .case-step__text { font-size: var(--fs-body); line-height: var(--lh-text); }
 
-  .case-card { padding: 28px 20px; }
-  .case-card__text { font-size: var(--fs-body); line-height: var(--lh-text); gap: 20px; }
+  .case-card__text,
+  .case-result__text { gap: 18px; }
 
-  .case-block__title,
-  .case-card__title { font-size: var(--fs-h1); }
+  .case-steps { gap: 34px; }
+
+  /* Один снимок в ряд, кроме вертикальных — те встают по два, иначе
+     телефон в полный экран занимает полторы прокрутки. */
+  .case-row { --cols: 1 !important; --row-gap: 14px; }
+  .case-row[data-narrow] { --cols: 2 !important; }
+
+  .case-media { border-radius: var(--r-s); }
+  .case-media--tall { --tall-h: 380px; }
+  .case-media::after { width: 30px; height: 30px; background-size: 16px; }
+
+  .lightbox__btn { width: 48px; height: 48px; }
+  .lightbox__close { inset-block-start: 16px; inset-inline-end: 16px; }
+  .lightbox__prev  { inset-inline-start: 10px; }
+  .lightbox__next  { inset-inline-end: 10px; }
 }

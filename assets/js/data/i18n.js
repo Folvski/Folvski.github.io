@@ -330,8 +330,8 @@ export const dict = {
     'В <strong>2023</strong> году параллельно начал изучать программирование. За это время разработка стала второй частью моего профессионального пути. Сейчас я <strong>совмещаю оба направления</strong> и стараюсь создавать продукты, которые хорошо выглядят не только в Figma, но и работают в реальном мире.':
       'In <strong>2023</strong> I began studying programming alongside it. Development has since become the second half of my professional path. Today I <strong>work in both at once</strong> and try to build products that look good not only in Figma but hold up in the real world.',
 
-    'Здесь собраны работы, которые я делал <strong>своими руками</strong>: сайты, графика, брендинг, видео, игры.':
-      'Everything here I made <strong>with my own hands</strong>: websites, graphics, branding, video, games.',
+    'Здесь собраны работы, которые я делал <strong>своими руками</strong>: сайты, графика, брендинг, игры.':
+      'Everything here I made <strong>with my own hands</strong>: websites, graphics, branding, games.',
 
     'Делаю сайты целиком: от структуры и макета до вёрстки и настройки CMS. Дизайном занимаюсь <strong>с 2020 года</strong>, разработкой&nbsp;— <strong>с 2023</strong>, и развиваю оба направления параллельно. Это избавляет проект от привычного разрыва между макетом и кодом: я сразу проектирую то, что смогу собрать сам.':
       'I build websites end to end: structure and layout through to markup and CMS setup. Design <strong>since 2020</strong>, development <strong>since 2023</strong>, both developed in parallel. That removes the usual gap between mockup and code: I design what I know I can build myself.',

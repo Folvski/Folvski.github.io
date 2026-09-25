@@ -16,6 +16,7 @@ import { initPageFade }     from './controllers/page-fade.js';
 import { initShine }        from './controllers/shine.js';
 import { initI18n }         from './controllers/i18n.js';
 import { initToTop }        from './controllers/to-top.js';
+import { initLightbox }     from './controllers/lightbox.js';
 
 async function boot() {
   await includePartials();
@@ -33,6 +34,7 @@ async function boot() {
   // и шторка на них не срабатывает
   initPageFade();
   initToTop();      // после initSmoothScroll: прокрутку отдаёт её движку
+  initLightbox();   // страницы кейсов: снимок открывается крупно по клику
   // последним: текст меняется, а от него зависят укладка пилюль,
   // очередь блика и ширина стопки разделов
   initI18n();

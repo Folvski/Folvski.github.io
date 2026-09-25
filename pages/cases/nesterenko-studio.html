@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nesterenko Studio — кейс</title>
+  <meta name="description" content="Концептуальный дизайн сайта студии: 9 страниц в светлой и тёмной теме, адаптив до 2560px, полный UI Kit.">
+
+  <link rel="icon" href="/assets/img/icons/Favicon.ico" sizes="any">
+  <link rel="canonical" href="https://folvski.github.io/pages/cases/nesterenko-studio.html">
+
+  <!-- Карточка при отправке ссылки в мессенджеры и соцсети.
+       Адреса здесь абсолютные не случайно: ботам, которые собирают превью,
+       относительный путь разворачивать не от чего. Preview.png специально
+       оставлен PNG — webp понимают не все такие боты. -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Нестеренко Иван">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:url" content="https://folvski.github.io/pages/cases/nesterenko-studio.html">
+  <meta property="og:title" content="Nesterenko Studio — кейс">
+  <meta property="og:description" content="Концептуальный дизайн сайта студии: 9 страниц в светлой и тёмной теме, адаптив до 2560px, полный UI Kit.">
+  <meta property="og:image" content="https://folvski.github.io/assets/img/icons/Preview.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Портфолио Нестеренко Ивана: дизайн и разработка">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap&subset=cyrillic,latin">
+
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <script type="module" src="/assets/js/main.js"></script>
+</head>
+<body>
+
+  <!-- Шторка перехода между страницами. Должна стоять первой в body. -->
+  <div class="page-fade" aria-hidden="true"></div>
+
+  <div data-include="/views/layout/header.html"></div>
+
+  <main>
+
+    <!-- ===== Первый экран =============================================== -->
+    <section class="section-case-hero section--flush">
+      <div class="container container--wide section-case-hero__inner">
+
+        <div class="badge badge--magenta">
+          <span class="badge__icon">
+            <img src="/assets/img/badges/process.svg" alt="" width="80" height="80">
+          </span>
+          <span class="badge__label">Концепт студии</span>
+        </div>
+
+        <h1 class="section-case-hero__title">Nesterenko Studio</h1>
+
+        <p class="section-case-hero__text">
+          Концептуальный дизайн портфолио собственной студии. <strong>Девять страниц в светлой и тёмной версии</strong> — восемнадцать макетов, адаптив вплоть до 2560px и собранный UI Kit: компоненты, стили, состояния. Самый объёмный мой проект в Figma: около трёх месяцев работы.
+        </p>
+
+        <!-- Если у проекта появится живая ссылка, она встаёт сюда первой кнопкой:
+             <a class="btn btn--primary" href="https://..." target="_blank"
+                rel="noopener noreferrer">Смотреть сайт</a> -->
+        <div class="section-case-hero__actions">
+          <a class="btn btn--primary" href="/pages/projects.html#uiux">Все работы</a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===== Тело кейса ================================================== -->
+    <section class="section section-case">
+      <div class="container container--max section-case__inner">
+
+        <!-- --- Моя задача ------------------------------------------------ -->
+        <article class="case-card case-w" data-reveal>
+          <div class="badge">
+            <span class="badge__icon">
+              <img src="/assets/img/badges/brief.svg" alt="" width="80" height="80">
+            </span>
+          </div>
+
+          <h2 class="case-card__title">Моя задача</h2>
+
+          <div class="case-card__text">
+            <p>Я хотел сделать не одну красивую страницу, а систему, из которой можно собрать сайт студии целиком. Требования поставил себе сам, и они были жёсткими:</p>
+
+            <ul class="case-list">
+              <li>девять страниц, связанных единой логикой, а не набор отдельных макетов</li>
+              <li>две темы — светлая и тёмная — на одних и тех же компонентах</li>
+              <li>адаптив от телефона до 2560px, без «поплывших» блоков на широких мониторах</li>
+              <li>UI Kit, по которому проект сможет продолжить другой человек</li>
+            </ul>
+
+            <p>По сути это была проверка: смогу ли я удержать дизайн-систему такого размера в одной голове и в одном файле.</p>
+          </div>
+        </article>
+
+        <!-- --- Процесс --------------------------------------------------- -->
+        <article class="case-process" data-reveal>
+          <h2 class="case-process__title">Процесс</h2>
+
+          <ol class="case-steps">
+            <li class="case-step">
+              <div class="case-w--col">
+                <h3 class="case-step__title">Бриф и исследование</h3>
+                <p class="case-step__text">Определил, что студия должна о себе говорить и в каком порядке. Разобрал сайты студий и агентств: где у них теряется внимание, где перегружен первый экран, как показывают услуги и кейсы. Из этого собрал карту из девяти страниц.</p>
+              </div>
+              <div class="case-step__media">
+                <div class="case-row" style="--cols: 1">
+                  <figure class="case-media">
+                    <img src="/assets/img/Cases/NesterenkoPortfolioFigma/old-project.webp"
+                         alt="Nesterenko Studio — бриф и исследование"
+                         width="2400" height="1359" loading="lazy" decoding="async">
+                  </figure>
+                </div>
+              </div>
+            </li>
+
+            <li class="case-step">
+              <div class="case-w--col">
+                <h3 class="case-step__title">Прототип и структура</h3>
+                <p class="case-step__text">Собрал навигацию и сценарии для каждой страницы: главная, услуги, кейсы, страница кейса, о студии, контакты и остальные. Сделал wireframe всех девяти — до единого пикселя визуала, чтобы структура держалась сама по себе.</p>
+              </div>
+              <div class="case-step__media">
+                <div class="case-row" style="--cols: 2">
+                  <figure class="case-media case-media--tall">
+                    <img src="/assets/img/Cases/NesterenkoPortfolioFigma/modulnaya-setka.webp"
+                         alt="Nesterenko Studio — прототип и структура"
+                         width="328" height="2400" loading="lazy" decoding="async">
+                  </figure>
+                </div>
+                <div class="case-row case-row--wide" style="--cols: 1">
+                  <figure class="case-media">
+                    <img src="/assets/img/Cases/NesterenkoPortfolioFigma/hero-image.webp"
+                         alt="Nesterenko Studio — прототип и структура"
+                         width="2072" height="654" loading="lazy" decoding="async">
+                  </figure>
+                </div>
+              </div>
+            </li>
+
+            <li class="case-step">
+              <div class="case-w--col">
+                <h3 class="case-step__title">Дизайн-концепция</h3>
+                <p class="case-step__text">Разработал визуальный язык: сетку, типографическую шкалу, ритм отступов, работу с крупными заголовками и воздухом. Ключевые экраны собрал первыми, чтобы проверить стиль на сложном контенте, а не на пустой главной.</p>
+              </div>
+              <div class="case-step__media">
+                <div class="case-row" style="--cols: 1">
+                  <figure class="case-media">
+                    <img src="/assets/img/Cases/NesterenkoPortfolioFigma/posters.webp"
+                         alt="Nesterenko Studio — дизайн-концепция"
+                         width="2400" height="1577" loading="lazy" decoding="async">
+                  </figure>
+                </div>
+                <div class="case-row" style="--cols: 2">
+                  <figure class="case-media">
+                    <img src="/assets/img/Cases/NesterenkoPortfolioFigma/mockups.webp"
+                         alt="Nesterenko Studio — дизайн-концепция"
+                         width="1731" height="2400" loading="lazy" decoding="async">
+                  </figure>
+                </div>
+              </div>
+            </li>
+
+            <li class="case-step">
+              <div class="case-w--col">
+                <h3 class="case-step__title">Светлая и тёмная темы</h3>
+                <p class="case-step__text">Развёл цвет на токены и построил вторую тему на тех же компонентах: не перекрашивал макеты вручную, а менял значения. Это и есть главная проверка системы — если тема переключается без разъехавшихся блоков, значит, структура выстроена правильно.</p>
+              </div>
+              <div class="case-step__media">
+                <div class="case-row" style="--cols: 3" data-narrow>
+                  <figure class="case-media">
+                    <img src="/assets/img/Cases/NesterenkoPortfolioFigma/404.webp"
+                         alt="Nesterenko Studio — светлая и тёмная темы"
+                         width="1920" height="1998" loading="lazy" decoding="async">
+                  </figure>
+                  <figure class="case-media">
+                    <img src="/assets/img/Cases/NesterenkoPortfolioFigma/405.webp"
+                         alt="Nesterenko Studio — светлая и тёмная темы"
+                         width="1920" height="1998" loading="lazy" decoding="async">
+                  </figure>
+                  <figure class="case-media">
+                    <img src="/assets/img/Cases/NesterenkoPortfolioFigma/contact.webp"
+                         alt="Nesterenko Studio — светлая и тёмная темы"
+                         width="1920" height="1998" loading="lazy" decoding="async">
+                  </figure>
+                </div>
+                <div class="case-row" style="--cols: 2">
+                  <figure class="case-media">
+                    <img src="/assets/img/Cases/NesterenkoPortfolioFigma/contact-1.webp"
+                         alt="Nesterenko Studio — светлая и тёмная темы"
+                         width="1920" height="1998" loading="lazy" decoding="async">
+                  </figure>
+                </div>
+              </div>
+            </li>
+
+            <li class="case-step">
+              <div class="case-w--col">
+                <h3 class="case-step__title">Адаптив и UI Kit</h3>
+                <p class="case-step__text">Проработал все разрешения до 2560px и состояния элементов: наведение, нажатие, фокус, ошибка, пустой экран. Собрал компонентную библиотеку — кнопки, карточки, поля, навигацию, модальные окна — на компонентах и автолейаутах.</p>
+              </div>
+              <div class="case-step__media">
+                <div class="case-row" style="--cols: 2">
+                  <figure class="case-media">
+                    <img src="/assets/img/Cases/NesterenkoPortfolioFigma/textkit.webp"
+                         alt="Nesterenko Studio — адаптив и ui kit"
+                         width="1109" height="2400" loading="lazy" decoding="async">
+                  </figure>
+                </div>
+                <div class="case-row" style="--cols: 1">
+                  <figure class="case-media">
+                    <img src="/assets/img/Cases/NesterenkoPortfolioFigma/frame-377.webp"
+                         alt="Nesterenko Studio — адаптив и ui kit"
+                         width="2400" height="1439" loading="lazy" decoding="async">
+                  </figure>
+                </div>
+                <div class="case-row" style="--cols: 1">
+                  <figure class="case-media">
+                    <img src="/assets/img/Cases/NesterenkoPortfolioFigma/components.webp"
+                         alt="Nesterenko Studio — адаптив и ui kit"
+                         width="2400" height="1108" loading="lazy" decoding="async">
+                  </figure>
+                </div>
+              </div>
+            </li>
+          </ol>
+
+          <div class="case-w">
+            <ul class="tag-list tag-list--center case-process__tags">
+              <li class="tag">Figma</li>
+              <li class="tag">Адаптив</li>
+              <li class="tag">UI/UX</li>
+              <li class="tag">Компоненты</li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- --- Результат -------------------------------------------------- -->
+        <article class="case-result" data-reveal>
+          <h2 class="case-result__title">Результат</h2>
+
+          <div class="case-result__text case-w">
+            <p>Восемнадцать макетов, собранных на одной системе. Что вышло:</p>
+
+            <ul class="case-list">
+              <li>девять страниц в двух темах, переключаемых без ручной перекраски</li>
+              <li>адаптив от телефона до 2560px — на широких мониторах макет не разваливается</li>
+              <li>UI Kit, по которому проект можно передать другому дизайнеру или разработчику</li>
+              <li>три месяца работы, ставшие для меня школой дизайн-систем</li>
+            </ul>
+
+            <p>Считаю этот проект самым сложным из всего, что делал в Figma. После него сборка любого следующего макета стала заметно быстрее — потому что я уже знал, с чего начинать систему.</p>
+          </div>
+
+          <div class="case-gallery">
+            <div class="case-row" style="--cols: 3" data-narrow>
+              <figure class="case-media case-media--tall">
+                <img src="/assets/img/Cases/NesterenkoPortfolioFigma/home-dark.webp"
+                     alt="Nesterenko Studio — результат"
+                     width="344" height="2400" loading="lazy" decoding="async">
+              </figure>
+              <figure class="case-media case-media--tall">
+                <img src="/assets/img/Cases/NesterenkoPortfolioFigma/about.webp"
+                     alt="Nesterenko Studio — результат"
+                     width="448" height="2400" loading="lazy" decoding="async">
+              </figure>
+              <figure class="case-media case-media--tall">
+                <img src="/assets/img/Cases/NesterenkoPortfolioFigma/service.webp"
+                     alt="Nesterenko Studio — результат"
+                     width="277" height="2400" loading="lazy" decoding="async">
+              </figure>
+            </div>
+            <div class="case-row" style="--cols: 2">
+              <figure class="case-media">
+                <img src="/assets/img/Cases/NesterenkoPortfolioFigma/work.webp"
+                     alt="Nesterenko Studio — результат"
+                     width="1188" height="2400" loading="lazy" decoding="async">
+              </figure>
+            </div>
+            <div class="case-row" style="--cols: 2">
+              <figure class="case-media case-media--tall">
+                <img src="/assets/img/Cases/NesterenkoPortfolioFigma/work-single.webp"
+                     alt="Nesterenko Studio — результат"
+                     width="415" height="2400" loading="lazy" decoding="async">
+              </figure>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+  </main>
+
+  <div data-include="/views/layout/footer.html"></div>
+
+</body>
+</html>

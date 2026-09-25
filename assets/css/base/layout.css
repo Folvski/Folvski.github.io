@@ -11,6 +11,12 @@
   margin-inline: auto;
 }
 
+/* самая широкая колонка — ряды снимков в кейсах, где 1200 тесно */
+.container--max {
+  width: min(100% - var(--gutter) * 2, 1560px);
+  margin-inline: auto;
+}
+
 /* узкая колонка под заголовки секций (960px на десктопе) */
 .container--narrow {
   width: min(100% - var(--gutter) * 2, 960px);

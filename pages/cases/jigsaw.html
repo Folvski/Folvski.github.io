@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>JigSaw — кейс</title>
+  <meta name="description" content="3D-головоломка на Unity и C#: 8 уровней, магазин скинов, система монет и около 20 игровых механик.">
+
+  <link rel="icon" href="/assets/img/icons/Favicon.ico" sizes="any">
+  <link rel="canonical" href="https://folvski.github.io/pages/cases/jigsaw.html">
+
+  <!-- Карточка при отправке ссылки в мессенджеры и соцсети.
+       Адреса здесь абсолютные не случайно: ботам, которые собирают превью,
+       относительный путь разворачивать не от чего. Preview.png специально
+       оставлен PNG — webp понимают не все такие боты. -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Нестеренко Иван">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:url" content="https://folvski.github.io/pages/cases/jigsaw.html">
+  <meta property="og:title" content="JigSaw — кейс">
+  <meta property="og:description" content="3D-головоломка на Unity и C#: 8 уровней, магазин скинов, система монет и около 20 игровых механик.">
+  <meta property="og:image" content="https://folvski.github.io/assets/img/icons/Preview.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Портфолио Нестеренко Ивана: дизайн и разработка">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap&subset=cyrillic,latin">
+
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <script type="module" src="/assets/js/main.js"></script>
+</head>
+<body>
+
+  <!-- Шторка перехода между страницами. Должна стоять первой в body. -->
+  <div class="page-fade" aria-hidden="true"></div>
+
+  <div data-include="/views/layout/header.html"></div>
+
+  <main>
+
+    <!-- ===== Первый экран =============================================== -->
+    <section class="section-case-hero section--flush">
+      <div class="container container--wide section-case-hero__inner">
+
+        <div class="badge badge--red">
+          <span class="badge__icon">
+            <img src="/assets/img/badges/Laboratoria.svg" alt="" width="80" height="80">
+          </span>
+          <span class="badge__label">Игра на Unity</span>
+        </div>
+
+        <h1 class="section-case-hero__title">JigSaw</h1>
+
+        <p class="section-case-hero__text">
+          <strong>3D-головоломка</strong>, где игрок управляет блоком на арене. Восемь уровней, магазин со скинами, система монет, плавные анимации — около двадцати механик. Проект собран на Unity с C# и URP, как курсовая работа в конце третьего курса.
+        </p>
+
+        <!-- Если у проекта появится живая ссылка, она встаёт сюда первой кнопкой:
+             <a class="btn btn--primary" href="https://..." target="_blank"
+                rel="noopener noreferrer">Смотреть сайт</a> -->
+        <div class="section-case-hero__actions">
+          <a class="btn btn--primary" href="/pages/projects.html#laboratoria">Все работы</a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===== Тело кейса ================================================== -->
+    <section class="section section-case">
+      <div class="container container--max section-case__inner">
+
+        <!-- --- Моя задача ------------------------------------------------ -->
+        <article class="case-card case-w" data-reveal>
+          <div class="badge">
+            <span class="badge__icon">
+              <img src="/assets/img/badges/brief.svg" alt="" width="80" height="80">
+            </span>
+          </div>
+
+          <h2 class="case-card__title">Моя задача</h2>
+
+          <div class="case-card__text">
+            <p>Курсовой проект я решил сделать не демо-сценой, а маленькой законченной игрой. Значит, нужно было не только написать код, но и выстроить всё, из чего игра состоит:</p>
+
+            <ul class="case-list">
+              <li>управляемого персонажа с понятной и приятной физикой</li>
+              <li>восемь уровней с нарастающей сложностью</li>
+              <li>мета-слой: монеты, магазин, скины — то, ради чего возвращаются</li>
+              <li>визуал и анимации, которые не выглядят учебной заготовкой</li>
+            </ul>
+
+            <p>Отдельная задача — удержать около двадцати механик так, чтобы они не мешали друг другу и не превращали код в кашу.</p>
+          </div>
+        </article>
+
+        <!-- --- Процесс --------------------------------------------------- -->
+        <article class="case-process" data-reveal>
+          <h2 class="case-process__title">Процесс</h2>
+
+          <ol class="case-steps">
+            <li class="case-step">
+              <div class="case-w--col">
+                <h3 class="case-step__title">Идея и геймплей</h3>
+                <p class="case-step__text">Отталкивался от одной механики: блок, который перекатывается по арене. Проверил, что она сама по себе интересна, и только потом начал наращивать вокруг неё остальное.</p>
+              </div>
+            </li>
+
+            <li class="case-step">
+              <div class="case-w--col">
+                <h3 class="case-step__title">Прототип механик</h3>
+                <p class="case-step__text">Собрал играбельный прототип без графики: управление, физика, столкновения, победа и поражение. На этом этапе отсеял механики, которые звучали хорошо, а играли плохо.</p>
+              </div>
+              <div class="case-step__media">
+                <div class="case-row" style="--cols: 1">
+                  <figure class="case-media">
+                    <img src="/assets/img/Cases/JigSaw/image-48.webp"
+                         alt="JigSaw — прототип механик"
+                         width="1919" height="1199" loading="lazy" decoding="async">
+                  </figure>
+                </div>
+              </div>
+            </li>
+
+            <li class="case-step">
+              <div class="case-w--col">
+                <h3 class="case-step__title">Уровни и баланс</h3>
+                <p class="case-step__text">Спроектировал восемь уровней по нарастанию: каждый вводит одну новую идею и закрепляет предыдущую. Настроил сложность так, чтобы игрок не застревал и не скучал.</p>
+              </div>
+              <div class="case-step__media">
+                <div class="case-row" style="--cols: 2">
+                  <figure class="case-media">
+                    <img src="/assets/img/Cases/JigSaw/image-49.webp"
+                         alt="JigSaw — уровни и баланс"
+                         width="1919" height="1199" loading="lazy" decoding="async">
+                  </figure>
+                  <figure class="case-media">
+                    <img src="/assets/img/Cases/JigSaw/image-52.webp"
+                         alt="JigSaw — уровни и баланс"
+                         width="1919" height="1083" loading="lazy" decoding="async">
+                  </figure>
+                </div>
+                <div class="case-row" style="--cols: 2">
+                  <figure class="case-media">
+                    <img src="/assets/img/Cases/JigSaw/image-53.webp"
+                         alt="JigSaw — уровни и баланс"
+                         width="1919" height="1083" loading="lazy" decoding="async">
+                  </figure>
+                  <figure class="case-media">
+                    <img src="/assets/img/Cases/JigSaw/image-54.webp"
+                         alt="JigSaw — уровни и баланс"
+                         width="1919" height="1082" loading="lazy" decoding="async">
+                  </figure>
+                </div>
+              </div>
+            </li>
+
+            <li class="case-step">
+              <div class="case-w--col">
+                <h3 class="case-step__title">Арт и визуал</h3>
+                <p class="case-step__text">Собрал визуальный стиль на URP: материалы, свет, плавные анимации переходов и реакций. Отрисовал интерфейс, магазин и скины в одной манере.</p>
+              </div>
+              <div class="case-step__media">
+                <div class="case-row" style="--cols: 1">
+                  <figure class="case-media">
+                    <img src="/assets/img/Cases/JigSaw/image-50.webp"
+                         alt="JigSaw — арт и визуал"
+                         width="1919" height="1083" loading="lazy" decoding="async">
+                  </figure>
+                </div>
+              </div>
+            </li>
+
+            <li class="case-step">
+              <div class="case-w--col">
+                <h3 class="case-step__title">Разработка</h3>
+                <p class="case-step__text">Написал логику на C#: управление, состояния уровня, монеты, магазин, сохранение прогресса. Разложил механики по отдельным скриптам, чтобы их можно было включать и выключать по одной.</p>
+              </div>
+              <div class="case-step__media">
+                <div class="case-row" style="--cols: 1">
+                  <figure class="case-media">
+                    <img src="/assets/img/Cases/JigSaw/image-55.webp"
+                         alt="JigSaw — разработка"
+                         width="1919" height="1086" loading="lazy" decoding="async">
+                  </figure>
+                </div>
+              </div>
+            </li>
+
+            <li class="case-step">
+              <div class="case-w--col">
+                <h3 class="case-step__title">Тестирование и сборка</h3>
+                <p class="case-step__text">Прошёл игру целиком много раз, ловил поломки на стыках механик, правил баланс и собрал финальную сборку.</p>
+              </div>
+            </li>
+          </ol>
+
+          <div class="case-w">
+            <ul class="tag-list tag-list--center case-process__tags">
+              <li class="tag">GameDev</li>
+              <li class="tag">Unity Engine</li>
+              <li class="tag">C#</li>
+              <li class="tag">3D</li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- --- Результат -------------------------------------------------- -->
+        <article class="case-result" data-reveal>
+          <h2 class="case-result__title">Результат</h2>
+
+          <div class="case-result__text case-w">
+            <p>Получилась законченная маленькая игра, а не учебная сцена:</p>
+
+            <ul class="case-list">
+              <li>восемь уровней с выстроенной кривой сложности</li>
+              <li>около двадцати механик, работающих вместе</li>
+              <li>мета-слой: монеты, магазин и скины</li>
+              <li>визуал и анимации на URP, а не заготовки из шаблона</li>
+            </ul>
+
+            <p>Главное, что дал проект, — понимание, что игра держится не на количестве механик, а на том, насколько приятно управление в первые тридцать секунд.</p>
+          </div>
+
+          <div class="case-gallery">
+            <div class="case-row" style="--cols: 1">
+              <figure class="case-media">
+                <img src="/assets/img/Cases/JigSaw/image-51.webp"
+                     alt="JigSaw — результат"
+                     width="1919" height="1098" loading="lazy" decoding="async">
+              </figure>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+  </main>
+
+  <div data-include="/views/layout/footer.html"></div>
+
+</body>
+</html>
