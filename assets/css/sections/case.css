@@ -226,6 +226,39 @@
   min-width: 0;
 }
 
+/* --- Появление ---------------------------------------------------------------
+   Снимок не просто выезжает снизу, а ещё и чуть подрастает: на странице,
+   где картинок по двадцать штук, одно движение вверх читается вяло.
+
+   Здесь именно animation, а не transition, как у остальных [data-reveal].
+   Причина: у .case-media свой transition на наведение (подъём и тень), и
+   он перебивал бы появление — а если наоборот, отзыв на курсор растянулся
+   бы на семь десятых секунды и стал вязким. Анимация и переход живут
+   каждый своей жизнью, поэтому ничего не мешает друг другу.
+
+   Задержка внутри ряда приходит из разметки в --d.                      */
+
+.case-media[data-reveal] { opacity: 0; }
+
+.case-media[data-reveal].is-visible {
+  animation: case-media-in .7s var(--ease) var(--d, 0s) both;
+}
+
+@keyframes case-media-in {
+  from { opacity: 0; transform: translateY(30px) scale(.985); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* Заголовки разделов приходят чуть медленнее остального: они крупные,
+   и быстрый рывок на таком кегле выглядит дёрганым. */
+.case-process__title[data-reveal],
+.case-result__title[data-reveal] { transition-duration: .8s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .case-media[data-reveal] { opacity: 1; }
+  .case-media[data-reveal].is-visible { animation: none; }
+}
+
 /* --- Фигура --------------------------------------------------------------- */
 
 .case-media {
@@ -346,7 +379,7 @@
 .lightbox {
   position: fixed;
   inset: 0;
-  z-index: var(--z-fade);
+  z-index: var(--z-lightbox);
   display: grid;
   place-items: center;
   padding: clamp(16px, 4vw, 56px);

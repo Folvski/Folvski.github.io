@@ -55,12 +55,30 @@
 /* --- Панель меню -------------------------------------------------------- */
 
 .mobile-menu {
+  /* --- Настройка фона -----------------------------------------------------
+     Панель остаётся чёрной, но не плоской: под стеклом медленно плавают
+     несколько цветных пятен, и чёрный едва заметно переливается.
+
+       --menu-dim    плотность чёрного. 1 — совсем глухой, .88 — сквозь
+                     панель чуть просвечивает страница
+       --menu-blur   само стекло: насколько размыта страница под панелью
+       --menu-tint   яркость перелива. 0 — чистый чёрный без цвета,
+                     .22 — уже отчётливо видно. Это главная ручка
+       --menu-speed  длительность круга. Больше — спокойнее
+       --menu-soft   размытие самих пятен: меньше — виднее их края      */
+  --menu-dim:   .93;
+  --menu-blur:  16px;
+  --menu-tint:  .13;
+  --menu-speed: 26s;
+  --menu-soft:  70px;
+
   position: fixed;
   inset: 0;
   z-index: var(--z-menu);
   display: grid;
   place-items: center;
   padding: var(--gutter);
+  overflow: hidden;              /* пятна не должны вылезать за панель */
   /* Обязательно. У .header стоит pointer-events: none, чтобы пустая полоса
      шапки не перехватывала клики по странице, и это наследуется вниз — без
      возврата в auto панель открывалась, но тапы проходили сквозь неё на
@@ -68,12 +86,55 @@
      Закрытой панели это не мешает: visibility: hidden и так снимает с неё
      все события. */
   pointer-events: auto;
-  background: rgba(0, 0, 0, .92);
-  backdrop-filter: blur(12px);
+  background: rgb(0 0 0 / var(--menu-dim));
+  backdrop-filter: blur(var(--menu-blur));
+  -webkit-backdrop-filter: blur(var(--menu-blur));
   opacity: 0;
   visibility: hidden;
   transition: opacity var(--dur) var(--ease),
               visibility var(--dur) var(--ease);
+}
+
+/* Перелив. Три пятна фирменных цветов на отдельном слое: он крутится и
+   дышит, поэтому цвета медленно перетекают друг в друга. Слой лежит под
+   ссылками (z-index у .mobile-menu__nav) и кликов не перехватывает.
+
+   Почему именно так: анимировать сам background-image нельзя — браузер
+   пересчитывал бы градиенты каждый кадр. Крутится готовая картинка,
+   это дёшево и не греет телефон. */
+.mobile-menu::before {
+  content: '';
+  position: absolute;
+  /* слой заметно больше панели: при повороте углы не должны обнажаться */
+  inset: -60%;
+  background-image:
+    radial-gradient(circle at 28% 30%, #6e46ff 0, transparent 46%),
+    radial-gradient(circle at 74% 34%, #0d8bfa 0, transparent 44%),
+    radial-gradient(circle at 50% 78%, #4fdb75 0, transparent 48%);
+  filter: blur(var(--menu-soft));
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity calc(var(--dur) * 2) var(--ease);
+}
+
+.header.is-open .mobile-menu::before {
+  opacity: var(--menu-tint);
+  animation: menu-drift var(--menu-speed) linear infinite;
+}
+
+@keyframes menu-drift {
+  0%   { rotate: 0deg;   scale: 1;    translate: 0 0; }
+  25%  { rotate: 90deg;  scale: 1.18; translate: 3% -2%; }
+  50%  { rotate: 180deg; scale: 1;    translate: -2% 3%; }
+  75%  { rotate: 270deg; scale: 1.14; translate: -3% -3%; }
+  100% { rotate: 360deg; scale: 1;    translate: 0 0; }
+}
+
+/* ссылки лежат над переливом */
+.mobile-menu__nav { position: relative; z-index: 1; }
+
+@media (prefers-reduced-motion: reduce) {
+  .header.is-open .mobile-menu::before { animation: none; }
 }
 
 .header.is-open .mobile-menu {

@@ -5,25 +5,67 @@
    ========================================================================== */
 
 .footer {
+  /* --- Зелёное свечение внизу ---------------------------------------------
+     Это те же концентрические кольца, что в блоке «Автор» на главной, только
+     перевёрнутые: слой отражён по вертикали, поэтому центры окружностей
+     уходят ниже края страницы и видно их верхние дуги. Радиусы и цвета
+     взяты оттуда один в один — подвал и «Автор» смотрятся одним приёмом.
+
+     Что крутить:
+       --glow-h     высота всего свечения. Главная ручка: больше значение —
+                    выше поднимается зелёное
+       --glow-k     масштаб колец. Меняет сразу и радиусы, и центры, поэтому
+                    рисунок не искажается. Меньше — кольца уже и плотнее
+       --glow-core  докуда зелёное держится без затемнения (доля высоты,
+                    считается от НИЗА страницы)
+       --glow-fade  где приходит чистый чёрный. Между --glow-core и ним
+                    лежит сам переход: чем больше зазор, тем он мягче
+       --glow-drop  насколько слой уходит за нижний край. Ноль — свечение
+                    упирается ровно в низ страницы
+
+     Если после правки --glow-h под свечением остался зазор, добавьте
+     столько же в padding-block-end у .footer__inner: контакты не должны
+     налезать на зелёное.                                                   */
+  --glow-h:    340px;
+  --glow-k:    .52;
+  --glow-core: .10;
+  --glow-fade: .85;
+  --glow-drop: 0px;
+
   position: relative;
   overflow: hidden;
   padding-block: 100px 0;
   background: var(--bg-page);
 }
 
-/* зелёное свечение по нижнему краю */
 .footer::after {
   content: '';
   position: absolute;
-  inset-block-end: -220px;
-  inset-inline-start: 50%;
-  translate: -50% 0;
-  width: 900px;
-  height: 420px;
-  border-radius: 50%;
-  background: radial-gradient(closest-side, var(--c-green) 0%, rgba(79, 219, 117, .35) 45%, transparent 75%);
-  filter: blur(40px);
+  inset-block-end: var(--glow-drop);
+  inset-inline: 0;
+  height: var(--glow-h);
   pointer-events: none;
+
+  /* Отражаем слой по вертикали — дальше внутри него можно думать так же,
+     как в блоке «Автор»: кольца сверху, затемнение вниз. */
+  transform: scaleY(-1);
+
+  background-color: #006b44;       /* поле за самым внешним кольцом */
+  background-image:
+    /* затемнение: кольца уходят в чёрный */
+    linear-gradient(to bottom,
+      rgba(0, 0, 0, 0) 0,
+      rgba(0, 0, 0, 0) calc(var(--glow-h) * var(--glow-core)),
+      #000             calc(var(--glow-h) * var(--glow-fade))),
+    /* четыре кольца, каждое со своим центром — как в «Авторе» */
+    radial-gradient(circle calc(875px   * var(--glow-k)) at 50.8% calc(-507px  * var(--glow-k)),
+                    #82e05b 0 100%, transparent 100%),
+    radial-gradient(circle calc(1088px  * var(--glow-k)) at 50.8% calc(-673px  * var(--glow-k)),
+                    #76d673 0 100%, transparent 100%),
+    radial-gradient(circle calc(1313px  * var(--glow-k)) at 50.8% calc(-838px  * var(--glow-k)),
+                    #5fc97e 0 100%, transparent 100%),
+    radial-gradient(circle calc(1550px  * var(--glow-k)) at 50.8% calc(-1002px * var(--glow-k)),
+                    #3ca86e 0 100%, transparent 100%);
 }
 
 .footer__inner {
@@ -32,7 +74,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-block-end: 180px;
+  /* место под свечение: контакты не должны попадать на зелёное.
+     Ориентир — --glow-h * --glow-fade плюс небольшой запас. */
+  padding-block-end: 320px;
 }
 
 .footer__links {
@@ -73,14 +117,13 @@
 .footer__contacts a:hover { color: var(--text-secondary); }
 
 @media (max-width: 1024px) {
-  .footer { padding-block-start: var(--sp-2xl); }
-  .footer__inner { padding-block-end: 140px; }
+  .footer { padding-block-start: var(--sp-2xl); --glow-h: 280px; --glow-k: .42; }
+  .footer__inner { padding-block-end: 270px; }
 }
 
 @media (max-width: 480px) {
-  .footer { padding-block-start: var(--sp-xl); }
-  .footer__inner { padding-block-end: 120px; }
+  .footer { padding-block-start: var(--sp-xl); --glow-h: 215px; --glow-k: .30; }
+  .footer__inner { padding-block-end: 205px; }
   .footer__links .btn { width: min(100%, 280px); }
   .footer__contacts { font-size: var(--fs-small); }
-  .footer::after { width: 620px; height: 320px; inset-block-end: -170px; }
 }

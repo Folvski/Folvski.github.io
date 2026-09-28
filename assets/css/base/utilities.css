@@ -17,10 +17,13 @@
 
 /* --- Появление блоков при скролле (см. js/controllers/reveal.js) -------- */
 
+/* --d — задержка внутри группы: соседние элементы проявляются по очереди,
+   а не одной пачкой. Ставится прямо в разметке: style="--d: 90ms" */
 [data-reveal] {
   opacity: 0;
   transform: translateY(24px);
-  transition: opacity .6s var(--ease), transform .6s var(--ease);
+  transition: opacity .6s var(--ease) var(--d, 0s),
+              transform .6s var(--ease) var(--d, 0s);
 }
 
 [data-reveal].is-visible {

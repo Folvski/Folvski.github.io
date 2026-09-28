@@ -20,6 +20,20 @@ import { qs, qsa, on, lockScroll } from '../core/dom.js';
 
 const TALL = 0.5;          // ниже этого отношения снимок показываем в ширину
 
+/* Свои подписи просмотрщик держит у себя, а не в общем словаре: их всего
+   пять, зато иначе к ним пришлось бы добавлять по строке на каждую из
+   двухсот с лишним картинок — подпись кнопки склеивается с alt снимка. */
+const LABELS = {
+  ru: { box: 'Просмотр изображения', close: 'Закрыть',
+        prev: 'Предыдущее', next: 'Следующее',
+        open: 'Открыть изображение:', shot: 'снимок проекта' },
+  en: { box: 'Image viewer', close: 'Close',
+        prev: 'Previous', next: 'Next',
+        open: 'Open image:', shot: 'project screenshot' },
+};
+
+const labels = () => LABELS[document.documentElement.lang === 'en' ? 'en' : 'ru'];
+
 const ICON = {
   close: '<path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>',
   prev:  '<path d="M15 5l-7 7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>',
@@ -36,12 +50,11 @@ export function initLightbox() {
   box.className = 'lightbox';
   box.setAttribute('role', 'dialog');
   box.setAttribute('aria-modal', 'true');
-  box.setAttribute('aria-label', 'Просмотр изображения');
   box.innerHTML = `
     <div class="lightbox__scroll"><img class="lightbox__img" alt=""></div>
-    <button class="lightbox__btn lightbox__close" type="button" aria-label="Закрыть">${svg('close')}</button>
-    <button class="lightbox__btn lightbox__prev"  type="button" aria-label="Предыдущее">${svg('prev')}</button>
-    <button class="lightbox__btn lightbox__next"  type="button" aria-label="Следующее">${svg('next')}</button>
+    <button class="lightbox__btn lightbox__close" type="button">${svg('close')}</button>
+    <button class="lightbox__btn lightbox__prev"  type="button">${svg('prev')}</button>
+    <button class="lightbox__btn lightbox__next"  type="button">${svg('next')}</button>
     <p class="lightbox__count"></p>`;
   document.body.appendChild(box);
 
@@ -101,11 +114,28 @@ export function initLightbox() {
     // доступность с клавиатуры: фигура ведёт себя как кнопка
     fig.tabIndex = 0;
     fig.setAttribute('role', 'button');
-    fig.setAttribute('aria-label', `Открыть изображение: ${src.alt || 'снимок проекта'}`);
     on(fig, 'keydown', (e) => {
       if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(i, fig); }
     });
   });
+
+  /* Подписи проставляем отдельно и переставляем при смене языка: alt
+     картинок к этому моменту уже переведён, поэтому склейка получается
+     на нужном языке. */
+  function paint() {
+    const L = labels();
+    box.setAttribute('aria-label', L.box);
+    qs('.lightbox__close', box).setAttribute('aria-label', L.close);
+    prevBtn.setAttribute('aria-label', L.prev);
+    nextBtn.setAttribute('aria-label', L.next);
+    figures.forEach((fig) => {
+      const alt = qs('img', fig)?.alt || L.shot;
+      fig.setAttribute('aria-label', `${L.open} ${alt}`);
+    });
+  }
+
+  paint();
+  on(document, 'lang:changed', paint);
 
   on(qs('.lightbox__close', box), 'click', close);
   on(prevBtn, 'click', (e) => { e.stopPropagation(); show(index - 1); });
