@@ -26,10 +26,10 @@
      Если после правки --glow-h под свечением остался зазор, добавьте
      столько же в padding-block-end у .footer__inner: контакты не должны
      налезать на зелёное.                                                   */
-  --glow-h:    340px;
-  --glow-k:    .52;
-  --glow-core: .10;
-  --glow-fade: .85;
+  --glow-h:    550px;
+  --glow-k:    .47;
+  --glow-core: .0;
+  --glow-fade: .80;
   --glow-drop: 0px;
 
   position: relative;
